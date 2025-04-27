@@ -1,7 +1,7 @@
 // src/app/services/peripheral/[slug]/page.tsx
-'use client'; // Using client components for simplicity, can be server if needed
+// Removed 'use client' directive
 
-import { Metadata } from 'next'; // Still useful for structure, even if not fully dynamic here
+import { Metadata } from 'next'; // Still useful for structure
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -91,24 +91,25 @@ const peripheralServiceData: { [key: string]: any } = {
   // Add data for other peripheral services...
 };
 
-// Dummy function to satisfy async nature if needed, or adjust based on real data fetching
+// Fetch data on the server
 async function getPeripheralServiceData(slug: string) {
+  // Simulate fetching data; replace with actual data fetching logic if needed
   return peripheralServiceData[slug] || null;
 }
 
+// Generate Metadata - Server Component feature
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = await getPeripheralServiceData(params.slug);
+  if (!service) {
+    return { title: "Service Not Found" };
+  }
+  return {
+    title: `${service.title} - Surfside Specialized Solutions`,
+    description: `${service.description.substring(0, 160)}...`,
+  };
+}
 
-// Generate Metadata - Less dynamic for client component, but keeps structure
-// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-//   const service = await getPeripheralServiceData(params.slug);
-//   if (!service) {
-//     return { title: "Service Not Found" };
-//   }
-//   return {
-//     title: `${service.title} - Surfside Specialized Solutions`,
-//     description: `${service.description.substring(0, 160)}...`,
-//   };
-// }
-
+// Page Component - Server Component
 export default async function PeripheralServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = await getPeripheralServiceData(params.slug);
 
@@ -166,7 +167,7 @@ export default async function PeripheralServiceDetailPage({ params }: { params: 
       <section className="text-center border-t pt-10">
          <h3 className="text-xl font-serif mb-4">Need assistance with {service.title}?</h3>
         <Button size="lg" asChild>
-          <Link href={`/contact?inquiry=${params.slug}`}>
+          <Link href={`/contact?inquiry=${params.slug.replace(/-/g, '_')}`}> {/* Updated inquiry param format */}
             Contact Us Today
           </Link>
         </Button>
@@ -175,7 +176,7 @@ export default async function PeripheralServiceDetailPage({ params }: { params: 
   );
 }
 
-// Generate static paths for peripheral services (Optional, depends on data source)
+// Generate static paths for peripheral services - Server Component feature
 export async function generateStaticParams() {
    const slugs = Object.keys(peripheralServiceData);
    return slugs.map((slug) => ({ slug }));
