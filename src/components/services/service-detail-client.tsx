@@ -4,8 +4,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react'; // Keep CheckCircle for L3 tasks
-import { Card, CardContent } from '@/components/ui/card'; // Removed CardHeader, CardTitle as they might not be needed directly
+import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 // Define the type for Level 3 tasks
@@ -16,18 +16,18 @@ interface Level3Task {
 }
 
 // Define the type for the service data prop, including Level 3 tasks
+// Note: Removed 'process' as it's replaced by level3Tasks for these core services
 interface Service {
   slug: string;
   title: string;
   heroImage: string;
   description: string;
-  process: { title: string; detail: string }[];
   benefits: string[];
   applications: string[];
   relevantProjects?: { id: number; title: string; image: string; slug: string }[];
   ctaLink: string;
   ctaText: string;
-  level3Tasks?: Level3Task[]; // Add Level 3 tasks array (optional)
+  level3Tasks?: Level3Task[]; // Level 3 tasks array (optional)
 }
 
 interface ServiceDetailClientProps {
@@ -92,25 +92,7 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
               </section>
             )}
 
-            {/* Keep the Process section if relevant/different from L3 tasks */}
-            {service.process && service.process.length > 0 && !service.level3Tasks && (
-                <section>
-                <h2 className="text-2xl md:text-3xl font-serif mb-6">Our Process</h2>
-                <div className="space-y-4">
-                    {service.process.map((step, index) => (
-                    <div key={index} className="flex items-start p-4 border rounded-lg bg-secondary/30">
-                        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold text-sm mr-4">{index + 1}</div>
-                        <div>
-                        <h4 className="font-semibold text-foreground mb-1">{step.title}</h4>
-                        <p className="text-sm text-muted-foreground">{step.detail}</p>
-                        </div>
-                    </div>
-                    ))}
-                </div>
-                </section>
-            )}
-
-
+            {/* Applications Section */}
             <section>
               <h2 className="text-2xl md:text-3xl font-serif mb-4">Relevant Applications</h2>
               <div className="flex flex-wrap gap-2">
@@ -123,6 +105,7 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
 
           {/* Right Sidebar */}
           <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
+            {/* Key Benefits Section */}
             <div>
               <h3 className="text-xl font-serif mb-3 border-b pb-2">Key Benefits</h3>
               <ul className="space-y-2 text-sm">
@@ -135,6 +118,7 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
               </ul>
             </div>
 
+            {/* Relevant Projects Section */}
             {service.relevantProjects && service.relevantProjects.length > 0 && (
               <div>
                 <h3 className="text-xl font-serif mb-4 border-b pb-2">Relevant Projects</h3>
@@ -160,13 +144,15 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
               </div>
             )}
 
+            {/* CTA Button */}
             <div>
               <Button size="lg" className="w-full" asChild>
                 <Link href={service.ctaLink}>{service.ctaText}</Link>
               </Button>
             </div>
 
-            <Button variant="outline" asChild>
+            {/* Back Button */}
+            <Button variant="outline" asChild className='w-full'>
               <Link href="/services">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Services Overview
               </Link>

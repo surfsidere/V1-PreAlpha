@@ -1,9 +1,11 @@
-// src/app/services/peripheral/[slug]/page.tsx
+
+// Remove 'use client' and async - Make it a standard Server Component
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle } from 'lucide-react'; // Added CheckCircle for L3 tasks
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge'; // Keep Badge if needed
+import { Badge } from '@/components/ui/badge';
+import { notFound } from 'next/navigation'; // Import notFound
 
 // Define Level 3 Task structure
 interface Level3Task {
@@ -20,11 +22,12 @@ interface CoreServiceLink {
 interface PeripheralServiceData {
   title: string;
   description: string;
-  level3Tasks?: Level3Task[]; // Level 3 tasks specific to this peripheral service
-  relatedCoreServices?: CoreServiceLink[]; // Links back to Level 1 services
+  level3Tasks?: Level3Task[];
+  relatedCoreServices?: CoreServiceLink[];
   icon?: string; // Keep icon name if needed for future use, but not rendered here
 }
 
+// Keep data definition accessible to server-side functions
 const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
   'property-management': {
     title: "Comprehensive Property Management",
@@ -41,8 +44,8 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Rental Income Management (if applicable)" },
     ],
     relatedCoreServices: [
-       { title: "Marketing & Sales", href: "/services/marketing-sales" }, // Related if it's a rental income property
-       { title: "Custom Home Project Management", href: "/build-your-custom-home" }, // Post-build management
+       { title: "Marketing & Sales", href: "/services/marketing-sales" },
+       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
     ],
     icon: 'Building',
   },
@@ -61,12 +64,12 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
        { title: "Custom Home Project Management", href: "/build-your-custom-home" },
-       { title: "Comprehensive Property Management", href: "/services/peripheral/property-management" }, // Often bundled
+       { title: "Comprehensive Property Management", href: "/services/peripheral/property-management" },
     ],
     icon: 'ConciergeBell',
   },
-  'fideicomiso-guidance': { // Slug remains the same for now
-    title: "Legal & Trust Structure Guidance", // Updated title
+  'fideicomiso-guidance': {
+    title: "Legal & Trust Structure Guidance",
     description: "Understanding and establishing a Fideicomiso (bank trust) is essential for foreign nationals owning property in restricted zones of Mexico. We provide clarity and connect you with trusted legal partners to ensure your ownership structure is secure, compliant, and optimized.",
      level3Tasks: [
         { title: "Fideicomiso Setup & Coordination" },
@@ -78,7 +81,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" },
-      { title: "Marketing & Sales", href: "/services/marketing-sales" }, // Crucial for buyers
+      { title: "Marketing & Sales", href: "/services/marketing-sales" },
       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
     ],
     icon: 'Landmark',
@@ -98,7 +101,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
-      { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" }, // For large investments
+      { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" },
     ],
     icon: 'UserCheck',
   },
@@ -113,12 +116,12 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Custom Millwork & Cabinetry Design" },
         { title: "Art Curation & Acquisition" },
         { title: "Turnkey Furnishing & Installation Management" },
-        { title: "Property Staging for Sale or Rent" }, // Included L3 task
+        { title: "Property Staging for Sale or Rent" },
     ],
     relatedCoreServices: [
       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
-      { title: "Marketing & Sales", href: "/services/marketing-sales" }, // Staging aspect
-      { title: "Integrated Management Services", href: "/services/development-management" }, // For model homes/developments
+      { title: "Marketing & Sales", href: "/services/marketing-sales" },
+      { title: "Integrated Management Services", href: "/services/development-management" },
     ],
     icon: 'Paintbrush',
   },
@@ -133,8 +136,8 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Material & Specification Alignment" },
         { title: "Ensuring Design Compliance with Budget & Schedule" },
         { title: "Facilitation of Design Meetings & Workshops" },
-        { title: "Landscape Design Coordination" }, // Included L3 task
-        { title: "Smart Home & Technology Integration Planning" }, // Included L3 task
+        { title: "Landscape Design Coordination" },
+        { title: "Smart Home & Technology Integration Planning" },
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
@@ -143,9 +146,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     icon: 'DraftingCompass',
   },
-  // Add data for other peripheral services (Due Diligence, Permitting, Bill Payment, etc.)
-  // following the same structure with L3 tasks and related L1 links.
-   'due-diligence': {
+  'due-diligence': {
     title: "Due Diligence",
     description: "Thorough investigation to assess viability and risks of potential real estate investments or projects, covering financial, legal, market, and physical aspects.",
     level3Tasks: [
@@ -175,7 +176,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
-       { title: "Legal & Trust Structure Guidance", href: "/services/peripheral/fideicomiso-guidance" }, // Often related
+       { title: "Legal & Trust Structure Guidance", href: "/services/peripheral/fideicomiso-guidance" },
     ],
     icon: 'FileText',
   },
@@ -195,7 +196,6 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     icon: 'HandCoins',
    },
-    // Ensure 'hurricane-prep' is included if it's an L2 service
    'hurricane-prep': {
     title: "Hurricane Preparedness",
     description: "Protecting your valuable asset during storm season with comprehensive preparation services, including securing property and post-storm inspections.",
@@ -211,33 +211,32 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     icon: 'Wind',
    },
-     // Add other L2/peripheral services as needed...
+     // Add other L2/peripheral services data...
 };
 
-// Fetch data (Conceptually Server-Side, Client-Side in 'use client' context)
-async function getPeripheralServiceData(slug: string) {
+// Fetch data - can be async now
+async function getPeripheralServiceData(slug: string): Promise<PeripheralServiceData | null> {
   return peripheralServiceData[slug] || null;
 }
 
-// Generate Metadata - Server Component feature (Potentially problematic with 'use client')
-// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-//   const service = await getPeripheralServiceData(params.slug);
-//   if (!service) {
-//     return { title: "Service Not Found" };
-//   }
-//   return {
-//     title: `${service.title} - Surfside Specialized Solutions`,
-//     description: `${service.description.substring(0, 160)}...`,
-//   };
-// }
+// Generate Metadata - Server Component feature
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = await getPeripheralServiceData(params.slug);
+  if (!service) {
+    return { title: "Service Not Found" };
+  }
+  return {
+    title: `${service.title} - Surfside Specialized Solutions`,
+    description: `${service.description.substring(0, 160)}...`,
+  };
+}
 
-// Page Component - Marked as Client Component
+// Page Component - Now a standard Server Component
 export default async function PeripheralServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = await getPeripheralServiceData(params.slug);
 
   if (!service) {
-    // Consider using Next.js notFound() for better 404 handling if refactoring
-    return <div className="container mx-auto px-4 py-24 text-center">Service not found.</div>;
+    notFound(); // Use Next.js notFound for 404
   }
 
   return (
@@ -257,7 +256,6 @@ export default async function PeripheralServiceDetailPage({ params }: { params: 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-4 leading-tight">
           {service.title}
         </h1>
-        {/* Optional: L2 Icon could be displayed here if desired */}
       </header>
 
       {/* Service Description */}
@@ -320,10 +318,8 @@ export default async function PeripheralServiceDetailPage({ params }: { params: 
   );
 }
 
-// Generate static paths for peripheral services - Server Component feature (Potentially problematic)
-// export async function generateStaticParams() {
-//    const slugs = Object.keys(peripheralServiceData);
-//    return slugs.map((slug) => ({ slug }));
-// }
-// Commented out for now due to 'use client' context.
-// If static generation is required, refactor to Server Components.
+// Generate static paths for peripheral services - Server Component feature
+export async function generateStaticParams() {
+   const slugs = Object.keys(peripheralServiceData);
+   return slugs.map((slug) => ({ slug }));
+}
