@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
 // Level 1: Core Integrated Services
 const coreServices = [
   {
-    title: "Strategic Real Estate Advisory",
+    title: "real estate advisory",
     description: "Navigate the market with confidence through data-driven insights, feasibility studies, and bespoke investment strategies.",
     icon: BarChart3,
     href: "/services/strategic-advisory" // Assuming slug matches for detail page
@@ -31,7 +31,7 @@ const coreServices = [
     href: "/services/marketing-sales"
   },
     {
-    title: "Custom Home Project Management", // Renamed
+    title: "Estate Development Coordination", // Updated title
     description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
     icon: Home,
     href: "/build-your-custom-home" // Links to the specific landing page
