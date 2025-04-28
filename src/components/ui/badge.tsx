@@ -5,6 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
+  // Updated base styles to remove background color and set border/text color by default
   "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
@@ -16,7 +17,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
-        glass: "border-transparent bg-background/60 text-foreground backdrop-blur-sm hover:bg-background/80", // New glass variant
+        // Added glass variant based on image
+        glass: "border-transparent bg-background/80 text-foreground backdrop-blur-sm hover:bg-background/90",
       },
     },
     defaultVariants: {
@@ -36,3 +38,5 @@ function Badge({ className, variant, ...props }: BadgeProps) {
 }
 
 export { Badge, badgeVariants }
+
+    

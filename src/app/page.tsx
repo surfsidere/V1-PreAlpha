@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BarChart3, Package, Megaphone, Home } from 'lucide-react'; // Import necessary icons
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -15,38 +15,32 @@ const featuredProjects = [
   { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Luxury Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location..." },
 ];
 
+// Updated featuredSolutions to include the 4 core capabilities
 const featuredSolutions = [
    {
-    title: "Strategic Insight",
-    icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg {...props} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
-    ),
+    title: "Real Estate Advisory",
+    icon: BarChart3, // Using BarChart3 for strategic insight
     description: "Market analysis, feasibility, investment strategy.",
     href: "/services/strategic-advisory"
   },
    {
-    title: "Development Execution",
-    icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg {...props} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-    ),
+    title: "Integrated Management", // Updated title
+    icon: Package, // Using Package for management services
     description: "Full lifecycle project oversight and management.",
     href: "/services/development-management"
   },
   {
-    title: "Marketing & Brokerage",
-     icon: (props: React.SVGProps<SVGSVGElement>) => (
-       <svg {...props} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
-    ),
+    title: "Marketing & Sales",
+     icon: Megaphone, // Using Megaphone for marketing
     description: "Targeted strategies for premier properties.",
     href: "/services/marketing-sales"
   },
-    // Add Investment Structures if it has its own page/section later
-    // {
-    // title: "Investment Structures",
-    // icon: (props: React.SVGProps<SVGSVGElement>) => ( ... ),
-    // description: "Tailored investment approaches.",
-    // href: "/services/investment-structures"
-    // },
+   {
+    title: "Estate Development", // Added for Custom Home
+    icon: Home, // Using Home for estate development
+    description: "Bespoke guidance for creating your dream home.",
+    href: "/build-your-custom-home"
+  },
 ];
 
 
@@ -57,13 +51,13 @@ export default function Home() {
       <section className="relative h-[85svh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://picsum.photos/seed/cabosunrise/1920/1080" // Replace with high-quality custom image/video
+            src="https://picsum.photos/seed/cabosteps/1920/1080" // Example: Using a seed that might generate a B&W image or similar vibe. Replace with actual asset.
             alt="Atmospheric view of Cabo coastline and architecture integration"
-            layout="fill"
-            objectFit="cover"
+            fill // Use fill instead of layout="fill"
+            style={{ objectFit: 'cover' }} // Use style object for objectFit
             quality={90}
             priority
-            className="brightness-75"
+            className="brightness-75" // Keep brightness, adjust as needed for B&W
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
         </div>
@@ -134,10 +128,11 @@ export default function Home() {
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
             Delivering comprehensive expertise across the real estate lifecycle.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Updated grid layout to accommodate 4 items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
              {featuredSolutions.map((solution) => (
                  <div key={solution.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300">
-                    <solution.icon className="mx-auto mb-4 text-primary" />
+                    <solution.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
                     <h3 className="text-xl font-serif mb-2">{solution.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{solution.description}</p>
                     <Button variant="link" size="sm" asChild className="p-0 h-auto">
@@ -166,12 +161,13 @@ export default function Home() {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
+                     fill // Use fill instead of layout="fill"
+                    style={{ objectFit: 'cover' }} // Use style object for objectFit
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
-                   <Badge variant="secondary" className="absolute top-4 left-4 bg-background/80 text-foreground hover:bg-background/90 backdrop-blur-sm">{project.type}</Badge>
+                   {/* Use glass variant for badge */}
+                   <Badge variant="glass" className="absolute top-4 left-4">{project.type}</Badge>
                 </CardHeader>
                 <CardContent className="p-6">
                   <CardTitle className="text-xl font-serif mb-2 group-hover:text-primary transition-colors">{project.title}</CardTitle>
@@ -201,8 +197,8 @@ export default function Home() {
                 <p className="text-lg text-muted-foreground mb-6">
                     Our commitment extends beyond development to fostering sustainable practices and enriching the community fabric of Baja California Sur.
                 </p>
-                {/* Replace with actual link when section exists */}
-                <Button asChild variant="default">
+                {/* Replace with actual link when section exists, using secondary variant for "Coming Soon" */}
+                <Button asChild variant="secondary" disabled>
                     {/* <Link href="/community-future">Discover Our Vision</Link> */}
                     <span className="cursor-not-allowed">Coming Soon</span>
                 </Button>

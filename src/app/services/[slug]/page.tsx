@@ -1,5 +1,6 @@
 
 
+
 // Remove 'use client' directive - This is now a Server Component
 // import { Metadata } from 'next'; // Keep for type checking
 import { ServiceDetailClient } from '@/components/services/service-detail-client'; // Import the client component
@@ -40,7 +41,10 @@ async function getServiceData(slug: string): Promise<Service | null> {
         { title: "Highest & Best Use Analysis" },
         { title: "Tailored Investment Strategy Development" },
         { title: "Partnership & Capital Structure Advisory" },
-        { title: "Thorough Due Diligence Support" },
+        { title: "Due Diligence Reports & Analysis" }, // Added
+        { title: "Land Planning" }, // Added
+        { title: "Development Advisory" }, // Added
+        { title: "Thorough Due Diligence Support" }, // Existing moved down
       ],
       benefits: ["Informed Decision Making", "Risk Mitigation", "Optimized Returns", "Market Advantage", "Strategic Clarity"],
       applications: ["Developers", "Investors", "Family Offices", "Land Owners", "Funds"],
@@ -150,4 +154,5 @@ export async function generateStaticParams() {
     slug: service.slug,
   }));
 }
+
 
