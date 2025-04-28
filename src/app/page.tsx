@@ -24,7 +24,7 @@ const featuredSolutions = [
     href: "/services/strategic-advisory"
   },
    {
-    title: "Integrated Management", // Updated title to Integrated Management
+    title: "Integrated Management Services", // Renamed from Development Management
     icon: Package, // Using Package for management services
     description: "Full lifecycle project oversight and management.",
     href: "/services/development-management" // Kept slug consistent
@@ -36,15 +36,15 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
    {
-    title: "Estate Development", // Added for Custom Home
+    title: "Comprehensive Development Oversight", // Updated title
     icon: HomeIcon, // Using aliased Home icon
-    description: "Bespoke guidance for creating your dream home.",
-    href: "/build-your-custom-home"
+    description: "Development Coordination", // Updated description
+    href: "/build-your-custom-home" // Link remains the same
   },
 ];
 
 
-export default function Home() { // Ensure this is the only definition
+export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Component 1: Hero Section */}
@@ -255,3 +255,5 @@ export default function Home() { // Ensure this is the only definition
     </div>
   );
 }
+
+    
