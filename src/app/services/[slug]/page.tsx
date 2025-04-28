@@ -1,4 +1,5 @@
 
+
 // Remove 'use client' directive - This is now a Server Component
 // import { Metadata } from 'next'; // Keep for type checking
 import { ServiceDetailClient } from '@/components/services/service-detail-client'; // Import the client component
@@ -29,7 +30,7 @@ async function getServiceData(slug: string): Promise<Service | null> {
    const services = [
     {
       slug: "strategic-advisory",
-      title: "Strategic Real Estate Advisory",
+      title: "real estate advisory", // Updated title
       heroImage: "https://picsum.photos/seed/service1/1200/500",
       description: "Navigate Cabo's complex market with confidence. Our strategic advisory services provide data-driven insights, comprehensive feasibility studies, and bespoke investment strategies tailored to your objectives.",
       level3Tasks: [
@@ -149,3 +150,4 @@ export async function generateStaticParams() {
     slug: service.slug,
   }));
 }
+
