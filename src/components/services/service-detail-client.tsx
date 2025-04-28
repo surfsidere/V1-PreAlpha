@@ -4,11 +4,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react'; // Keep CheckCircle for L3 tasks
+import { Card, CardContent } from '@/components/ui/card'; // Removed CardHeader, CardTitle as they might not be needed directly
 import { Badge } from '@/components/ui/badge';
 
-// Define the type for the service data prop
+// Define the type for Level 3 tasks
+interface Level3Task {
+  title: string;
+  // Optional: add icon name or component if needed later
+  // icon?: React.ElementType | string;
+}
+
+// Define the type for the service data prop, including Level 3 tasks
 interface Service {
   slug: string;
   title: string;
@@ -20,6 +27,7 @@ interface Service {
   relevantProjects?: { id: number; title: string; image: string; slug: string }[];
   ctaLink: string;
   ctaText: string;
+  level3Tasks?: Level3Task[]; // Add Level 3 tasks array (optional)
 }
 
 interface ServiceDetailClientProps {
@@ -66,20 +74,42 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
               </p>
             </section>
 
-            <section>
-              <h2 className="text-2xl md:text-3xl font-serif mb-6">Our Process / Key Activities</h2>
-              <div className="space-y-4">
-                {service.process.map((step, index) => (
-                  <div key={index} className="flex items-start p-4 border rounded-lg bg-secondary/30">
-                    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold text-sm mr-4">{index + 1}</div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">{step.title}</h4>
-                      <p className="text-sm text-muted-foreground">{step.detail}</p>
+            {/* Render Level 3 Tasks if they exist */}
+            {service.level3Tasks && service.level3Tasks.length > 0 && (
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif mb-6">Key Activities & Deliverables</h2>
+                 {/* Level 3 Styling: List format */}
+                 <ul className="space-y-3">
+                    {service.level3Tasks.map((task, index) => (
+                       <li key={index} className="flex items-center text-muted-foreground">
+                         {/* Level 3 Icon: Small CheckCircle */}
+                         <CheckCircle className="w-4 h-4 mr-3 text-primary/70 flex-shrink-0"/>
+                         {/* Level 3 Text: Smaller, standard weight */}
+                         <span className="text-sm">{task.title}</span>
+                       </li>
+                    ))}
+                 </ul>
+              </section>
+            )}
+
+            {/* Keep the Process section if relevant/different from L3 tasks */}
+            {service.process && service.process.length > 0 && !service.level3Tasks && (
+                <section>
+                <h2 className="text-2xl md:text-3xl font-serif mb-6">Our Process</h2>
+                <div className="space-y-4">
+                    {service.process.map((step, index) => (
+                    <div key={index} className="flex items-start p-4 border rounded-lg bg-secondary/30">
+                        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold text-sm mr-4">{index + 1}</div>
+                        <div>
+                        <h4 className="font-semibold text-foreground mb-1">{step.title}</h4>
+                        <p className="text-sm text-muted-foreground">{step.detail}</p>
+                        </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+                    ))}
+                </div>
+                </section>
+            )}
+
 
             <section>
               <h2 className="text-2xl md:text-3xl font-serif mb-4">Relevant Applications</h2>
@@ -92,7 +122,7 @@ export function ServiceDetailClient({ service }: ServiceDetailClientProps) {
           </main>
 
           {/* Right Sidebar */}
-          <aside className="lg:col-span-1 space-y-8">
+          <aside className="lg:col-span-1 space-y-8 lg:sticky lg:top-24 self-start">
             <div>
               <h3 className="text-xl font-serif mb-3 border-b pb-2">Key Benefits</h3>
               <ul className="space-y-2 text-sm">
