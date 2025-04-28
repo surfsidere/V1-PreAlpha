@@ -1,8 +1,9 @@
 
+
 // Remove 'use client' and async - Make it a standard Server Component
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, ClipboardCheck, FileText, HandCoins, Wind } from 'lucide-react'; // Add missing icons
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { notFound } from 'next/navigation'; // Import notFound
@@ -45,7 +46,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
        { title: "Marketing & Sales", href: "/services/marketing-sales" },
-       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+       { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
     ],
     icon: 'Building',
   },
@@ -63,7 +64,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Event Planning Support" },
     ],
     relatedCoreServices: [
-       { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+       { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
        { title: "Comprehensive Property Management", href: "/services/peripheral/property-management" },
     ],
     icon: 'ConciergeBell',
@@ -80,9 +81,9 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Guidance on Annual Trust Fees & Compliance" },
     ],
     relatedCoreServices: [
-      { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" },
+      { title: "Real Estate Advisory", href: "/services/strategic-advisory" }, // Corrected Casing
       { title: "Marketing & Sales", href: "/services/marketing-sales" },
-      { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
     ],
     icon: 'Landmark',
   },
@@ -100,8 +101,8 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Custom Home Project Management", href: "/build-your-custom-home" },
-      { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" },
+      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Real Estate Advisory", href: "/services/strategic-advisory" }, // Corrected Casing
     ],
     icon: 'UserCheck',
   },
@@ -119,7 +120,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Property Staging for Sale or Rent" },
     ],
     relatedCoreServices: [
-      { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
       { title: "Marketing & Sales", href: "/services/marketing-sales" },
       { title: "Integrated Management Services", href: "/services/development-management" },
     ],
@@ -141,7 +142,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
        { title: "Owner's Representation", href: "/services/peripheral/owners-representation" },
     ],
     icon: 'DraftingCompass',
@@ -158,7 +159,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Zoning & Entitlement Verification" },
     ],
     relatedCoreServices: [
-      { title: "Strategic Real Estate Advisory", href: "/services/strategic-advisory" },
+      { title: "Real Estate Advisory", href: "/services/strategic-advisory" }, // Corrected Casing
       { title: "Integrated Management Services", href: "/services/development-management" },
     ],
     icon: 'ClipboardCheck',
@@ -175,7 +176,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Custom Home Project Management", href: "/build-your-custom-home" },
+      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
        { title: "Legal & Trust Structure Guidance", href: "/services/peripheral/fideicomiso-guidance" },
     ],
     icon: 'FileText',

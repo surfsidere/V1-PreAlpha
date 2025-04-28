@@ -1,9 +1,10 @@
+
 // src/app/services/page.tsx
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Home, Megaphone, Package, // Core icons (some reused/repurposed)
+  ArrowRight, BarChart3, Home, Megaphone, Package, // Core icons
   Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -13,7 +14,7 @@ import { cn } from '@/lib/utils';
 // Level 1: Core Integrated Services
 const coreServices = [
   {
-    title: "real estate advisory",
+    title: "Real Estate Advisory", // Corrected Casing
     description: "Navigate the market with confidence through data-driven insights, feasibility studies, and bespoke investment strategies.",
     icon: BarChart3,
     href: "/services/strategic-advisory" // Assuming slug matches for detail page
@@ -66,7 +67,7 @@ const keySupportAreas = [
   },
   {
     title: "Interior Design & Furnishing",
-    icon: Paintbrush,
+    icon: Paintbrush, // Corrected import name
     href: "/services/peripheral/interior-design", // Need to create this page/data
     tagline: "Curated spaces, turnkey solutions."
   },

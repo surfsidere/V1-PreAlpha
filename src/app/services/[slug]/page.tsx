@@ -30,7 +30,7 @@ async function getServiceData(slug: string): Promise<Service | null> {
    const services = [
     {
       slug: "strategic-advisory",
-      title: "real estate advisory", // Updated title
+      title: "Real Estate Advisory", // Corrected casing
       heroImage: "https://picsum.photos/seed/service1/1200/500",
       description: "Navigate Cabo's complex market with confidence. Our strategic advisory services provide data-driven insights, comprehensive feasibility studies, and bespoke investment strategies tailored to your objectives.",
       level3Tasks: [
