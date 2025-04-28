@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BarChart3, Package, Megaphone, Home } from 'lucide-react'; // Import necessary icons
+import { ArrowRight, BarChart3, Package, Megaphone, Home as HomeIcon } from 'lucide-react'; // Renamed Home icon to avoid conflict
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -24,10 +24,10 @@ const featuredSolutions = [
     href: "/services/strategic-advisory"
   },
    {
-    title: "Integrated Management", // Updated title
+    title: "Integrated Management", // Updated title to Integrated Management
     icon: Package, // Using Package for management services
     description: "Full lifecycle project oversight and management.",
-    href: "/services/development-management"
+    href: "/services/development-management" // Kept slug consistent
   },
   {
     title: "Marketing & Sales",
@@ -37,14 +37,14 @@ const featuredSolutions = [
   },
    {
     title: "Estate Development", // Added for Custom Home
-    icon: Home, // Using Home for estate development
+    icon: HomeIcon, // Using aliased Home icon
     description: "Bespoke guidance for creating your dream home.",
     href: "/build-your-custom-home"
   },
 ];
 
 
-export default function Home() {
+export default function Home() { // Ensure this is the only definition
   return (
     <div className="flex flex-col min-h-screen">
       {/* Component 1: Hero Section */}
