@@ -97,9 +97,9 @@ export default function HomePage() { // Renamed component
             </div>
              {/* Panel B: Create Your Custom Home */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-              {/* Use Home icon */}
+              {/* Use Home icon (SquaresIntersect not available) */}
              <Home className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
-              <h2 className="text-2xl md:text-3xl font-serif mb-3">Build Your Bespoke Residence</h2>
+              <h2 className="text-2xl md:text-3xl font-serif mb-3">Your Vision, Realized</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                 Realize your vision with our personalized guidance through site selection, design coordination, and meticulous construction management.
               </p>
@@ -257,3 +257,4 @@ export default function HomePage() { // Renamed component
     </div>
   );
 }
+
