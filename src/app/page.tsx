@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import Cpu and Handshake, remove HomeIcon if no longer needed
+// Import Handshake instead of Swatches
 import { ArrowRight, BarChart3, Megaphone, Cpu, Handshake } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -27,7 +27,7 @@ const featuredSolutions = [
   },
    {
     title: "Integrated Management Services",
-    icon: Cpu, // Changed from Package to Cpu
+    icon: Cpu, // Using Cpu icon
     description: "Full lifecycle project oversight and management.",
     href: "/services/development-management"
   },
@@ -38,10 +38,10 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
    {
-    title: "Development Coordination & Oversight", // Updated title
-    icon: Handshake, // Using Handshake icon
-    description: "Personalized guidance for bespoke residences.", // Updated description slightly for brevity
-    href: "/build-your-custom-home" // Link remains the same
+    title: "Development Coordination & Oversight", // Consistent title
+    icon: Handshake, // Using Handshake icon instead of Swatches
+    description: "Personalized guidance for bespoke residences.",
+    href: "/build-your-custom-home"
   },
 ];
 
@@ -133,11 +133,11 @@ export default function HomePage() { // Renamed component
           {/* Updated grid layout to accommodate 4 items */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
              {featuredSolutions.map((solution) => (
-                 <div key={solution.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300">
+                 <div key={solution.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center">
                     <solution.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
-                    <h3 className="text-xl font-serif mb-2">{solution.title}</h3>
+                    <h3 className="text-xl font-serif mb-2 flex-grow">{solution.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{solution.description}</p>
-                    <Button variant="link" size="sm" asChild className="p-0 h-auto">
+                    <Button variant="link" size="sm" asChild className="p-0 h-auto mt-auto">
                         <Link href={solution.href}>Learn More <ArrowRight className="ml-1 h-3 w-3" /></Link>
                     </Button>
                  </div>

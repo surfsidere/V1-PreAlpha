@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Megaphone, Cpu, Handshake, // Core icons - Added Handshake
+  ArrowRight, BarChart3, Megaphone, Cpu, Handshake, // Core icons - Updated Swatches to Handshake
   Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 // Level 1: Core Integrated Services
 const coreServices = [
   {
-    title: "Real Estate Advisory",
+    title: "Real Estate Advisory", // Corrected title
     description: "Market analysis, feasibility, investment strategy.",
     icon: BarChart3,
     href: "/services/strategic-advisory"
@@ -23,7 +23,7 @@ const coreServices = [
   {
     title: "Integrated Management Services",
     description: "Full lifecycle project oversight and management.",
-    icon: Cpu,
+    icon: Cpu, // Using Cpu icon
     href: "/services/development-management"
   },
   {
@@ -33,7 +33,7 @@ const coreServices = [
     href: "/services/marketing-sales"
   },
     {
-    title: "Development Coordination & Oversight", // Updated title
+    title: "Development Coordination & Oversight", // Consistent title
     description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
     icon: Handshake, // Updated icon to Handshake
     href: "/build-your-custom-home" // Links to the specific landing page
@@ -98,8 +98,8 @@ export default function ServicesOverviewPage() {
           // Use simple div structure, remove Card components
           <div key={service.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center justify-start">
             <service.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
-            <h3 className="text-xl font-serif mb-2">{service.title}</h3>
-            <p className="text-muted-foreground text-sm mb-4 flex-grow">{service.description}</p>
+            <h3 className="text-xl font-serif mb-2 flex-grow">{service.title}</h3>
+            <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
             <Button variant="link" size="sm" asChild className="p-0 h-auto mt-auto self-center">
                 <Link href={service.href}>Learn More <ArrowRight className="ml-1 h-3 w-3" /></Link>
             </Button>
@@ -151,3 +151,4 @@ export default function ServicesOverviewPage() {
     </div>
   );
 }
+

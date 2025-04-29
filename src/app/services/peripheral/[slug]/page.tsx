@@ -3,7 +3,7 @@
 // Remove 'use client' and async - Make it a standard Server Component
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, ClipboardCheck, FileText, HandCoins, Wind } from 'lucide-react'; // Add missing icons
+import { ArrowLeft, CheckCircle, ClipboardCheck, FileText, HandCoins, Wind, Handshake, Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass } from 'lucide-react'; // Import Handshake and other used icons
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { notFound } from 'next/navigation'; // Import notFound
@@ -46,7 +46,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
        { title: "Marketing & Sales", href: "/services/marketing-sales" },
-       { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+       { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
     ],
     icon: 'Building',
   },
@@ -64,7 +64,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Event Planning Support" },
     ],
     relatedCoreServices: [
-       { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+       { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
        { title: "Comprehensive Property Management", href: "/services/peripheral/property-management" },
     ],
     icon: 'ConciergeBell',
@@ -83,7 +83,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     relatedCoreServices: [
       { title: "Real Estate Advisory", href: "/services/strategic-advisory" }, // Corrected Casing
       { title: "Marketing & Sales", href: "/services/marketing-sales" },
-      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
     ],
     icon: 'Landmark',
   },
@@ -101,7 +101,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
       { title: "Real Estate Advisory", href: "/services/strategic-advisory" }, // Corrected Casing
     ],
     icon: 'UserCheck',
@@ -120,7 +120,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
         { title: "Property Staging for Sale or Rent" },
     ],
     relatedCoreServices: [
-      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
       { title: "Marketing & Sales", href: "/services/marketing-sales" },
       { title: "Integrated Management Services", href: "/services/development-management" },
     ],
@@ -142,7 +142,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
        { title: "Owner's Representation", href: "/services/peripheral/owners-representation" },
     ],
     icon: 'DraftingCompass',
@@ -176,7 +176,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
     ],
     relatedCoreServices: [
       { title: "Integrated Management Services", href: "/services/development-management" },
-      { title: "Estate Development Coordination", href: "/build-your-custom-home" }, // Updated title
+      { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
        { title: "Legal & Trust Structure Guidance", href: "/services/peripheral/fideicomiso-guidance" },
     ],
     icon: 'FileText',
@@ -324,3 +324,4 @@ export async function generateStaticParams() {
    const slugs = Object.keys(peripheralServiceData);
    return slugs.map((slug) => ({ slug }));
 }
+
