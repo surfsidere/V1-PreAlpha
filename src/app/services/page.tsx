@@ -15,19 +15,19 @@ import { cn } from '@/lib/utils';
 const coreServices = [
   {
     title: "Real Estate Advisory", // Corrected Casing
-    description: "Navigate the market with confidence through data-driven insights, feasibility studies, and bespoke investment strategies.",
+    description: "Market analysis, feasibility, investment strategy.",
     icon: BarChart3,
     href: "/services/strategic-advisory" // Assuming slug matches for detail page
   },
   {
     title: "Integrated Management Services", // Renamed from Development Management
-    description: "Expert oversight of the entire project lifecycle, from conceptualization and entitlements to construction and delivery.",
+    description: "Full lifecycle project oversight and management.",
     icon: Package, // Keeping Package icon for management
     href: "/services/development-management" // Keep slug for consistency? Or rename? Let's keep for now.
   },
   {
     title: "Marketing & Sales",
-    description: "Targeted strategies and execution to connect premier properties with discerning buyers globally.",
+    description: "Targeted strategies for premier properties.",
     icon: Megaphone,
     href: "/services/marketing-sales"
   },
@@ -83,7 +83,7 @@ const keySupportAreas = [
 export default function ServicesOverviewPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
-      {/* Section 1: Core Integrated Services (Level 1) */}
+      {/* Section 1: Core Integrated Services (Level 1) - Matching Homepage Style */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-serif mb-4">Our Core Integrated Services</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -91,28 +91,21 @@ export default function ServicesOverviewPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+       {/* Updated grid layout to match homepage capabilities section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
         {coreServices.map((service) => (
-          <Card key={service.title} className="flex flex-col items-center text-center p-8 border rounded-lg transition-shadow duration-300 hover:shadow-lg h-full transform hover:-translate-y-1">
-             <CardHeader className="items-center pb-4">
-                 {/* Level 1 Icon: Large */}
-                 <service.icon className="w-12 h-12 mb-4 text-primary" />
-                 {/* Level 1 Title: Prominent */}
-                 <CardTitle className="text-2xl font-serif">{service.title}</CardTitle>
-             </CardHeader>
-             <CardContent className="flex-grow">
-                {/* Level 1 Description */}
-                <p className="text-muted-foreground text-sm mb-6">{service.description}</p>
-             </CardContent>
-             {/* Level 1 CTA */}
-             <Button variant="outline" size="sm" asChild className="mt-auto">
-                <Link href={service.href}>
-                 Explore Service <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+          // Use simple div structure, remove Card components
+          <div key={service.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center justify-start">
+            <service.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
+            <h3 className="text-xl font-serif mb-2">{service.title}</h3>
+            <p className="text-muted-foreground text-sm mb-4 flex-grow">{service.description}</p>
+            <Button variant="link" size="sm" asChild className="p-0 h-auto mt-auto self-center">
+                <Link href={service.href}>Learn More <ArrowRight className="ml-1 h-3 w-3" /></Link>
             </Button>
-          </Card>
+          </div>
         ))}
       </div>
+
 
       <Separator className="my-16 md:my-24" />
 
