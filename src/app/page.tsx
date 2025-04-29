@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import SwatchBook, remove Handshake, add ShieldCheck
-import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck } from 'lucide-react';
+// Import ShieldCheck and Shield (replacing ShieldUser), keep SwatchBook
+import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -83,8 +83,8 @@ export default function HomePage() { // Renamed component
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Panel A: Develop & Invest */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-               {/* Placeholder Icon - Updated to BarChart3 for consistency */}
-               <BarChart3 className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
+               {/* Use ShieldCheck icon */}
+               <ShieldCheck className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
                <h2 className="text-2xl md:text-3xl font-serif mb-3">For Developers & Investors</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                  Maximize value and navigate market complexities with our strategic advisory, development management, and investment structuring expertise.
@@ -97,8 +97,8 @@ export default function HomePage() { // Renamed component
             </div>
              {/* Panel B: Create Your Custom Home */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-              {/* Updated Icon to ShieldCheck */}
-             <ShieldCheck className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
+              {/* Use Shield icon instead of ShieldUser */}
+             <Shield className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
               <h2 className="text-2xl md:text-3xl font-serif mb-3">Build Your Bespoke Residence</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                 Realize your vision with our personalized guidance through site selection, design coordination, and meticulous construction management.
