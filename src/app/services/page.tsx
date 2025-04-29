@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Home, Megaphone, Cpu, // Core icons - Replaced Package with Cpu
+  ArrowRight, BarChart3, Megaphone, Cpu, Handshake, // Core icons - Added Handshake
   Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -15,15 +15,15 @@ import { cn } from '@/lib/utils';
 // Level 1: Core Integrated Services
 const coreServices = [
   {
-    title: "Real Estate Advisory", // Corrected Casing
+    title: "Real Estate Advisory",
     description: "Market analysis, feasibility, investment strategy.",
     icon: BarChart3,
-    href: "/services/strategic-advisory" // Assuming slug matches for detail page
+    href: "/services/strategic-advisory"
   },
   {
     title: "Integrated Management Services",
     description: "Full lifecycle project oversight and management.",
-    icon: Cpu, // Changed from Package to Cpu
+    icon: Cpu,
     href: "/services/development-management"
   },
   {
@@ -33,9 +33,9 @@ const coreServices = [
     href: "/services/marketing-sales"
   },
     {
-    title: "Estate Development Coordination",
+    title: "Development Coordination & Oversight", // Updated title
     description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
-    icon: Home,
+    icon: Handshake, // Updated icon to Handshake
     href: "/build-your-custom-home" // Links to the specific landing page
   },
 ];

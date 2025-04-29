@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import Cpu and remove Package if no longer needed
-import { ArrowRight, BarChart3, Megaphone, Home as HomeIcon, Cpu } from 'lucide-react';
+// Import Cpu and Handshake, remove HomeIcon if no longer needed
+import { ArrowRight, BarChart3, Megaphone, Cpu, Handshake } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -17,7 +17,7 @@ const featuredProjects = [
   { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Luxury Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location..." },
 ];
 
-// Updated featuredSolutions to include the 4 core capabilities
+// Updated featuredSolutions to include the 4 core capabilities with new title and icon
 const featuredSolutions = [
    {
     title: "Real Estate Advisory",
@@ -38,15 +38,15 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
    {
-    title: "Comprehensive Development Oversight",
-    icon: HomeIcon, // Using aliased Home icon
-    description: "Development Coordination", // Updated description
+    title: "Development Coordination & Oversight", // Updated title
+    icon: Handshake, // Using Handshake icon
+    description: "Personalized guidance for bespoke residences.", // Updated description slightly for brevity
     href: "/build-your-custom-home" // Link remains the same
   },
 ];
 
 
-export default function Home() {
+export default function HomePage() { // Renamed component
   return (
     <div className="flex flex-col min-h-screen">
       {/* Component 1: Hero Section */}
