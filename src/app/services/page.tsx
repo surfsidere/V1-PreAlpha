@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Megaphone, Cpu, Handshake, // Core icons - Updated Swatches to Handshake
+  ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, // Core icons - Updated Handshake to SwatchBook
   Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -35,7 +35,7 @@ const coreServices = [
     {
     title: "Development Coordination & Oversight", // Consistent title
     description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
-    icon: Handshake, // Updated icon to Handshake
+    icon: SwatchBook, // Updated icon to SwatchBook
     href: "/build-your-custom-home" // Links to the specific landing page
   },
 ];
@@ -151,4 +151,3 @@ export default function ServicesOverviewPage() {
     </div>
   );
 }
-

@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import Handshake instead of Swatches
-import { ArrowRight, BarChart3, Megaphone, Cpu, Handshake } from 'lucide-react';
+// Import SwatchBook, remove Handshake
+import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -39,7 +39,7 @@ const featuredSolutions = [
   },
    {
     title: "Development Coordination & Oversight", // Consistent title
-    icon: Handshake, // Using Handshake icon instead of Swatches
+    icon: SwatchBook, // Using SwatchBook icon
     description: "Personalized guidance for bespoke residences.",
     href: "/build-your-custom-home"
   },
