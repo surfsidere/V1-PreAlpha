@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import SwatchBook, remove Handshake
-import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook } from 'lucide-react';
+// Import SwatchBook, remove Handshake, add ShieldCheck
+import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -83,8 +83,8 @@ export default function HomePage() { // Renamed component
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Panel A: Develop & Invest */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-               {/* Placeholder Icon */}
-               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+               {/* Placeholder Icon - Updated to BarChart3 for consistency */}
+               <BarChart3 className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
                <h2 className="text-2xl md:text-3xl font-serif mb-3">For Developers & Investors</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                  Maximize value and navigate market complexities with our strategic advisory, development management, and investment structuring expertise.
@@ -97,8 +97,8 @@ export default function HomePage() { // Renamed component
             </div>
              {/* Panel B: Create Your Custom Home */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-              {/* Placeholder Icon */}
-             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              {/* Updated Icon to ShieldCheck */}
+             <ShieldCheck className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
               <h2 className="text-2xl md:text-3xl font-serif mb-3">Build Your Bespoke Residence</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                 Realize your vision with our personalized guidance through site selection, design coordination, and meticulous construction management.
