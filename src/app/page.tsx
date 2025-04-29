@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import ShieldCheck and ShieldUser, keep SwatchBook
-import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, ShieldUser } from 'lucide-react';
+// Import ShieldCheck and UserCheck, keep SwatchBook
+import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, UserCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -97,8 +97,8 @@ export default function HomePage() { // Renamed component
             </div>
              {/* Panel B: Create Your Custom Home */}
             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-              {/* Use ShieldUser icon */}
-             <ShieldUser className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
+              {/* Use UserCheck icon as ShieldUser is unavailable */}
+             <UserCheck className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
               <h2 className="text-2xl md:text-3xl font-serif mb-3">Build Your Bespoke Residence</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
                 Realize your vision with our personalized guidance through site selection, design coordination, and meticulous construction management.
