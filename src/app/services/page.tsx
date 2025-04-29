@@ -1,10 +1,11 @@
 
+
 // src/app/services/page.tsx
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Home, Megaphone, Package, // Core icons
+  ArrowRight, BarChart3, Home, Megaphone, Cpu, // Core icons - Replaced Package with Cpu
   Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -20,10 +21,10 @@ const coreServices = [
     href: "/services/strategic-advisory" // Assuming slug matches for detail page
   },
   {
-    title: "Integrated Management Services", // Renamed from Development Management
+    title: "Integrated Management Services",
     description: "Full lifecycle project oversight and management.",
-    icon: Package, // Keeping Package icon for management
-    href: "/services/development-management" // Keep slug for consistency? Or rename? Let's keep for now.
+    icon: Cpu, // Changed from Package to Cpu
+    href: "/services/development-management"
   },
   {
     title: "Marketing & Sales",
@@ -32,7 +33,7 @@ const coreServices = [
     href: "/services/marketing-sales"
   },
     {
-    title: "Estate Development Coordination", // Updated title
+    title: "Estate Development Coordination",
     description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
     icon: Home,
     href: "/build-your-custom-home" // Links to the specific landing page

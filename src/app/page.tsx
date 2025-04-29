@@ -1,11 +1,13 @@
 
+
 'use client'; // Add this directive because styled-jsx is used
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BarChart3, Package, Megaphone, Home as HomeIcon } from 'lucide-react'; // Renamed Home icon to avoid conflict
+// Import Cpu and remove Package if no longer needed
+import { ArrowRight, BarChart3, Megaphone, Home as HomeIcon, Cpu } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder data - replace with actual data fetching
@@ -24,10 +26,10 @@ const featuredSolutions = [
     href: "/services/strategic-advisory"
   },
    {
-    title: "Integrated Management Services", // Renamed from Development Management
-    icon: Package, // Using Package for management services
+    title: "Integrated Management Services",
+    icon: Cpu, // Changed from Package to Cpu
     description: "Full lifecycle project oversight and management.",
-    href: "/services/development-management" // Kept slug consistent
+    href: "/services/development-management"
   },
   {
     title: "Marketing & Sales",
@@ -36,7 +38,7 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
    {
-    title: "Comprehensive Development Oversight", // Updated title
+    title: "Comprehensive Development Oversight",
     icon: HomeIcon, // Using aliased Home icon
     description: "Development Coordination", // Updated description
     href: "/build-your-custom-home" // Link remains the same
@@ -255,5 +257,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
