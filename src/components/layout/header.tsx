@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component
-import { useState, useEffect } from 'react';
+import { useState } from 'react'; // Removed useEffect as it's no longer needed
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -15,7 +15,7 @@ const navItems = [
   { label: 'Properties', href: '/properties' },
   { label: 'Custom Homes', href: '/build-your-custom-home' },
   { label: 'Insights', href: '/insights' },
-  { label: 'Contact', href: '/contact' },
+  // Removed { label: 'Contact', href: '/contact' } to avoid duplication
 ];
 
 const logoUrl = "https://www.surfside.re/wp-content/uploads/2022/06/LogoSurfside_white-07.png";
@@ -24,7 +24,7 @@ const logoHeight = 38; // Adjust as needed
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Removed isScrolled state and effect as header is now always blue
+  // Removed isScrolled state and effect as header is now always primary color
 
   return (
     <header
@@ -52,13 +52,14 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-white', // Adjusted hover color for blue background
+                'text-sm font-medium transition-colors hover:text-white', // Adjusted hover color for primary background
                 'text-primary-foreground/90' // Use primary foreground color
                )}
             >
               {item.label}
             </Link>
           ))}
+           {/* This is the primary Contact Us button for desktop */}
            <Button variant="secondary" size="sm" asChild>
              <Link href="/contact">Contact Us</Link>
            </Button>
@@ -68,7 +69,7 @@ export function Header() {
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              {/* Adjusted button style for blue background */}
+              {/* Adjusted button style for primary background */}
               <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-white/10 hover:text-white">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
@@ -100,6 +101,16 @@ export function Header() {
                       </Link>
                      </SheetClose>
                   ))}
+                  {/* Explicit Contact link for mobile menu */}
+                   <SheetClose asChild>
+                     <Link
+                       href="/contact"
+                       className="block py-2 px-3 rounded-md text-lg font-medium text-foreground/90 hover:bg-accent hover:text-accent-foreground"
+                       onClick={() => setIsMobileMenuOpen(false)}
+                     >
+                       Contact
+                     </Link>
+                   </SheetClose>
                 </nav>
                 <div className="p-4 border-t">
                     <Button className="w-full" asChild onClick={() => setIsMobileMenuOpen(false)}>
