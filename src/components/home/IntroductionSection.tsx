@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -8,7 +9,8 @@ interface IntroductionSectionProps {
 }
 
 const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
-  const videoUrl = "https://www.surfside.re/wp-content/uploads/2022/12/sail-boat-corrected-1.mov";
+  // Updated video URL to the MP4 version
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/sail-boat-corrected-1-3.mp4";
 
   return (
     <section data-ai-hint="introduction integrated approach" className="py-16 md:py-24 bg-background">
@@ -37,7 +39,8 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  data-ai-hint="sailboat ocean movement"
                >
-                 <source src={videoUrl} type="video/quicktime" /> {/* Specify MOV type */}
+                 {/* Updated source URL and type */}
+                 <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                </video>
                 {/* Optional subtle overlay */}
