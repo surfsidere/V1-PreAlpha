@@ -1,3 +1,4 @@
+'use client'; // Required for styled-jsx
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,9 +14,8 @@ const featuredProjects = [
   { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Luxury Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location...", "data-ai-hint": "luxury hotel poolside" },
 ];
 
-// Updated featuredSolutions to align with Services page core services and icons
 const featuredSolutions = [
-  {
+   {
     title: "Real Estate Advisory",
     icon: BarChart3, // Consistent with Services page
     description: "Market analysis, feasibility, investment strategy.",
@@ -41,60 +41,48 @@ const featuredSolutions = [
   },
 ];
 
-export default function HomePage() { // Renamed component
+
+export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
 
-      {/* Component 1: New Hero Section (Based on "Transcendent Hero Experience" Prompt - Structure & Content) */}
-      <section className="relative bg-background py-16 md:py-24 lg:py-32 overflow-hidden min-h-[70svh] flex items-center">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+       {/* Component 1: New Asymmetrical Hero Section */}
+      <section className="relative hero-grid-section overflow-hidden min-h-[70svh] md:min-h-[80svh] py-16 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 h-full">
+          <div className="hero-grid-container h-full">
+            {/* Headline Element (Overlapping) */}
+            <h1 className="hero-headline font-serif font-medium text-foreground">
+              The Art of Los Cabos Real Estate: Vision, Strategy, Execution.
+            </h1>
 
-            {/* Left Column: Text & CTA (Approx 7/12 width on desktop) */}
-            <div className="md:col-span-7 space-y-6 text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight text-foreground">
-                {/* Placeholder: Insert Compelling Headline Here */}
-                The Art of Los Cabos Real Estate: Vision, Strategy, Execution.
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                {/* Placeholder: Insert Concise Supporting Paragraph Here */}
-                Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
-              </p>
-              <Button size="lg" asChild variant="outline">
-                {/* CTA linking to About page as placeholder for 'Our Approach' */}
-                <Link href="/about">
-                   {/* Placeholder: Choose CTA text */}
-                  Discover Our Approach <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-               {/* Optional subtle graphical element placeholder */}
-               {/* <div className="absolute bottom-0 left-0 w-1/3 h-1 bg-primary/10 rounded-full -translate-x-1/4 -translate-y-1/2 rotate-[-15deg] opacity-50 hidden md:block"></div> */}
-            </div>
+            {/* Body Text Element (Offset) */}
+            <p className="hero-body-text text-muted-foreground">
+              Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
+            </p>
 
-            {/* Right Column: Image Placeholder (Approx 5/12 width on desktop) */}
-            {/* Note: Asymmetrical placement achieved via column span */}
-            <div className="md:col-span-5 relative h-80 md:h-[450px] lg:h-[550px] rounded-lg overflow-hidden shadow-xl mt-8 md:mt-0">
+            {/* Image Element (Overlapping with Clip Path) */}
+            <div className="hero-image-container">
               <Image
-                src="https://picsum.photos/seed/new-hero-cabo/800/1000" // New placeholder image
-                alt="Sophisticated architectural detail or landscape in Los Cabos"
+                src="https://picsum.photos/seed/asym-hero/800/1000"
+                alt="Abstract representation of Los Cabos luxury real estate or architecture"
                 fill
                 style={{ objectFit: 'cover' }}
                 quality={90}
                 priority
-                data-ai-hint="modern architecture luxury detail cabo"
+                data-ai-hint="modern architecture luxury detail cabo abstract"
               />
-               {/* Add potential overlays or masking here if feasible without JS */}
             </div>
+
+            {/* Call to Action Element (Distinct Position) */}
+            <Link href="/about" legacyBehavior>
+              <a className="hero-cta inline-block border border-foreground py-2 px-6 text-sm font-medium uppercase tracking-wider text-foreground transition-colors duration-300 ease-in-out hover:bg-foreground hover:text-background">
+                Discover Our Approach
+              </a>
+            </Link>
           </div>
         </div>
-         {/* Background elements or grids could be added here, but complex interactions require JS */}
-         {/* Example: Subtle background grid lines (visual only) */}
-         {/* <div className="absolute inset-0 z-0 grid grid-cols-12 grid-rows-6 gap-4 opacity-10">
-            {[...Array(72)].map((_, i) => (
-              <div key={i} className="border border-muted/20"></div>
-            ))}
-         </div> */}
       </section>
+
 
       {/* Component 2: Audience Segmentation */}
       <section id="audience-portals" className="py-16 md:py-24 bg-secondary/30">
@@ -113,8 +101,8 @@ export default function HomePage() { // Renamed component
               </Button>
             </div>
             {/* Panel B: Your Vision, Realized */}
-            <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border bg-background hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-               {/* Icon for Bespoke/Vision */}
+             <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border bg-background hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+               {/* Using SquareAsterisk based on previous successful fix */}
                <SquareAsterisk className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12" />
                <h2 className="text-2xl md:text-3xl font-serif mb-3">Your Vision, Realized</h2>
                <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
@@ -233,6 +221,99 @@ export default function HomePage() { // Renamed component
           </Button>
         </div>
       </section>
+
+       {/* CSS for the new Hero Section */}
+      <style jsx>{`
+        .hero-grid-section {
+          background-color: hsl(var(--background)); /* Placeholder */
+        }
+
+        .hero-grid-container {
+          display: grid;
+          grid-template-columns: 1.5fr 0.8fr 1fr 0.7fr; /* Example asymmetrical columns */
+          grid-template-rows: auto auto auto 1fr auto; /* Example rows */
+          gap: 1rem 2rem; /* Adjust gap as needed */
+          align-items: center; /* Vertically align items */
+          height: 100%; /* Ensure grid takes full height */
+          position: relative; /* For z-index context */
+        }
+
+        .hero-headline {
+          grid-column: 1 / 3; /* Span first two columns */
+          grid-row: 1 / 3; /* Span first two rows */
+          font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); /* Responsive font size */
+          line-height: 1.1;
+          z-index: 10; /* Ensure headline is above image if overlapping */
+          /* Potential animation: animate headline on scroll */
+        }
+
+        .hero-body-text {
+          grid-column: 1 / 3; /* Place below headline, potentially same columns */
+          grid-row: 3 / 4; /* Place in the third row */
+          max-width: 45ch; /* Limit text width */
+          z-index: 10;
+          font-size: clamp(1rem, 1.5vw, 1.125rem);
+        }
+
+        .hero-image-container {
+          grid-column: 3 / 5; /* Span columns 3 and 4 */
+          grid-row: 1 / 5; /* Span rows 1 to 4 */
+          position: relative; /* For Next/Image fill */
+          width: 100%;
+          height: 100%;
+          min-height: 300px; /* Ensure some height */
+          z-index: 5; /* Below text */
+          clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); /* Example angled cut */
+           /* Potential animation: Subtle parallax for image */
+        }
+
+        .hero-cta {
+          grid-column: 1 / 2; /* Place in the first column */
+          grid-row: 4 / 5; /* Place in the fourth row */
+          align-self: start; /* Align to top of grid area */
+          justify-self: start; /* Align to left of grid area */
+          margin-top: 1rem; /* Space from body text */
+          z-index: 10;
+           /* Hover effect for CTA */
+        }
+
+        /* Basic Responsiveness */
+        @media (max-width: 768px) {
+          .hero-grid-container {
+            grid-template-columns: 1fr; /* Single column */
+            grid-template-rows: auto auto auto auto; /* Reset rows */
+            gap: 1.5rem 0;
+            text-align: center; /* Center text on mobile */
+          }
+
+          .hero-headline {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          }
+
+          .hero-body-text {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+             max-width: none; /* Remove max width */
+          }
+
+          .hero-image-container {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+            clip-path: none; /* Remove clip-path on mobile */
+             aspect-ratio: 4 / 3; /* Give it a sensible aspect ratio */
+             height: auto; /* Let aspect ratio define height */
+             min-height: 250px; /* Adjust min-height */
+          }
+
+          .hero-cta {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+            justify-self: center; /* Center button */
+            margin-top: 1rem;
+          }
+        }
+      `}</style>
 
      </div>
   );
