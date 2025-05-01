@@ -14,7 +14,8 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
 
   return (
     <section data-ai-hint="introduction integrated approach" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
+      {/* Apply max-w-screen-lg here */}
+      <div className="container mx-auto px-4 max-w-screen-lg">
          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
                  <h2 className="text-3xl md:text-4xl font-serif mb-6">The Integrated Approach</h2>

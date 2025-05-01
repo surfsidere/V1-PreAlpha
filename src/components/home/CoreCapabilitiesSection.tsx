@@ -19,8 +19,8 @@ interface CoreCapabilitiesSectionProps {
 const CoreCapabilitiesSection: React.FC<CoreCapabilitiesSectionProps> = ({ featuredSolutions }) => {
   return (
     <section data-ai-hint="featured solutions section" className="py-16 md:py-24">
-      {/* Main container with max-width */}
-      <div className="container mx-auto px-4 max-w-screen-xl">
+      {/* Apply max-w-screen-lg here */}
+      <div className="container mx-auto px-4 max-w-screen-lg">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Core Capabilities</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

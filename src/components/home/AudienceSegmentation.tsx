@@ -13,8 +13,8 @@ interface AudienceSegmentationProps {
 const AudienceSegmentation: React.FC<AudienceSegmentationProps> = ({}) => {
   return (
      <section data-ai-hint="audience segmentation panels" className="py-16 md:py-24 bg-secondary/30">
-      {/* Adjust grid container: Added max-width and mx-auto to constrain overall width on larger screens */}
-      <div className="container mx-auto px-4 max-w-5xl">
+      {/* Apply max-w-screen-lg here */}
+      <div className="container mx-auto px-4 max-w-screen-lg">
         {/* Adjust grid layout: Changed md:grid-cols-2 gap-8 to manage spacing */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 justify-center">
           {/* Panel A: Develop & Invest */}

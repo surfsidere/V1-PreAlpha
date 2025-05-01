@@ -8,19 +8,12 @@ import { ArrowRight } from 'lucide-react';
 const HeroSection: React.FC = () => {
   // Define fonts based on layout.tsx (ensure these CSS variables are set)
   const brandSerifFont = 'var(--font-playfair-display), serif';
-  const brandSansSerifFont = 'var(--font-montserrat), sans-serif'; // Assuming Montserrat from prompt
+  const brandSansSerifFont = 'var(--font-inter), sans-serif'; // Using Inter from globals
 
   // Define colors based on globals.css (ensure these CSS variables are set)
   const textPrimaryColor = 'hsl(var(--foreground))'; // Default text
-  const textSecondaryColor = 'hsl(var(--muted-foreground))'; // Muted/Subtitle text
-  const accentColor = 'hsl(var(--primary))'; // Primary accent (Green)
-  const buttonTextColor = 'hsl(var(--primary-foreground))'; // Text on primary button
-  const buttonBgColor = 'hsl(var(--primary))';
-  const buttonHoverBgColor = 'hsl(var(--primary) / 0.9)'; // Slightly darker primary
-
-  // Specific styles matching the new image_199989.jpg reference
-  const headlineColor = '#1f2421'; // Dark Olive/Forest Green from prompt
-  const accentLineColor = '#A0A08C'; // Lighter accent green (estimate - adjust based on actual green)
+  const headlineColor = 'hsl(var(--primary))'; // Use primary color from theme
+  const accentLineColor = 'hsl(var(--border))'; // Use border color for the line
 
   // Video URL
   const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/165021798-golf-course-cabo-mexico.mp4";
@@ -42,24 +35,25 @@ const HeroSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10"></div>
 
 
-      <div className="container relative mx-auto px-4 z-20">
+      {/* Apply max-w-screen-lg here */}
+      <div className="container relative mx-auto px-4 z-20 max-w-screen-lg">
         <div className="grid md:grid-cols-12 gap-8 items-center">
           {/* Left Column: Text Content */}
           <div className="md:col-span-7 lg:col-span-6 py-12 md:py-20">
             {/* Updated Headline */}
-            <h1
-              style={{
-                fontFamily: brandSerifFont,
-                color: headlineColor, // Using the specific green
-                fontWeight: 400, // Regular weight as requested
-                lineHeight: 1.2,
-                fontSize: 'clamp(1.8rem, 5vw, 3rem)', // Smaller font size
-                marginBottom: '0.75rem', // Reduced margin
-              }}
-            >
-               Relax, we've got you covered --<br />
-                We're your trusted Baja experts.
-            </h1>
+             <h1
+               style={{
+                 fontFamily: brandSerifFont,
+                 color: headlineColor, // Using the specific green
+                 fontWeight: 400, // Regular weight as requested
+                 lineHeight: 1.2,
+                 fontSize: 'clamp(1.8rem, 5vw, 3rem)', // Smaller font size
+                 marginBottom: '0.75rem', // Reduced margin
+               }}
+             >
+                Relax, we've got you covered --<br />
+                 We're your trusted Baja experts.
+             </h1>
 
             {/* Decorative Line */}
             <hr
@@ -67,7 +61,7 @@ const HeroSection: React.FC = () => {
                 border: 'none',
                 height: '1px',
                 width: '60px', // Short line
-                backgroundColor: accentLineColor, // Lighter accent green
+                backgroundColor: accentLineColor, // Use theme border color
                 margin: '1.5rem 0', // Space around line
               }}
             />
@@ -111,12 +105,12 @@ const HeroSection: React.FC = () => {
                 textTransform: 'none', // No uppercase as per reference
                 letterSpacing: 'normal',
                  // Use text color from primary palette
-                color: textPrimaryColor,
+                 color: textPrimaryColor,
                  // Use border color similar to accent line or headline
-                borderColor: accentLineColor,
-                backgroundColor: 'transparent', // Explicitly transparent
-                padding: '0.9em 2.2em', // Adjust padding
-                borderRadius: '4px', // Slightly rounded
+                 borderColor: accentLineColor,
+                 backgroundColor: 'transparent', // Explicitly transparent
+                 padding: '0.9em 2.2em', // Adjust padding
+                 borderRadius: '4px', // Slightly rounded
                  // Hover state
                  // Note: Inline styles can't directly do hover, use CSS classes or Tailwind variants if needed for complex hover
               }}
@@ -126,10 +120,7 @@ const HeroSection: React.FC = () => {
             </Button>
           </div>
 
-           {/* Right Column: Kept empty as per new reference or can be used for subtle elements if needed later */}
-           {/* <div className="md:col-span-5 lg:col-span-6"> */}
-             {/* Image was here in previous design, now removed based on image_199989.jpg */}
-           {/* </div> */}
+           {/* Right Column: Kept empty */}
         </div>
       </div>
     </section>

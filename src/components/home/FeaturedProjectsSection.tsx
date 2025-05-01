@@ -25,8 +25,8 @@ interface FeaturedProjectsSectionProps {
 const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = ({ featuredProjects }) => {
   return (
     <section data-ai-hint="featured projects section" className="py-16 md:py-24 bg-secondary/30">
-      {/* Main container with max-width */}
-      <div className="container mx-auto px-4 max-w-screen-xl">
+      {/* Apply max-w-screen-lg here */}
+      <div className="container mx-auto px-4 max-w-screen-lg">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Featured Projects</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
