@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 // Import necessary icons, ensuring they exist in lucide-react
+// Import ShieldCheck and SquareAsterisk, keep SwatchBook
 import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, SquareAsterisk } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -46,7 +47,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
 
-       {/* Component 1: New Asymmetrical Hero Section */}
+      {/* Component 1: New Asymmetrical Hero Section */}
       <section className="relative hero-grid-section overflow-hidden min-h-[70svh] md:min-h-[80svh] py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 h-full">
           <div className="hero-grid-container h-full">
@@ -60,16 +61,16 @@ export default function HomePage() {
               Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
             </p>
 
-            {/* Image Element (Overlapping with Clip Path) */}
+            {/* Video Element (Replacing Image) */}
             <div className="hero-image-container">
-              <Image
-                src="https://picsum.photos/seed/asym-hero/800/1000"
-                alt="Abstract representation of Los Cabos luxury real estate or architecture"
-                fill
-                style={{ objectFit: 'cover' }}
-                quality={90}
-                priority
-                data-ai-hint="modern architecture luxury detail cabo abstract"
+              {/* Replace Image with Video */}
+              <video
+                src="https://www.surfside.re/wp-content/uploads/2025/05/165021798-golf-course-cabo-mexico.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline // Important for mobile playback
+                className="w-full h-full object-cover" // Ensure video covers the container
               />
             </div>
 
@@ -102,7 +103,7 @@ export default function HomePage() {
             </div>
             {/* Panel B: Your Vision, Realized */}
              <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border bg-background hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-               {/* Using SquareAsterisk based on previous successful fix */}
+               {/* Using SquareAsterisk based on successful fix */}
                <SquareAsterisk className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12" />
                <h2 className="text-2xl md:text-3xl font-serif mb-3">Your Vision, Realized</h2>
                <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
@@ -258,14 +259,24 @@ export default function HomePage() {
         .hero-image-container {
           grid-column: 3 / 5; /* Span columns 3 and 4 */
           grid-row: 1 / 5; /* Span rows 1 to 4 */
-          position: relative; /* For Next/Image fill */
+          position: relative; /* For Next/Image fill or video */
           width: 100%;
           height: 100%;
           min-height: 300px; /* Ensure some height */
           z-index: 5; /* Below text */
           clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); /* Example angled cut */
-           /* Potential animation: Subtle parallax for image */
+           /* Potential animation: Subtle parallax for image/video */
         }
+        /* Ensure video fills the container */
+        .hero-image-container video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Cover the container */
+        }
+
 
         .hero-cta {
           grid-column: 1 / 2; /* Place in the first column */
