@@ -4,6 +4,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Shield, ArrowRight } from 'lucide-react'; // Replace ShieldUser with Shield
 
 interface AudienceSegmentationProps {
@@ -21,7 +22,7 @@ const AudienceSegmentation: React.FC<AudienceSegmentationProps> = ({}) => {
       {/* Background Image and Overlay */}
       <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20" // Adjust opacity as needed
+          className="absolute inset-0 bg-cover bg-center opacity-30" // Increased opacity from 20 to 30
           style={{ backgroundImage: `url(${backgroundImageUrl})` }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50"></div> {/* Gradient overlay */}
