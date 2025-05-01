@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import necessary icons, ensuring they exist in lucide-react
 // Import ShieldCheck and SquareAsterisk, keep SwatchBook
 import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, SquareAsterisk } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
+// Placeholder data - replace with actual data fetching
 const featuredProjects = [
   { id: 1, title: "Oceanfront Villa", image: "https://picsum.photos/seed/project1/600/400", type: "Private Estate", slug: "/portfolio/oceanfront-villa", excerpt: "A stunning example of coastal modernism...", "data-ai-hint": "luxury villa ocean" },
   { id: 2, title: "Coastal Community", image: "https://picsum.photos/seed/project2/600/400", type: "Development", slug: "/portfolio/coastal-community", excerpt: "Master-planned community with luxury amenities...", "data-ai-hint": "coastal community aerial" },
@@ -48,22 +48,25 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
 
       {/* Component 1: New Asymmetrical Hero Section */}
-      <section className="relative hero-grid-section overflow-hidden min-h-[70svh] md:min-h-[80svh] py-16 md:py-24 lg:py-32">
+      <section className="relative hero-grid-section overflow-hidden min-h-[70svh] md:min-h-[80svh] py-16 md:py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-4 h-full">
           <div className="hero-grid-container h-full">
             {/* Headline Element (Overlapping) */}
-            <h1 className="hero-headline font-serif font-medium text-foreground">
-              The Art of Los Cabos Real Estate: Vision, Strategy, Execution.
+            {/* Apply styles from prompt: Font, Size, Weight, Line Height, Color */}
+            <h1 className="hero-headline font-serif font-semibold text-foreground">
+              Elevating Lifestyle & Legacy
             </h1>
 
             {/* Body Text Element (Offset) */}
-            <p className="hero-body-text text-muted-foreground">
-              Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
+             {/* Apply styles from prompt: Font, Size, Weight, Line Height, Color, Max Width */}
+            <p className="hero-body-text text-foreground leading-relaxed max-w-prose text-base lg:text-lg">
+               Curated Baja Living {/* Subtitle */}
+               <br /> {/* Add a line break for separation if needed */}
+               Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
             </p>
 
             {/* Video Element (Replacing Image) */}
             <div className="hero-image-container">
-              {/* Replace Image with Video */}
               <video
                 src="https://www.surfside.re/wp-content/uploads/2025/05/165021798-golf-course-cabo-mexico.mp4"
                 autoPlay
@@ -75,8 +78,9 @@ export default function HomePage() {
             </div>
 
             {/* Call to Action Element (Distinct Position) */}
+            {/* Apply styles from prompt: Font, Size, Weight, Transform, Spacing, Color, BG, Border, Padding, Radius, Hover */}
             <Link href="/about" legacyBehavior>
-              <a className="hero-cta inline-block border border-foreground py-2 px-6 text-sm font-medium uppercase tracking-wider text-foreground transition-colors duration-300 ease-in-out hover:bg-foreground hover:text-background">
+              <a className="hero-cta inline-block py-3 px-6 text-sm font-medium uppercase tracking-wider rounded-md transition-colors duration-300 ease-in-out bg-primary text-primary-foreground hover:bg-primary/90">
                 Discover Our Approach
               </a>
             </Link>
@@ -224,15 +228,18 @@ export default function HomePage() {
       </section>
 
        {/* CSS for the new Hero Section */}
+       {/* Apply specific styles from the prompt to hero elements */}
       <style jsx>{`
         .hero-grid-section {
-          background-color: hsl(var(--background)); /* Placeholder */
+          /* Background handled by Tailwind bg-background */
+          /* Padding handled by Tailwind py-16 etc. */
         }
 
         .hero-grid-container {
           display: grid;
-          grid-template-columns: 1.5fr 0.8fr 1fr 0.7fr; /* Example asymmetrical columns */
-          grid-template-rows: auto auto auto 1fr auto; /* Example rows */
+          /* Asymmetrical grid columns */
+          grid-template-columns: 1.5fr 0.8fr 1fr 0.7fr;
+          grid-template-rows: auto auto auto 1fr auto; /* Adjusted rows */
           gap: 1rem 2rem; /* Adjust gap as needed */
           align-items: center; /* Vertically align items */
           height: 100%; /* Ensure grid takes full height */
@@ -242,8 +249,10 @@ export default function HomePage() {
         .hero-headline {
           grid-column: 1 / 3; /* Span first two columns */
           grid-row: 1 / 3; /* Span first two rows */
-          font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); /* Responsive font size */
-          line-height: 1.1;
+          /* Apply font-family, font-size, font-weight, line-height, color from prompt */
+          /* font-family: 'Playfair Display', serif; /* EXAMPLE - Verify font */
+          font-size: clamp(2.6rem, 7vw, 5rem); /* Example from prompt */
+          line-height: 1.2; /* Example from prompt */
           z-index: 10; /* Ensure headline is above image if overlapping */
           /* Potential animation: animate headline on scroll */
         }
@@ -251,10 +260,27 @@ export default function HomePage() {
         .hero-body-text {
           grid-column: 1 / 3; /* Place below headline, potentially same columns */
           grid-row: 3 / 4; /* Place in the third row */
-          max-width: 45ch; /* Limit text width */
+          /* Apply font-family, font-size, font-weight, line-height, color, max-width from prompt */
+          /* font-family: 'Montserrat', sans-serif; /* EXAMPLE - Verify font */
+          /* font-size: clamp(1rem, 1.8vw, 1.1rem); /* Example body size */
+          /* line-height: 1.7; */
+          /* max-width: 70ch; */
           z-index: 10;
-          font-size: clamp(1rem, 1.5vw, 1.125rem);
         }
+
+         /* Apply subtitle styles */
+        .hero-body-text::before { /* Using ::before for the subtitle */
+          content: "Curated Baja Living";
+          display: block;
+          /* font-family: 'Montserrat', sans-serif; /* EXAMPLE - Verify font */
+          font-size: clamp(1.1rem, 2.5vw, 1.5rem); /* Example from prompt */
+          font-weight: 400; /* Example from prompt */
+          text-transform: uppercase; /* Example from prompt */
+          letter-spacing: 0.08em; /* Example from prompt */
+          color: hsl(var(--muted-foreground)); /* Use muted-foreground for secondary text */
+          margin-bottom: 1rem; /* Space between subtitle and body */
+        }
+
 
         .hero-image-container {
           grid-column: 3 / 5; /* Span columns 3 and 4 */
@@ -264,7 +290,8 @@ export default function HomePage() {
           height: 100%;
           min-height: 300px; /* Ensure some height */
           z-index: 5; /* Below text */
-          clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); /* Example angled cut */
+          /* Apply non-rectangular clip-path */
+          clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
            /* Potential animation: Subtle parallax for image/video */
         }
         /* Ensure video fills the container */
@@ -283,9 +310,10 @@ export default function HomePage() {
           grid-row: 4 / 5; /* Place in the fourth row */
           align-self: start; /* Align to top of grid area */
           justify-self: start; /* Align to left of grid area */
-          margin-top: 1rem; /* Space from body text */
+          margin-top: 2rem; /* Space from body text - increased */
           z-index: 10;
-           /* Hover effect for CTA */
+          /* Tailwind classes applied directly handle base styling */
+          /* Hover effects are handled by Tailwind hover: states */
         }
 
         /* Basic Responsiveness */
@@ -294,7 +322,7 @@ export default function HomePage() {
             grid-template-columns: 1fr; /* Single column */
             grid-template-rows: auto auto auto auto; /* Reset rows */
             gap: 1.5rem 0;
-            text-align: center; /* Center text on mobile */
+            text-align: left; /* Keep left align on mobile for readability */
           }
 
           .hero-headline {
@@ -307,12 +335,15 @@ export default function HomePage() {
             grid-row: 2 / 3;
              max-width: none; /* Remove max width */
           }
+           .hero-body-text::before {
+             text-align: left; /* Ensure subtitle aligns left */
+           }
 
           .hero-image-container {
             grid-column: 1 / 2;
             grid-row: 3 / 4;
             clip-path: none; /* Remove clip-path on mobile */
-             aspect-ratio: 4 / 3; /* Give it a sensible aspect ratio */
+             aspect-ratio: 16 / 10; /* Adjust aspect ratio for mobile */
              height: auto; /* Let aspect ratio define height */
              min-height: 250px; /* Adjust min-height */
           }
@@ -320,8 +351,8 @@ export default function HomePage() {
           .hero-cta {
             grid-column: 1 / 2;
             grid-row: 4 / 5;
-            justify-self: center; /* Center button */
-            margin-top: 1rem;
+            justify-self: start; /* Keep left align */
+            margin-top: 1.5rem; /* Adjust margin */
           }
         }
       `}</style>
@@ -329,3 +360,5 @@ export default function HomePage() {
      </div>
   );
 }
+
+    
