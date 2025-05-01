@@ -13,14 +13,14 @@ import { featuredProjects, featuredSolutions } from '@/lib/data';
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Component 1: Hero Section - Replaced with reference design */}
+      {/* Component 1: Hero Section */}
       <HeroSection />
 
-      {/* Component 2: Audience Segmentation */}
-      <AudienceSegmentation />
-
-      {/* Component 3: Introduction / Our Integrated Approach */}
+      {/* Component 2: Introduction / Our Integrated Approach */}
       <IntroductionSection />
+
+      {/* Component 3: Audience Segmentation */}
+      <AudienceSegmentation />
 
       {/* Component 4: Featured Solutions / Capabilities */}
       <CoreCapabilitiesSection
