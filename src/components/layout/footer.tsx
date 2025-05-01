@@ -1,8 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image component
 import { Mail, MapPin, Twitter, Linkedin, Instagram } from 'lucide-react'; // Assuming usage of Lucide icons
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const logoUrl = "https://www.surfside.re/wp-content/uploads/2022/08/dark-2-logo.png"; // Define logo URL
+  const logoWidth = 150; // Define logo width
+  const logoHeight = 38; // Define logo height
 
   return (
     <footer className="bg-muted/50 text-muted-foreground border-t">
@@ -11,8 +15,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand/About */}
           <div className="md:col-span-1">
-            <Link href="/" className="text-2xl font-serif font-semibold tracking-tight text-foreground mb-2 block">
-              Surfside<span className="text-primary">.re</span>
+            {/* Replace text link with image logo link */}
+            <Link href="/" className="inline-block mb-2">
+               <Image
+                src={logoUrl}
+                alt="Surfside.re Logo"
+                width={logoWidth}
+                height={logoHeight}
+              />
             </Link>
             <p className="text-sm leading-relaxed">
               Integrated expertise for Cabo's premier real estate development, investment, and custom home creation.
