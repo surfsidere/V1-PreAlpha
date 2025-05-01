@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Inter, Lora, Roboto_Mono } from 'next/font/google';
+import { Inter, Lora, Roboto_Mono, Playfair_Display } from 'next/font/google'; // Import Playfair_Display
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/layout/header';
@@ -26,6 +26,13 @@ const robotoMono = Roboto_Mono({
   display: 'swap',
 });
 
+// Add Playfair Display font instance
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Surfside Digital Embassy - Integrated Real Estate Expertise in Cabo',
   description: 'Surfside offers integrated expertise for premier real estate development, investment, and custom home creation in Cabo San Lucas.',
@@ -44,7 +51,8 @@ export default function RootLayout({
           'min-h-screen bg-background font-sans antialiased',
           inter.variable,
           lora.variable,
-          robotoMono.variable
+          robotoMono.variable,
+          playfairDisplay.variable // Add Playfair Display variable
         )}
       >
         <Header />
@@ -56,4 +64,3 @@ export default function RootLayout({
     </html>
   );
 }
-

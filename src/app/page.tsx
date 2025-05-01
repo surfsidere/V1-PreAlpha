@@ -1,3 +1,4 @@
+
 'use client'; // Required for styled-jsx
 
 import Image from 'next/image';
@@ -35,7 +36,7 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
   {
-    title: "Development Coordination & Oversight", // Matches Services page L1
+    title: "Development Coordination & Oversight", // Consistent title
     icon: SwatchBook, // Consistent icon
     description: "Personalized guidance for bespoke residences.",
     href: "/build-your-custom-home" // Links to the specific landing page
@@ -52,18 +53,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4 h-full">
           <div className="hero-grid-container h-full">
             {/* Headline Element (Overlapping) */}
-            {/* Apply styles from prompt: Font, Size, Weight, Line Height, Color */}
-            <h1 className="hero-headline font-serif font-semibold text-foreground">
+            <h1 className="hero-headline">
               Elevating Lifestyle & Legacy
             </h1>
 
             {/* Body Text Element (Offset) */}
-             {/* Apply styles from prompt: Font, Size, Weight, Line Height, Color, Max Width */}
-            <p className="hero-body-text text-foreground leading-relaxed max-w-prose text-base lg:text-lg">
-               Curated Baja Living {/* Subtitle */}
-               <br /> {/* Add a line break for separation if needed */}
-               Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
-            </p>
+             <div className="hero-body-text">
+               <h2 className="subtitle">Curated Baja Living</h2> {/* Subtitle */}
+               <p className="body">
+                 Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
+               </p>
+             </div>
+
 
             {/* Video Element (Replacing Image) */}
             <div className="hero-image-container">
@@ -228,92 +229,117 @@ export default function HomePage() {
       </section>
 
        {/* CSS for the new Hero Section */}
-       {/* Apply specific styles from the prompt to hero elements */}
       <style jsx>{`
+
+        :root {
+            /* Estimated Brand Style Guidelines - VERIFY AND REPLACE */
+            --brand-background-primary: #FFFFFF;
+            --brand-text-primary: #333333;
+            --brand-text-secondary: #666666;
+            --brand-accent-primary: #1f2421; /* Updated green */
+            --brand-accent-secondary: #F0F8FF; /* Verify if used */
+        }
+
         .hero-grid-section {
-          /* Background handled by Tailwind bg-background */
-          /* Padding handled by Tailwind py-16 etc. */
+          /* Base styles handled by Tailwind */
         }
 
         .hero-grid-container {
           display: grid;
-          /* Asymmetrical grid columns */
-          grid-template-columns: 1.5fr 0.8fr 1fr 0.7fr;
+          grid-template-columns: 1.5fr 0.8fr 1fr 0.7fr; /* Asymmetrical grid */
           grid-template-rows: auto auto auto 1fr auto; /* Adjusted rows */
-          gap: 1rem 2rem; /* Adjust gap as needed */
-          align-items: center; /* Vertically align items */
-          height: 100%; /* Ensure grid takes full height */
-          position: relative; /* For z-index context */
+          gap: 1rem 2rem;
+          align-items: center;
+          height: 100%;
+          position: relative;
         }
 
         .hero-headline {
-          grid-column: 1 / 3; /* Span first two columns */
-          grid-row: 1 / 3; /* Span first two rows */
-          /* Apply font-family, font-size, font-weight, line-height, color from prompt */
-          /* font-family: 'Playfair Display', serif; /* EXAMPLE - Verify font */
-          font-size: clamp(2.6rem, 7vw, 5rem); /* Example from prompt */
-          line-height: 1.2; /* Example from prompt */
-          z-index: 10; /* Ensure headline is above image if overlapping */
+          grid-column: 1 / 3;
+          grid-row: 1 / 3;
+          /* --- Estimated Headline Styles --- */
+          font-family: var(--font-playfair-display), serif; /* USE VERIFIED SERIF FONT */
+          font-weight: 400; /* Regular weight */
+          font-size: clamp(2.6rem, 7vw, 5rem); /* Large, responsive */
+          line-height: 1.2;
+          color: var(--brand-text-primary);
+          z-index: 10;
           /* Potential animation: animate headline on scroll */
         }
 
         .hero-body-text {
-          grid-column: 1 / 3; /* Place below headline, potentially same columns */
-          grid-row: 3 / 4; /* Place in the third row */
-          /* Apply font-family, font-size, font-weight, line-height, color, max-width from prompt */
-          /* font-family: 'Montserrat', sans-serif; /* EXAMPLE - Verify font */
-          /* font-size: clamp(1rem, 1.8vw, 1.1rem); /* Example body size */
-          /* line-height: 1.7; */
-          /* max-width: 70ch; */
-          z-index: 10;
+            grid-column: 1 / 3;
+            grid-row: 3 / 4;
+            z-index: 10;
         }
 
-         /* Apply subtitle styles */
-        .hero-body-text::before { /* Using ::before for the subtitle */
-          content: "Curated Baja Living";
-          display: block;
-          /* font-family: 'Montserrat', sans-serif; /* EXAMPLE - Verify font */
-          font-size: clamp(1.1rem, 2.5vw, 1.5rem); /* Example from prompt */
-          font-weight: 400; /* Example from prompt */
-          text-transform: uppercase; /* Example from prompt */
-          letter-spacing: 0.08em; /* Example from prompt */
-          color: hsl(var(--muted-foreground)); /* Use muted-foreground for secondary text */
-          margin-bottom: 1rem; /* Space between subtitle and body */
+        .hero-body-text .subtitle {
+             /* --- Estimated Subtitle Styles --- */
+            font-family: var(--font-inter), sans-serif; /* USE VERIFIED SANS-SERIF FONT */
+            font-weight: 400; /* Normal weight */
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem); /* Smaller than H1 */
+            line-height: 1.4;
+            letter-spacing: 0.08em; /* Slight spacing */
+            text-transform: uppercase; /* Common style - VERIFY */
+            color: var(--brand-text-secondary);
+            text-align: left;
+            margin-bottom: 1rem; /* Space before body */
+        }
+
+        .hero-body-text .body {
+             /* --- Estimated Body Text Styles --- */
+            font-family: var(--font-inter), sans-serif; /* USE VERIFIED SANS-SERIF FONT */
+            font-weight: 400; /* Normal weight */
+            font-size: clamp(1rem, 1.8vw, 1.1rem); /* Standard body size */
+            line-height: 1.7; /* Readable line height */
+            color: var(--brand-text-primary);
+            max-width: 70ch; /* Constrain for readability */
+            text-align: left;
         }
 
 
         .hero-image-container {
-          grid-column: 3 / 5; /* Span columns 3 and 4 */
-          grid-row: 1 / 5; /* Span rows 1 to 4 */
-          position: relative; /* For Next/Image fill or video */
+          grid-column: 3 / 5;
+          grid-row: 1 / 5;
+          position: relative;
           width: 100%;
           height: 100%;
-          min-height: 300px; /* Ensure some height */
-          z-index: 5; /* Below text */
-          /* Apply non-rectangular clip-path */
-          clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-           /* Potential animation: Subtle parallax for image/video */
+          min-height: 300px;
+          z-index: 5;
+          clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%); /* Example non-rectangular clip-path */
+          /* Potential animation: Subtle parallax for image/video */
         }
-        /* Ensure video fills the container */
         .hero-image-container video {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Cover the container */
+          object-fit: cover;
         }
 
 
         .hero-cta {
-          grid-column: 1 / 2; /* Place in the first column */
-          grid-row: 4 / 5; /* Place in the fourth row */
-          align-self: start; /* Align to top of grid area */
-          justify-self: start; /* Align to left of grid area */
-          margin-top: 2rem; /* Space from body text - increased */
+          grid-column: 1 / 2;
+          grid-row: 4 / 5;
+          align-self: start;
+          justify-self: start;
+          margin-top: 2rem;
           z-index: 10;
-          /* Tailwind classes applied directly handle base styling */
-          /* Hover effects are handled by Tailwind hover: states */
+           /* --- Estimated CTA Styles --- */
+          /* Tailwind handles basic button structure */
+          font-family: var(--font-inter), sans-serif; /* USE VERIFIED SANS-SERIF FONT */
+          font-weight: 500; /* Medium weight */
+          /* font-size: 0.9rem; */ /* Tailwind text-sm might suffice */
+          /* text-transform: uppercase; */ /* Tailwind uppercase */
+          /* letter-spacing: 0.07em; */ /* Tailwind tracking-wider */
+          /* color: #FFFFFF; */ /* Tailwind text-primary-foreground */
+          /* background-color: var(--brand-accent-primary); */ /* Tailwind bg-primary */
+          border: none;
+          /* padding: 0.9em 2em; */ /* Tailwind py-3 px-6 approx */
+          /* border-radius: 4px; */ /* Tailwind rounded-md */
+          /* Hover state handled by Tailwind hover:bg-primary/90 */
+          /* Consider transition: all 0.3s; */
         }
 
         /* Basic Responsiveness */
@@ -322,7 +348,7 @@ export default function HomePage() {
             grid-template-columns: 1fr; /* Single column */
             grid-template-rows: auto auto auto auto; /* Reset rows */
             gap: 1.5rem 0;
-            text-align: left; /* Keep left align on mobile for readability */
+            text-align: left;
           }
 
           .hero-headline {
@@ -333,26 +359,26 @@ export default function HomePage() {
           .hero-body-text {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
-             max-width: none; /* Remove max width */
+             max-width: none;
           }
-           .hero-body-text::before {
-             text-align: left; /* Ensure subtitle aligns left */
+           .hero-body-text .subtitle, .hero-body-text .body {
+             text-align: left; /* Ensure text aligns left */
            }
 
           .hero-image-container {
             grid-column: 1 / 2;
             grid-row: 3 / 4;
             clip-path: none; /* Remove clip-path on mobile */
-             aspect-ratio: 16 / 10; /* Adjust aspect ratio for mobile */
-             height: auto; /* Let aspect ratio define height */
-             min-height: 250px; /* Adjust min-height */
+             aspect-ratio: 16 / 10;
+             height: auto;
+             min-height: 250px;
           }
 
           .hero-cta {
             grid-column: 1 / 2;
             grid-row: 4 / 5;
-            justify-self: start; /* Keep left align */
-            margin-top: 1.5rem; /* Adjust margin */
+            justify-self: start;
+            margin-top: 1.5rem;
           }
         }
       `}</style>
@@ -360,5 +386,3 @@ export default function HomePage() {
      </div>
   );
 }
-
-    
