@@ -38,8 +38,8 @@ const HeroSection: React.FC = () => {
       {/* Apply max-w-screen-lg here */}
       <div className="container relative mx-auto px-4 z-20 max-w-screen-lg">
         <div className="grid md:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Text Content */}
-          <div className="md:col-span-7 lg:col-span-6 py-12 md:py-20">
+          {/* Left Column: Text Content - Adjusted to md:col-span-7 */}
+          <div className="md:col-span-7 py-12 md:py-20">
             {/* Updated Headline */}
              <h1
                style={{
@@ -47,7 +47,7 @@ const HeroSection: React.FC = () => {
                  color: headlineColor, // Using the specific green
                  fontWeight: 400, // Regular weight as requested
                  lineHeight: 1.2,
-                 fontSize: 'clamp(1.8rem, 5vw, 3rem)', // Smaller font size
+                 fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', // Adjusted smaller font size
                  marginBottom: '0.75rem', // Reduced margin
                }}
              >
@@ -120,7 +120,10 @@ const HeroSection: React.FC = () => {
             </Button>
           </div>
 
-           {/* Right Column: Kept empty */}
+           {/* Right Column: Takes remaining space (5/12) */}
+           <div className="hidden md:block md:col-span-5">
+             {/* Intentionally empty or can hold a placeholder if needed visually */}
+           </div>
         </div>
       </div>
     </section>
