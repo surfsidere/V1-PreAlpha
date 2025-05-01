@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
   const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/165021798-golf-course-cabo-mexico.mp4";
 
   return (
-    <section className="relative flex items-center bg-background overflow-hidden min-h-[70svh] md:min-h-[80svh]">
+    <section className="relative flex items-center bg-background overflow-hidden h-[70svh]"> {/* Changed min-h to h */}
        {/* Background Video */}
         <video
             autoPlay
@@ -37,17 +37,19 @@ const HeroSection: React.FC = () => {
 
       {/* Apply max-w-screen-lg here */}
       <div className="container relative mx-auto px-4 z-20 max-w-screen-lg">
-        <div className="grid md:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Text Content - Adjusted to md:col-span-7 */}
-          <div className="md:col-span-7 py-12 md:py-20">
+        {/* Adjusted grid layout for 60/40 split */}
+        <div className="grid md:grid-cols-10 gap-8 items-center">
+          {/* Left Column: Text Content - Takes 6/10 (60%) */}
+          <div className="md:col-span-6 py-12 md:py-0"> {/* Removed extra padding */}
             {/* Updated Headline */}
              <h1
                style={{
                  fontFamily: brandSerifFont,
                  color: headlineColor, // Using the specific green
-                 fontWeight: 400, // Regular weight as requested
+                 fontWeight: 400, // Regular weight
                  lineHeight: 1.2,
-                 fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', // Adjusted smaller font size
+                 // Adjusted font size clamp for better balance
+                 fontSize: 'clamp(1.8rem, 4.5vw, 2.5rem)', // Smaller max size
                  marginBottom: '0.75rem', // Reduced margin
                }}
              >
@@ -104,15 +106,11 @@ const HeroSection: React.FC = () => {
                 fontSize: '0.95rem', // Slightly larger text
                 textTransform: 'none', // No uppercase as per reference
                 letterSpacing: 'normal',
-                 // Use text color from primary palette
                  color: textPrimaryColor,
-                 // Use border color similar to accent line or headline
                  borderColor: accentLineColor,
                  backgroundColor: 'transparent', // Explicitly transparent
                  padding: '0.9em 2.2em', // Adjust padding
                  borderRadius: '4px', // Slightly rounded
-                 // Hover state
-                 // Note: Inline styles can't directly do hover, use CSS classes or Tailwind variants if needed for complex hover
               }}
               className="hover:bg-secondary/50 hover:border-primary" // Tailwind classes for hover
             >
@@ -120,9 +118,9 @@ const HeroSection: React.FC = () => {
             </Button>
           </div>
 
-           {/* Right Column: Takes remaining space (5/12) */}
-           <div className="hidden md:block md:col-span-5">
-             {/* Intentionally empty or can hold a placeholder if needed visually */}
+           {/* Right Column: Takes remaining 4/10 (40%) */}
+           <div className="hidden md:block md:col-span-4">
+             {/* Intentionally empty */}
            </div>
         </div>
       </div>
