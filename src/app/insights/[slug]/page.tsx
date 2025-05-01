@@ -1,5 +1,3 @@
-'use client'; // Add this directive
-
 // src/app/insights/[slug]/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
