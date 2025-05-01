@@ -25,24 +25,30 @@ body {
     --popover: 30 20% 99%;
     --popover-foreground: 210 10% 23%;
 
-    --primary: 210 30% 40%; /* Muted deep ocean blue */
-    --primary-foreground: 0 0% 98%; /* Light text on blue */
+    /* --primary: 210 30% 40%; */ /* Original Muted deep ocean blue */
+    /* New Primary: Dark Green (#1f2421) - HSL approx 150 5% 13% */
+    --primary: 150 5% 13%;
+    /* --primary-foreground: 0 0% 98%; */ /* Original Light text on blue */
+    /* New Primary Foreground: Light color for dark green bg */
+    --primary-foreground: 40 30% 95%; /* Soft Off-white */
 
-    --secondary: 210 10% 92%; /* Lighter charcoal variant */
-    --secondary-foreground: 210 10% 15%; /* Darker for contrast */
 
-    --muted: 210 10% 95%; /* Even lighter charcoal variant */
-    --muted-foreground: 210 10% 45%; /* Mid charcoal */
+    /* Adjust Secondary, Muted, Accent based on new primary */
+    --secondary: 150 5% 92%; /* Lighter variant of the green */
+    --secondary-foreground: 150 5% 10%; /* Darker green text on light green */
 
-    --accent: 210 30% 90%; /* Lighter blue accent */
-    --accent-foreground: 210 30% 20%; /* Darker blue for contrast */
+    --muted: 150 5% 96%; /* Even lighter green variant */
+    --muted-foreground: 150 5% 45%; /* Mid-tone green/grey */
+
+    --accent: 150 5% 90%; /* Slightly more saturated light green */
+    --accent-foreground: 150 5% 15%; /* Dark green text for accent */
 
     --destructive: 0 74.2% 50.2%; /* Adjusted red for better contrast */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 10% 88%;
-    --input: 210 10% 88%;
-    --ring: 210 30% 50%; /* Slightly lighter blue for ring */
+    --border: 150 5% 88%; /* Border based on green tones */
+    --input: 150 5% 88%; /* Input border based on green tones */
+    --ring: 150 15% 40%; /* Ring color related to primary green */
 
     --radius: 0.5rem;
 
@@ -53,46 +59,47 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Sidebar variables (less critical for this design, keep defaults) */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar variables (adjust if sidebar styling is used) */
+    --sidebar-background: 30 20% 98%; /* Default light */
+    --sidebar-foreground: 150 5% 15%; /* Dark green text */
+    --sidebar-primary: 150 5% 13%; /* Match primary */
+    --sidebar-primary-foreground: 40 30% 95%; /* Match primary fg */
+    --sidebar-accent: 150 5% 90%; /* Match accent */
+    --sidebar-accent-foreground: 150 5% 15%; /* Match accent fg */
+    --sidebar-border: 150 5% 88%; /* Match border */
+    --sidebar-ring: 150 15% 40%; /* Match ring */
   }
 
   .dark {
     /* Define dark mode colors - using inverted/adjusted versions */
-    --background: 210 10% 10%; /* Deep charcoal dark */
-    --foreground: 30 20% 95%; /* Warm off-white light */
+    --background: 150 5% 10%; /* Dark green-tinted background */
+    --foreground: 40 30% 95%; /* Soft off-white text */
 
-    --card: 210 10% 12%;
-    --card-foreground: 30 20% 95%;
+    --card: 150 5% 12%;
+    --card-foreground: 40 30% 95%;
 
-    --popover: 210 10% 12%;
-    --popover-foreground: 30 20% 95%;
+    --popover: 150 5% 12%;
+    --popover-foreground: 40 30% 95%;
 
-    --primary: 210 30% 55%; /* Lighter blue for dark mode */
-    --primary-foreground: 210 10% 10%;
+    /* Primary in dark mode could be a slightly lighter/more vibrant green */
+    --primary: 150 15% 30%; /* A slightly lighter, more visible green */
+    --primary-foreground: 40 30% 95%;
 
-    --secondary: 210 10% 20%;
-    --secondary-foreground: 30 20% 95%;
+    --secondary: 150 5% 20%; /* Darker secondary */
+    --secondary-foreground: 40 30% 95%;
 
-    --muted: 210 10% 25%;
-    --muted-foreground: 210 10% 65%;
+    --muted: 150 5% 25%;
+    --muted-foreground: 150 5% 65%; /* Lighter grey-green */
 
-    --accent: 210 30% 30%;
-    --accent-foreground: 30 20% 95%;
+    --accent: 150 10% 40%; /* More noticeable accent green */
+    --accent-foreground: 40 30% 95%;
 
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 10% 30%;
-    --input: 210 10% 30%;
-    --ring: 210 30% 60%;
+    --border: 150 5% 30%;
+    --input: 150 5% 30%;
+    --ring: 150 20% 50%; /* Brighter ring for dark mode */
 
     /* Chart colors can be adjusted for dark mode if needed */
     --chart-1: 220 70% 50%;
@@ -101,15 +108,15 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    /* Sidebar dark variables (less critical, keep defaults) */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar dark variables */
+    --sidebar-background: 150 5% 10%; /* Match dark background */
+    --sidebar-foreground: 40 30% 95%; /* Match dark foreground */
+    --sidebar-primary: 150 15% 30%; /* Match dark primary */
+    --sidebar-primary-foreground: 40 30% 95%; /* Match dark primary fg */
+    --sidebar-accent: 150 10% 40%; /* Match dark accent */
+    --sidebar-accent-foreground: 40 30% 95%; /* Match dark accent fg */
+    --sidebar-border: 150 5% 30%; /* Match dark border */
+    --sidebar-ring: 150 20% 50%; /* Match dark ring */
   }
 }
 

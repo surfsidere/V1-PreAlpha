@@ -1,6 +1,7 @@
  "use client";
 
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image component
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,29 +18,31 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const logoUrl = "https://www.surfside.re/wp-content/uploads/2022/06/LogoSurfside_white-07.png";
+const logoWidth = 150; // Adjust as needed
+const logoHeight = 38; // Adjust as needed
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Removed isScrolled state and effect as header is now always blue
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
-        isScrolled ? 'bg-background/95 shadow-md backdrop-blur-sm' : 'bg-transparent',
-        isScrolled ? 'text-foreground' : 'text-white' // Adjust text color based on scroll
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ease-in-out',
+        'bg-primary text-primary-foreground shadow-md' // Always use primary background and foreground
       )}
     >
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-semibold tracking-tight">
-          Surfside<span className={cn(isScrolled ? 'text-primary' : 'text-white/90')}>.re</span>
+        {/* Replace text logo with Image logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src={logoUrl}
+            alt="Surfside.re Logo"
+            width={logoWidth}
+            height={logoHeight}
+            priority // Load logo quickly
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -49,20 +52,24 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
-                isScrolled ? 'text-foreground/80' : 'text-white/90 hover:text-white'
+                'text-sm font-medium transition-colors hover:text-white', // Adjusted hover color for blue background
+                'text-primary-foreground/90' // Use primary foreground color
                )}
             >
               {item.label}
             </Link>
           ))}
+           <Button variant="secondary" size="sm" asChild>
+             <Link href="/contact">Contact Us</Link>
+           </Button>
         </nav>
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn(isScrolled ? 'text-foreground' : 'text-white hover:text-white/90 hover:bg-white/10')}>
+              {/* Adjusted button style for blue background */}
+              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-white/10 hover:text-white">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -70,9 +77,10 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-0">
               <div className="flex flex-col h-full">
                  <div className="p-4 flex justify-between items-center border-b">
-                    <Link href="/" className="text-xl font-serif font-semibold tracking-tight" onClick={() => setIsMobileMenuOpen(false)}>
-                      Surfside<span className='text-primary'>.re</span>
-                    </Link>
+                    {/* Use text logo in mobile menu header for better contrast/simplicity */}
+                     <Link href="/" className="text-xl font-serif font-semibold tracking-tight text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                       Surfside<span className='text-primary'>.re</span>
+                     </Link>
                    <SheetClose asChild>
                      <Button variant="ghost" size="icon">
                        <X className="h-6 w-6" />

@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      { // Add new pattern for the logo host
+        protocol: 'https',
+        hostname: 'www.surfside.re',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
    env: {
