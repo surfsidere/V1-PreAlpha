@@ -1,21 +1,20 @@
 
-
-'use client'; // Add this directive because styled-jsx is used
+// No longer need 'use client' as styled-jsx is removed
+// 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-// Import icons consistent with Services page: BarChart3, Cpu, Megaphone, SwatchBook
-// Import icons for Audience Segmentation: ShieldCheck, SquareAsterisk
+// Import ShieldCheck and SquareAsterisk, keep SwatchBook
 import { ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, ShieldCheck, SquareAsterisk } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 
 const featuredProjects = [
-  { id: 1, title: "Oceanfront Villa", image: "https://picsum.photos/seed/project1/600/400", type: "Private Estate", slug: "/portfolio/oceanfront-villa", excerpt: "A stunning example of coastal modernism..."},
-  { id: 2, title: "Coastal Community", image: "https://picsum.photos/seed/project2/600/400", type: "Development", slug: "/portfolio/coastal-community", excerpt: "Master-planned community with luxury amenities..." },
-  { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Luxury Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location..." },
+  { id: 1, title: "Oceanfront Villa", image: "https://picsum.photos/seed/project1/600/400", type: "Private Estate", slug: "/portfolio/oceanfront-villa", excerpt: "A stunning example of coastal modernism...", "data-ai-hint": "luxury villa ocean" },
+  { id: 2, title: "Coastal Community", image: "https://picsum.photos/seed/project2/600/400", type: "Development", slug: "/portfolio/coastal-community", excerpt: "Master-planned community with luxury amenities...", "data-ai-hint": "coastal community aerial" },
+  { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Luxury Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location...", "data-ai-hint": "luxury hotel poolside" },
 ];
 
 // Updated featuredSolutions to align with Services page core services and icons
@@ -39,10 +38,10 @@ const featuredSolutions = [
     href: "/services/marketing-sales"
   },
   {
-    title: "Development Coordination & Oversight",
-    icon: SwatchBook, // Consistent with Services page
+    title: "Development Coordination & Oversight", // Matches Services page L1
+    icon: SwatchBook, // Consistent icon
     description: "Personalized guidance for bespoke residences.",
-    href: "/build-your-custom-home"
+    href: "/build-your-custom-home" // Links to the specific landing page
   },
 ];
 
@@ -50,40 +49,51 @@ const featuredSolutions = [
 export default function HomePage() { // Renamed component
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Component 1: Hero Section */}
-      <section className="relative h-[85svh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://picsum.photos/seed/cabosteps/1920/1080" // Example: Using a seed that might generate a B&W image or similar vibe. Replace with actual asset.
-            alt="Atmospheric view of Cabo coastline and architecture integration"
-            fill // Use fill instead of layout="fill"
-            style={{ objectFit: 'cover' }} // Use style object for objectFit
-            quality={90}
-            priority
-            className="brightness-75" // Keep brightness, adjust as needed for B&W
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
-        </div>
-        <div className="relative z-10 p-8 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium mb-4 text-shadow-lg animate-fade-in-up">
-            Visionary Real Estate. Integrated Execution. Enduring Value in Cabo San Lucas.
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-shadow animate-fade-in-up animation-delay-200">
-            Your end-to-end partner for premier residential and hospitality projects.
-          </p>
-          {/* Optional: Scroll down indicator */}
-           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-70 hidden md:block">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-           </div>
+
+      {/* Component 1: New Hero Section */}
+      <section className="bg-background py-16 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+            {/* Left Column: Text & CTA */}
+            <div className="md:col-span-3 space-y-6 text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight text-foreground">
+                The Art of Los Cabos Real Estate: Vision, Strategy, Execution.
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                Discover a seamless, strategic approach to navigating the complexities and capturing the opportunities of the Los Cabos real estate market. We offer end-to-end guidance for discerning investors, developers, and homeowners.
+              </p>
+              <Button size="lg" asChild variant="outline">
+                <Link href="/about">
+                  Discover Our Approach <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+               {/* Optional subtle graphical element */}
+               {/* <div className="absolute bottom-0 left-0 w-1/3 h-1 bg-primary/10 rounded-full -translate-x-1/4 -translate-y-1/2 rotate-[-15deg] opacity-50 hidden md:block"></div> */}
+            </div>
+
+            {/* Right Column: Image */}
+            <div className="md:col-span-2 relative h-80 md:h-[450px] lg:h-[550px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="https://picsum.photos/seed/hero-cabo-arch/800/1000" // Placeholder image
+                alt="Sophisticated architectural detail in Los Cabos"
+                fill
+                style={{ objectFit: 'cover' }}
+                quality={90}
+                priority
+                data-ai-hint="modern architecture luxury detail"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
+
       {/* Component 2: Audience Segmentation */}
-      <section id="audience-portals" className="py-16 md:py-24 bg-background">
+      <section id="audience-portals" className="py-16 md:py-24 bg-secondary/30"> {/* Changed background */}
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Panel A: Develop & Invest */}
-            <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+            <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border bg-background hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
                <ShieldCheck className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12"/>
                <h2 className="text-2xl md:text-3xl font-serif mb-3">For Developers & Investors</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
@@ -95,7 +105,8 @@ export default function HomePage() { // Renamed component
               </Button>
             </div>
             {/* Panel B: Your Vision, Realized */}
-            <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+            <div className="group flex flex-col items-center text-center p-8 md:p-12 rounded-lg border border-border bg-background hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+               {/* Correct Icon for Bespoke/Vision */}
                <SquareAsterisk className="mb-5 text-primary transition-transform duration-300 group-hover:scale-110 w-12 h-12" />
                <h2 className="text-2xl md:text-3xl font-serif mb-3">Your Vision, Realized</h2>
                <p className="text-muted-foreground mb-6 max-w-md mx-auto flex-grow">
@@ -111,7 +122,7 @@ export default function HomePage() { // Renamed component
       </section>
 
       {/* Component 3: Introduction / Our Integrated Approach */}
-      <section className="py-16 md:py-24 bg-secondary/30">
+      <section className="py-16 md:py-24 bg-background"> {/* Changed background */}
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-4">The Surfside Integration</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -121,7 +132,7 @@ export default function HomePage() { // Renamed component
       </section>
 
       {/* Component 4: Featured Solutions / Capabilities */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-secondary/30"> {/* Changed background */}
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Core Capabilities</h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -131,7 +142,7 @@ export default function HomePage() { // Renamed component
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Ensure icons used here match the updated featuredSolutions array */}
             {featuredSolutions.map((solution) => (
-            <div key={solution.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center">
+            <div key={solution.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center bg-background/50"> {/* Added light background */}
               <solution.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
               <h3 className="text-xl font-serif mb-2 flex-grow">{solution.title}</h3>
               <p className="text-muted-foreground text-sm mb-4">{solution.description}</p>
@@ -151,12 +162,12 @@ export default function HomePage() { // Renamed component
 
 
       {/* Component 5: Featured Portfolio / Proof Points */}
-      <section className="py-16 md:py-24 bg-secondary/30">
+      <section className="py-16 md:py-24 bg-background"> {/* Changed background */}
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Featured Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project) => (
-              <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+              <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 bg-card"> {/* Ensured card background */}
                 <CardHeader className="p-0 relative h-64">
                   <Image
                     src={project.image}
@@ -164,6 +175,7 @@ export default function HomePage() { // Renamed component
                      fill // Use fill instead of layout="fill"
                     style={{ objectFit: 'cover' }} // Use style object for objectFit
                     className="transition-transform duration-500 group-hover:scale-105"
+                    data-ai-hint={project['data-ai-hint']}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
                   {/* Use glass variant for badge */}
@@ -190,9 +202,9 @@ export default function HomePage() { // Renamed component
       </section>
 
       {/* Component 6: Community & Future Teaser - Placeholder for now */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-secondary/30"> {/* Changed background */}
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto p-8 rounded-lg border border-border bg-gradient-to-br from-accent/20 to-background">
+          <div className="max-w-2xl mx-auto p-8 rounded-lg border border-border bg-gradient-to-br from-background/50 to-background"> {/* Adjusted background */}
             <h2 className="text-3xl md:text-4xl font-serif mb-4">Building a Better Future, Together.</h2>
             <p className="text-lg text-muted-foreground mb-6">
               Our commitment extends beyond development to fostering sustainable practices and enriching the community fabric of Baja California Sur.
@@ -221,29 +233,9 @@ export default function HomePage() { // Renamed component
         </div>
       </section>
 
-      {/* Styles moved to globals.css or Tailwind config where possible */}
-      {/* Keep minimal inline styles for specific animations if necessary */}
-      <style jsx>{`
-        .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-        .text-shadow-lg { text-shadow: 0 3px 7px rgba(0,0,0,0.5); }
-        .animation-delay-200 { animation-delay: 0.2s; }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-          opacity: 0; /* Start hidden */
-        }
-         @keyframes bounce {
-            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
-            50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
-        }
-        .animate-bounce {
-             animation: bounce 1s infinite;
-        }
-        .brightness-75 { filter: brightness(0.75); }
+     {/* Remove styled-jsx block */}
+     {/*
+     <style jsx>{`
         .line-clamp-2 {
             overflow: hidden;
             display: -webkit-box;
@@ -251,8 +243,7 @@ export default function HomePage() { // Renamed component
             -webkit-line-clamp: 2;
         }
       `}</style>
+      */}
      </div>
   );
 }
-
-    
