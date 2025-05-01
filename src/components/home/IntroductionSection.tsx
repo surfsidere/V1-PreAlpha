@@ -1,13 +1,15 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+// Removed Image import as it's replaced by video
 
 interface IntroductionSectionProps {
   // Add any props your component will need here
 }
 
 const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2022/12/sail-boat-corrected-1.mov";
+
   return (
     <section data-ai-hint="introduction integrated approach" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -25,18 +27,21 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
                    <Link href="/about">Learn More About Our Philosophy</Link>
                  </Button> */}
             </div>
-            {/* Consider an abstract/architectural image or texture */}
+            {/* Replace Image with Video */}
             <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg group">
-               <Image
-                 src="https://picsum.photos/seed/approach/800/600"
-                 alt="Abstract architectural detail or texture representing integration"
-                 layout="fill"
-                 objectFit="cover"
-                 className="transition-transform duration-500 group-hover:scale-105"
-                 data-ai-hint="abstract architecture texture"
-               />
+               <video
+                 autoPlay
+                 loop
+                 muted
+                 playsInline // Important for mobile playback
+                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 data-ai-hint="sailboat ocean movement"
+               >
+                 <source src={videoUrl} type="video/quicktime" /> {/* Specify MOV type */}
+                  Your browser does not support the video tag.
+               </video>
                 {/* Optional subtle overlay */}
-                {/* <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors"></div> */}
+               <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors"></div>
             </div>
          </div>
       </div>
