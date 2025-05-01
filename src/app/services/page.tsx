@@ -1,12 +1,11 @@
 
-
 // src/app/services/page.tsx
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
-  ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, // Core icons - Updated Handshake to SwatchBook
-  Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
+    ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, // Core icons
+    Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,7 +33,7 @@ const coreServices = [
   },
     {
     title: "Development Coordination & Oversight", // Consistent title
-    description: "Personalized guidance and meticulous project management for crafting your exceptional residence in Cabo.",
+    description: "Personalized guidance for bespoke residences.", // Shortened
     icon: SwatchBook, // Updated icon to SwatchBook
     href: "/build-your-custom-home" // Links to the specific landing page
   },
@@ -83,7 +82,8 @@ const keySupportAreas = [
 
 export default function ServicesOverviewPage() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+    // Main container with max-width
+    <div className="container mx-auto px-4 py-16 md:py-24 max-w-screen-xl">
       {/* Section 1: Core Integrated Services (Level 1) - Matching Homepage Style */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-serif mb-4">Our Core Integrated Services</h1>
@@ -96,8 +96,8 @@ export default function ServicesOverviewPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
         {coreServices.map((service) => (
           // Use simple div structure, remove Card components
-          <div key={service.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center justify-start">
-            <service.icon className="mx-auto mb-4 text-primary w-10 h-10" /> {/* Ensure consistent icon size */}
+          <div key={service.title} className="text-center p-6 rounded-lg border border-transparent hover:border-border hover:shadow-sm transition-all duration-300 flex flex-col items-center justify-start group">
+            <service.icon className="mx-auto mb-4 text-primary w-10 h-10 transition-transform duration-300 group-hover:scale-110" /> {/* Ensure consistent icon size and add hover effect */}
             <h3 className="text-xl font-serif mb-2 flex-grow">{service.title}</h3>
             <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
             <Button variant="link" size="sm" asChild className="p-0 h-auto mt-auto self-center">

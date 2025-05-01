@@ -7,11 +7,11 @@ import { ArrowRight } from 'lucide-react';
 
 // Placeholder Data - Replace with actual data fetching and filtering logic
 const projects = [
-  { id: 1, title: "Oceanfront Villa", image: "https://picsum.photos/seed/project1/600/400", type: "Custom Home", slug: "/portfolio/oceanfront-villa", excerpt: "A stunning example of coastal modernism..." },
-  { id: 2, title: "Coastal Community", image: "https://picsum.photos/seed/project2/600/400", type: "Development", slug: "/portfolio/coastal-community", excerpt: "Master-planned community with luxury amenities..." },
-  { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location..." },
-  { id: 4, title: "Desert Retreat", image: "https://picsum.photos/seed/project4/600/400", type: "Custom Home", slug: "/portfolio/desert-retreat", excerpt: "Seamless integration of architecture and landscape..." },
-  { id: 5, title: "Marina Residences", image: "https://picsum.photos/seed/project5/600/400", type: "Development", slug: "/portfolio/marina-residences", excerpt: "Exclusive waterfront living opportunities..." },
+  { id: 1, title: "Oceanfront Villa", image: "https://picsum.photos/seed/project1/600/400", type: "Custom Home", slug: "/portfolio/oceanfront-villa", excerpt: "A stunning example of coastal modernism...", "data-ai-hint": "luxury villa ocean" },
+  { id: 2, title: "Coastal Community", image: "https://picsum.photos/seed/project2/600/400", type: "Development", slug: "/portfolio/coastal-community", excerpt: "Master-planned community with luxury amenities...", "data-ai-hint": "coastal community aerial" },
+  { id: 3, title: "Luxury Boutique Hotel", image: "https://picsum.photos/seed/project3/600/400", type: "Hospitality", slug: "/portfolio/luxury-boutique-hotel", excerpt: "Elevated guest experiences in a prime location...", "data-ai-hint": "luxury hotel poolside" },
+  { id: 4, title: "Desert Retreat", image: "https://picsum.photos/seed/project4/600/400", type: "Custom Home", slug: "/portfolio/desert-retreat", excerpt: "Seamless integration of architecture and landscape...", "data-ai-hint": "modern house desert landscape" },
+  { id: 5, title: "Marina Residences", image: "https://picsum.photos/seed/project5/600/400", type: "Development", slug: "/portfolio/marina-residences", excerpt: "Exclusive waterfront living opportunities...", "data-ai-hint": "condos marina yachts" },
 ];
 
 const projectTypes = ["All", "Custom Home", "Development", "Hospitality"];
@@ -20,7 +20,8 @@ export default function PortfolioPage() {
   // State for filtering would go here in a client component
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+     // Main container with max-width
+    <div className="container mx-auto px-4 py-16 md:py-24 max-w-screen-xl">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-6">Our Portfolio</h1>
       <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
         Explore a selection of projects showcasing our integrated expertise and commitment to excellence in Cabo San Lucas.
@@ -53,6 +54,7 @@ export default function PortfolioPage() {
                 layout="fill"
                 objectFit="cover"
                 className="transition-transform duration-500 group-hover:scale-105"
+                 data-ai-hint={project['data-ai-hint']}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
               {/* Could add badge here */}

@@ -14,7 +14,8 @@ const insights = [
     image: "https://picsum.photos/seed/insight1/600/300",
     date: "October 26, 2024",
     category: "Market Analysis",
-    slug: "/insights/cabo-market-trends-q3-2024"
+    slug: "/insights/cabo-market-trends-q3-2024",
+    "data-ai-hint": "market chart graph analysis"
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ const insights = [
     image: "https://picsum.photos/seed/insight2/600/300",
     date: "September 15, 2024",
     category: "Development Trends",
-    slug: "/insights/wellness-developments"
+    slug: "/insights/wellness-developments",
+     "data-ai-hint": "yoga wellness spa resort"
   },
   {
     id: 3,
@@ -32,7 +34,8 @@ const insights = [
     image: "https://picsum.photos/seed/insight3/600/300",
     date: "August 01, 2024",
     category: "Development Management",
-    slug: "/insights/entitlement-process-bcs"
+    slug: "/insights/entitlement-process-bcs",
+     "data-ai-hint": "documents blueprints government building"
   },
     {
     id: 4,
@@ -41,7 +44,8 @@ const insights = [
     image: "https://picsum.photos/seed/insight4/600/300",
     date: "July 22, 2024",
     category: "Design Insights",
-    slug: "/insights/sustainable-luxury-design"
+    slug: "/insights/sustainable-luxury-design",
+     "data-ai-hint": "sustainable architecture green building"
   },
 ];
 
@@ -51,7 +55,8 @@ export default function InsightsPage() {
   // State for filtering would go here in a client component
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+    // Main container with max-width
+    <div className="container mx-auto px-4 py-16 md:py-24 max-w-screen-xl">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-6">Insights & Analysis</h1>
       <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
         Stay informed with our expert commentary on the dynamic Cabo real estate market, development trends, and design innovation.
@@ -77,6 +82,7 @@ export default function InsightsPage() {
                 layout="fill"
                 objectFit="cover"
                 className="transition-transform duration-500 group-hover:scale-105"
+                 data-ai-hint={insight['data-ai-hint']}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
             </CardHeader>

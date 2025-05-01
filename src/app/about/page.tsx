@@ -14,9 +14,10 @@ const leadershipTeam = [
 export default function AboutPage() {
   return (
     <div className="bg-background">
-      {/* Hero Section */}
+      {/* Hero Section - Full Width */}
       <section className="relative py-24 md:py-32 bg-secondary/30 text-center">
-         <div className="container mx-auto px-4">
+         {/* Container inside hero for text constraint */}
+         <div className="container mx-auto px-4 max-w-screen-xl">
            <h1 className="text-4xl md:text-5xl font-serif mb-4">About Surfside.re</h1>
            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Your trusted partner for navigating and succeeding in Cabo's dynamic luxury real estate market through integrated expertise and deep local connections.
@@ -24,9 +25,9 @@ export default function AboutPage() {
          </div>
       </section>
 
-      {/* Our Philosophy/Approach */}
+      {/* Our Philosophy/Approach - Constrained Width */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
            <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Philosophy: Integrated Excellence</h2>
@@ -44,15 +45,16 @@ export default function AboutPage() {
                    layout="fill"
                    objectFit="cover"
                    className="transition-transform duration-500 hover:scale-105"
+                   data-ai-hint="teamwork architectural plans"
                  />
                </div>
            </div>
         </div>
       </section>
 
-       {/* Meet the Leadership */}
+       {/* Meet the Leadership - Constrained Width */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Meet the Leadership</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadershipTeam.map((member) => (
@@ -74,9 +76,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-       {/* Our Integrated Model */}
+       {/* Our Integrated Model - Constrained Width */}
        <section className="py-16 md:py-24">
-         <div className="container mx-auto px-4">
+         <div className="container mx-auto px-4 max-w-screen-xl">
            <div className="text-center mb-12">
                <h2 className="text-3xl md:text-4xl font-serif mb-4">The Power of Integration</h2>
                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -102,9 +104,9 @@ export default function AboutPage() {
        </section>
 
 
-       {/* Partner Ecosystem */}
+       {/* Partner Ecosystem - Constrained Width */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Curated Partner Ecosystem</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

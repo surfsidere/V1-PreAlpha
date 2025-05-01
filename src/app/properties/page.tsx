@@ -9,16 +9,17 @@ import { MapPin, Bed, Bath, CarFront, ArrowRight } from 'lucide-react'; // Examp
 
 // Placeholder data
 const properties = [
-  { id: 1, title: "Villa Pacifica", price: "$5,500,000 USD", image: "https://picsum.photos/seed/prop1/600/400", location: "Palmilla", beds: 5, baths: 6, garage: 3, slug: "/properties/villa-pacifica" },
-  { id: 2, title: "Casa Arena", price: "$3,200,000 USD", image: "https://picsum.photos/seed/prop2/600/400", location: "Pedregal", beds: 4, baths: 4.5, garage: 2, slug: "/properties/casa-arena" },
-  { id: 3, title: "Hacienda del Mar", price: "$7,800,000 USD", image: "https://picsum.photos/seed/prop3/600/400", location: "Querencia", beds: 6, baths: 7, garage: 4, slug: "/properties/hacienda-del-mar" },
+  { id: 1, title: "Villa Pacifica", price: "$5,500,000 USD", image: "https://picsum.photos/seed/prop1/600/400", location: "Palmilla", beds: 5, baths: 6, garage: 3, slug: "/properties/villa-pacifica", "data-ai-hint": "luxury villa ocean view pool" },
+  { id: 2, title: "Casa Arena", price: "$3,200,000 USD", image: "https://picsum.photos/seed/prop2/600/400", location: "Pedregal", beds: 4, baths: 4.5, garage: 2, slug: "/properties/casa-arena", "data-ai-hint": "modern house hillside ocean view" },
+  { id: 3, title: "Hacienda del Mar", price: "$7,800,000 USD", image: "https://picsum.photos/seed/prop3/600/400", location: "Querencia", beds: 6, baths: 7, garage: 4, slug: "/properties/hacienda-del-mar", "data-ai-hint": "luxury hacienda golf course" },
 ];
 
 export default function PropertiesPage() {
   // Filtering/Sorting state would go here in a client component
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+     // Main container with max-width
+    <div className="container mx-auto px-4 py-16 md:py-24 max-w-screen-xl">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-6">Properties for Sale</h1>
       <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
         Discover curated listings of exceptional properties available in Cabo San Lucas' most desirable locations.
@@ -43,6 +44,7 @@ export default function PropertiesPage() {
                 layout="fill"
                 objectFit="cover"
                 className="transition-transform duration-500 group-hover:scale-105"
+                 data-ai-hint={property['data-ai-hint']}
               />
                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
                <div className="absolute bottom-4 left-4 text-white text-shadow">

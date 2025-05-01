@@ -214,7 +214,7 @@ export default function ContactPage() {
     console.error("NEXT_PUBLIC_RECAPTCHA_SITE_KEY is not set. CAPTCHA will not work.");
     // Optionally render a message or disable the form
      return (
-       <div className="container mx-auto px-4 py-16 md:py-24 text-center text-destructive">
+       <div className="container mx-auto px-4 py-16 md:py-24 text-center text-destructive max-w-screen-xl">
          Configuration Error: reCAPTCHA site key is missing. Please contact the site administrator.
        </div>
      );
@@ -223,7 +223,8 @@ export default function ContactPage() {
 
   return (
      <GoogleReCaptchaProvider reCaptchaKey={siteKey} scriptProps={{ async: true, defer: true }}>
-        <div className="container mx-auto px-4 py-16 md:py-24">
+         {/* Main container with max-width */}
+        <div className="container mx-auto px-4 py-16 md:py-24 max-w-screen-xl">
         <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-serif mb-4">Contact Us</h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">

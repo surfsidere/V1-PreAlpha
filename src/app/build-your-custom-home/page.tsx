@@ -9,9 +9,9 @@ import { CheckCircle, ArrowRight } from 'lucide-react';
 
 // Placeholder data
 const customHomes = [
-  { id: 1, title: "Cliffside Estate", image: "https://picsum.photos/seed/custom1/600/400", slug: "/portfolio/cliffside-estate" },
-  { id: 2, title: "Modern Beachfront", image: "https://picsum.photos/seed/custom2/600/400", slug: "/portfolio/modern-beachfront" },
-  { id: 3, title: "Golf Course Villa", image: "https://picsum.photos/seed/custom3/600/400", slug: "/portfolio/golf-course-villa" },
+  { id: 1, title: "Cliffside Estate", image: "https://picsum.photos/seed/custom1/600/400", slug: "/portfolio/cliffside-estate", "data-ai-hint": "luxury villa cliff ocean" },
+  { id: 2, title: "Modern Beachfront", image: "https://picsum.photos/seed/custom2/600/400", slug: "/portfolio/modern-beachfront", "data-ai-hint": "modern house beach sunset" },
+  { id: 3, title: "Golf Course Villa", image: "https://picsum.photos/seed/custom3/600/400", slug: "/portfolio/golf-course-villa", "data-ai-hint": "house villa golf course" },
 ];
 
 const processSteps = [
@@ -25,7 +25,7 @@ const processSteps = [
 export default function BuildCustomHomePage() {
   return (
     <div className="bg-background">
-      {/* Hero Section */}
+      {/* Hero Section - Full Width */}
       <section className="relative h-[70svh] min-h-[450px] flex items-center justify-center text-center text-white overflow-hidden bg-gradient-to-br from-primary/80 to-accent/60">
          <div className="absolute inset-0 z-0 opacity-30">
           <Image
@@ -35,9 +35,11 @@ export default function BuildCustomHomePage() {
             objectFit="cover"
             quality={80}
             priority
+             data-ai-hint="luxury home interior modern"
           />
            <div className="absolute inset-0 bg-black/30"></div>
         </div>
+         {/* Container inside hero for text constraint */}
         <div className="relative z-10 p-8 max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-serif font-medium mb-4 text-shadow-lg">
             Craft Your Cabo Dream Home
@@ -57,9 +59,9 @@ export default function BuildCustomHomePage() {
          `}</style>
       </section>
 
-      {/* The Bespoke Process */}
+      {/* The Bespoke Process - Constrained Width */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
           <div className="text-center mb-12">
              <h2 className="text-3xl md:text-4xl font-serif mb-4">Your Vision, Our Expertise</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -89,9 +91,9 @@ export default function BuildCustomHomePage() {
       </section>
 
 
-      {/* Why Choose Surfside */}
+      {/* Why Choose Surfside - Constrained Width */}
        <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
            <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="relative h-80 md:h-[450px] rounded-lg overflow-hidden shadow-lg order-last md:order-first">
                  <Image
@@ -100,6 +102,7 @@ export default function BuildCustomHomePage() {
                    layout="fill"
                    objectFit="cover"
                    className="transition-transform duration-500 hover:scale-105"
+                   data-ai-hint="architect client meeting plans"
                  />
                </div>
                <div className="order-first md:order-last">
@@ -132,9 +135,9 @@ export default function BuildCustomHomePage() {
       </section>
 
 
-       {/* Showcase Gallery */}
+       {/* Showcase Gallery - Constrained Width */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-screen-xl">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Inspiring Custom Homes</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {customHomes.map((home) => (
@@ -146,6 +149,7 @@ export default function BuildCustomHomePage() {
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform duration-500 group-hover:scale-105"
+                     data-ai-hint={home['data-ai-hint']}
                   />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
                 </CardHeader>

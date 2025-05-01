@@ -13,7 +13,8 @@ interface CommunitySectionProps {
 const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
   return (
     <section data-ai-hint="community future section" className="py-16 md:py-24 bg-gradient-to-br from-background to-secondary/20">
-      <div className="container mx-auto px-4">
+       {/* Main container with max-width */}
+      <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
            <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg group">
              <Image
