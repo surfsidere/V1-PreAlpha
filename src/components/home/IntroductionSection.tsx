@@ -15,29 +15,30 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
   return (
     <section
       data-ai-hint="introduction integrated approach"
-      // Added h-[30svh] and flex for height control and centering attempt
-      className="h-[30svh] flex flex-col justify-center bg-background py-8 md:py-12" // Reduced padding
+      // Adjusted height to 45svh and added flex for vertical centering of the container
+      className="h-[45svh] flex flex-col justify-center bg-background py-8 md:py-12"
     >
-      {/* Apply max-w-screen-lg here */}
+      {/* Apply max-w-screen-lg here for consistent width */}
       <div className="container mx-auto px-4 max-w-screen-lg">
          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="max-w-xl"> {/* Constrain text width */}
-                 <h2 className="text-2xl md:text-3xl font-serif mb-4">The Integrated Approach</h2> {/* Slightly smaller heading */}
-                <p className="text-muted-foreground text-sm md:text-base mb-3 leading-relaxed"> {/* Slightly smaller text */}
+                 <h2 className="text-2xl md:text-3xl font-serif mb-4">The Integrated Approach</h2>
+                <p className="text-muted-foreground text-sm md:text-base mb-3 leading-relaxed">
                   Success in Cabo's dynamic market requires more than just services; it demands synergy. Our end-to-end model seamlessly integrates strategic advisory, development management, and targeted marketing & sales execution.
                 </p>
-                <p className="text-muted-foreground text-sm md:text-base leading-relaxed"> {/* Slightly smaller text */}
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                   We leverage deep local expertise and a curated network of elite partners—architects, legal counsel, financiers, and builders—orchestrating every element to maximize value, ensure quality, and mitigate risk for our clients. This holistic approach underpins our commitment to responsible development and enduring community value.
                 </p>
             </div>
             {/* Replace Image with Video */}
-            <div className="relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg group"> {/* Reduced video height */}
+            <div className="relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg group"> {/* Adjusted height */}
                <video
                  autoPlay
                  loop
                  muted
                  playsInline // Important for mobile playback
-                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 // Added object-bottom to align video content to the bottom
+                 className="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-105"
                  data-ai-hint="sailboat ocean movement"
                >
                  {/* Updated source URL and type */}

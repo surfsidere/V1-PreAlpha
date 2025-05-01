@@ -12,14 +12,15 @@ const HeroSection: React.FC = () => {
 
   // Define colors based on globals.css (ensure these CSS variables are set)
   const textPrimaryColor = 'hsl(var(--foreground))'; // Default text
-  const headlineColor = 'hsl(var(--primary))'; // Use primary color from theme
+  const headlineColor = 'hsl(var(--primary))'; // Use primary color from theme (dark green)
   const accentLineColor = 'hsl(var(--border))'; // Use border color for the line
 
   // Video URL
   const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/165021798-golf-course-cabo-mexico.mp4";
 
   return (
-    <section className="relative flex items-center bg-background overflow-hidden h-[70svh]"> {/* Changed min-h to h */}
+    // Adjusted height to 55svh
+    <section className="relative flex items-center bg-background overflow-hidden h-[55svh]">
        {/* Background Video */}
         <video
             autoPlay
@@ -35,21 +36,21 @@ const HeroSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10"></div>
 
 
-      {/* Apply max-w-screen-lg here */}
+      {/* Apply max-w-screen-lg here for consistent width */}
       <div className="container relative mx-auto px-4 z-20 max-w-screen-lg">
         {/* Adjusted grid layout for 60/40 split */}
         <div className="grid md:grid-cols-10 gap-8 items-center">
           {/* Left Column: Text Content - Takes 6/10 (60%) */}
-          <div className="md:col-span-6 py-12 md:py-0"> {/* Removed extra padding */}
+          <div className="md:col-span-6 py-12 md:py-0">
             {/* Updated Headline */}
              <h1
                style={{
                  fontFamily: brandSerifFont,
-                 color: headlineColor, // Using the specific green
-                 fontWeight: 400, // Regular weight
+                 color: headlineColor,
+                 fontWeight: 400, // Regular weight for Playfair Display
                  lineHeight: 1.2,
                  // Adjusted font size clamp for better balance
-                 fontSize: 'clamp(1.8rem, 4.5vw, 2.5rem)', // Smaller max size
+                 fontSize: 'clamp(1.8rem, 4.5vw, 2.5rem)', // Slightly smaller max size
                  marginBottom: '0.75rem', // Reduced margin
                }}
              >
@@ -63,7 +64,7 @@ const HeroSection: React.FC = () => {
                 border: 'none',
                 height: '1px',
                 width: '60px', // Short line
-                backgroundColor: accentLineColor, // Use theme border color
+                backgroundColor: accentLineColor, // Using border color, potentially lighter green
                 margin: '1.5rem 0', // Space around line
               }}
             />
@@ -75,7 +76,7 @@ const HeroSection: React.FC = () => {
                 color: textPrimaryColor,
                 fontSize: 'clamp(1rem, 1.8vw, 1.1rem)',
                 lineHeight: 1.7,
-                maxWidth: '65ch',
+                maxWidth: '65ch', // Limit line length
                 marginBottom: '1.5rem', // Space between paragraphs
               }}
             >
@@ -106,8 +107,8 @@ const HeroSection: React.FC = () => {
                 fontSize: '0.95rem', // Slightly larger text
                 textTransform: 'none', // No uppercase as per reference
                 letterSpacing: 'normal',
-                 color: textPrimaryColor,
-                 borderColor: accentLineColor,
+                 color: textPrimaryColor, // Button text color
+                 borderColor: accentLineColor, // Border color matches line
                  backgroundColor: 'transparent', // Explicitly transparent
                  padding: '0.9em 2.2em', // Adjust padding
                  borderRadius: '4px', // Slightly rounded
@@ -118,9 +119,9 @@ const HeroSection: React.FC = () => {
             </Button>
           </div>
 
-           {/* Right Column: Takes remaining 4/10 (40%) */}
+           {/* Right Column: Takes remaining 4/10 (40%) - kept for structure */}
            <div className="hidden md:block md:col-span-4">
-             {/* Intentionally empty */}
+             {/* Intentionally empty or could hold a subtle visual element if needed */}
            </div>
         </div>
       </div>
