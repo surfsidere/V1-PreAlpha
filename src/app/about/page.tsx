@@ -54,12 +54,12 @@ export default function AboutPage() {
               </div>
                <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                  <Image
-                   src="https://picsum.photos/seed/philosophy/800/600"
-                   alt="Collaborative team working on architectural plans"
+                   src="https://www.surfside.re/wp-content/uploads/2022/12/San-Jose-Long-Exposure-1.jpg"
+                   alt="San Jose long exposure nighttime city lights"
                    layout="fill"
                    objectFit="cover"
                    className="transition-transform duration-500 hover:scale-105"
-                   data-ai-hint="teamwork architectural plans"
+                   data-ai-hint="cityscape night long exposure"
                  />
                </div>
            </div>
