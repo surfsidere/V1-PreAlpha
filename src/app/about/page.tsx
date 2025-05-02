@@ -51,19 +51,20 @@ export default function AboutPage() {
              {/* Visual Element Column (Left - 4/10) */}
              <div className="md:col-span-4">
                <div className="relative h-80 md:h-[450px] bg-muted rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
-                 {/* Placeholder for sophisticated visual (Image/Animation/Video) */}
-                  <Image
-                    src="https://picsum.photos/seed/vision/800/600" // Placeholder Image
-                    alt="Sophisticated visual representing vision or the Baja landscape"
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-500 hover:scale-105"
-                    data-ai-hint="baja landscape abstract texture" // AI hint for placeholder
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></span>
-                 {/* <span className="text-muted-foreground text-sm p-4 text-center">
-                    [Visual Placeholder: Insight, Vision, Legacy, or Baja Landscape Image/Animation]
-                 </span> */}
+                  {/* Replaced Image with Video */}
+                  <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      data-ai-hint="sailing ocean calm movement"
+                  >
+                      <source src="https://www.surfside.re/wp-content/uploads/2025/05/sail-boat-corrected-1-3.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                  </video>
+                  {/* Optional: Add a subtle overlay if needed over the video */}
+                  {/* <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></span> */}
                </div>
              </div>
 
@@ -153,11 +154,11 @@ export default function AboutPage() {
       </section>
 
 
-       {/* Partner Ecosystem - Constrained Width */}
+       {/* Our Curated Ecosystem Section */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 max-w-screen-lg"> {/* Adjusted max-width */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Curated Partner Ecosystem</h2>
+            <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Curated Ecosystem</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Access to Cabo's elite network of architects, builders, legal experts, and financiers, orchestrated for your success.
             </p>
