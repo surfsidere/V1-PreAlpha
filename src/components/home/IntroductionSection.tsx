@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -10,41 +11,42 @@ interface IntroductionSectionProps {
 }
 
 const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
-  // Video URL
-  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/04/3835189-hd_1920_1080_25fps.mp4";
+  // New Video URL
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0180.mp4";
 
   return (
     <section
       data-ai-hint="about us teaser integrated approach"
-      // Adjusted height to 45svh, added relative positioning for background elements
-      className="h-[45svh] relative flex flex-col justify-center bg-background py-8 md:py-12 overflow-hidden"
+      // Use min-h to ensure section has height, adjust padding as needed
+      className="relative flex flex-col justify-center bg-background py-12 md:py-16 overflow-hidden min-h-[45svh]"
     >
-      {/* Background Video */}
+      {/* Background Video - Spans the entire section */}
       <video
         autoPlay
         loop
         muted
         playsInline // Important for mobile playback
         className="absolute inset-0 w-full h-full object-cover object-center z-0" // z-index 0: bottom layer
-        data-ai-hint="sailboat ocean movement synergy expertise"
+        data-ai-hint="synergy expertise collaboration baja landscape"
       >
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Gradient Overlay for Readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/60 z-10"></div> {/* z-index 1: above video */}
+      {/* Gradient Overlay for Readability - Spans the entire section */}
+      {/* Adjusted gradient to start from further left */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50 z-10"></div> {/* z-index 1: above video */}
 
       {/* Content Container - positioned above overlay */}
       {/* Apply max-w-screen-lg here for consistent width */}
       <div className="container relative mx-auto px-4 max-w-screen-lg z-20"> {/* z-index 2: top layer */}
-         {/* Main grid layout - Keep structure but remove visual left column */}
+         {/* Main grid layout */}
          <div className="grid md:grid-cols-10 gap-8 md:gap-12 items-center">
-            {/* Left Column: Empty Placeholder - Takes space but no content */}
+            {/* Left Column: Empty Placeholder - Takes space (approx 4/10) but no content */}
              <div className="hidden md:block md:col-span-4"></div>
 
             {/* Right Column: Text Content (approx 6/10) - Apply significant left indentation */}
-            {/* Removed bg-background as overlay handles readability */}
+            {/* No background needed here as the overlay provides contrast */}
             <div className="md:col-span-6 pl-4 md:pl-12">
                 {/* Headline */}
                 {/* Apply the defined Brand Sans-serif H2/H3 Style */}
