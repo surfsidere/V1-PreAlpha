@@ -33,7 +33,9 @@ export default function AboutPage() {
          {/* Container inside hero for text constraint */}
          <div className="container mx-auto px-4 max-w-screen-xl relative z-20">
            {/* Updated Headline */}
-           <h1 className="text-4xl md:text-5xl font-serif mb-4" dangerouslySetInnerHTML={{ __html: "Roots, Clear Vision: <br> Your Guide to Los Cabos Real Estate" }} />
+           <h1 className="text-4xl md:text-5xl font-serif mb-4">
+              Roots, Clear Vision: Guiding Your Baja Legacy
+           </h1>
            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Your trusted partner for navigating and succeeding in Cabo's dynamic luxury real estate market through integrated expertise and deep local connections.
            </p>
