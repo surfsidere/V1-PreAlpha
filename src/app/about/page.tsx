@@ -102,7 +102,7 @@ export default function AboutPage() {
             </p>
           </div>
           {/* Refined 3-Column Grid */}
-          <div className="grid md:grid-cols-3 gap-8 text-left"> {/* Changed to text-left for descriptions */}
+          <div className="grid md:grid-cols-3 gap-8 text-center"> {/* Changed from text-left to text-center */}
               {/* Point 1: Strategic Foresight */}
               <div className="p-6 border rounded-lg bg-background/50 hover:shadow-md transition-shadow">
                   <h3 className="text-xl font-serif mb-2 text-primary">Strategic Foresight</h3>
