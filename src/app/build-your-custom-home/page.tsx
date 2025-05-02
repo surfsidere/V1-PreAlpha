@@ -17,17 +17,13 @@ const customHomes = [
   { id: 3, title: "Golf Course Villa", image: "https://picsum.photos/seed/custom3/600/400", slug: "/portfolio/golf-course-villa", "data-ai-hint": "house villa golf course" },
 ];
 
-// Remove old processSteps data as it's now inside FlowingJourney
-// const processSteps = [ ... ];
-
 export default function BuildCustomHomePage() {
   return (
     <div className="bg-background">
-      {/* Replace static hero with VisionCanvas */}
+      {/* Interactive Vision Canvas Hero */}
       <VisionCanvas />
 
-      {/* Sections below the hero remain */}
-      {/* The Bespoke Process - Constrained Width */}
+      {/* The Bespoke Process - Flowing Journey */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-screen-xl">
           <div className="text-center mb-12 md:mb-16">
@@ -36,59 +32,71 @@ export default function BuildCustomHomePage() {
                 We guide you through every step of the custom home building process, ensuring a seamless, collaborative, and exceptional experience.
             </p>
            </div>
-
-            {/* Replace the static grid with the FlowingJourney component */}
             <FlowingJourney />
-
-           {/* Remove the old static grid */}
-           {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {processSteps.map((step, index) => ( ... ))}
-                <Card className="flex flex-col items-center text-center p-6 border-l-4 border-primary bg-primary/5 transition-shadow hover:shadow-md md:col-span-2 lg:col-span-1">
-                   <CheckCircle className="w-12 h-12 mb-4 text-primary" />
-                    <CardTitle className="text-xl font-serif mb-2">Unparalleled Quality</CardTitle>
-                    <CardContent className="p-0">
-                        <p className="text-sm text-muted-foreground">Leveraging our elite partner network for the finest craftsmanship and materials.</p>
-                    </CardContent>
-                </Card>
-           </div> */}
         </div>
       </section>
 
 
-      {/* Why Choose Surfside - Constrained Width */}
-       {/* This section might need re-evaluation or combination with FlowingJourney's last step ("Unparalleled Quality") */}
+      {/* Orchestrating Excellence Section (Replaced "Why Choose Surfside / Your Trusted Guide") */}
        <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4 max-w-screen-xl">
-           <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative h-80 md:h-[450px] rounded-lg overflow-hidden shadow-lg order-last md:order-first">
-                 <Image
-                   src="https://picsum.photos/seed/whychoose/800/600"
-                   alt="Architect discussing plans with a client"
-                   layout="fill"
-                   objectFit="cover"
-                   className="transition-transform duration-500 hover:scale-105"
-                   data-ai-hint="architect client meeting plans"
-                 />
+         {/* Apply max-w-screen-lg for consistent width */}
+         <div className="container mx-auto px-4 max-w-screen-lg">
+           {/* Asymmetrical Grid: Visual Left (40%), Text Right (60%) */}
+           <div className="grid md:grid-cols-10 gap-8 md:gap-12 items-center">
+
+             {/* Visual Element Column (Left - 4/10) */}
+             <div className="md:col-span-4">
+               <div className="relative h-80 md:h-[450px] bg-muted rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+                 {/* Placeholder for Visual */}
+                 <span className="text-muted-foreground text-sm">
+                    [Visual Placeholder: Animation, Image, or Video Loop]
+                 </span>
+                  {/* Example using a static image placeholder: */}
+                 {/* <Image
+                    src="https://picsum.photos/seed/orchestrate/800/600"
+                    alt="High-quality materials or plans"
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-500 hover:scale-105"
+                    data-ai-hint="architecture plans materials stone wood"
+                  /> */}
                </div>
-               <div className="order-first md:order-last">
-                <h2 className="text-3xl md:text-4xl font-serif mb-6">Your Trusted Guide</h2>
-                 {/* Replaced list with paragraph summarizing the points */}
-                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                    We provide a personalized approach, deeply understanding your needs and aspirations. Our expert project management ensures meticulous oversight for quality, budget, and timeline adherence. Benefit from access to Cabo's elite network of architects, designers, and builders, all while maintaining transparent communication throughout the journey.
-                 </p>
-                 <Button asChild className="mt-8">
-                    <Link href="/contact?inquiry=custom_home_consultation">Schedule a Private Consultation</Link>
-                </Button>
+             </div>
+
+             {/* Text Content Column (Right - 6/10) */}
+             {/* Added pl-4 md:pl-12 for the significant left indentation */}
+             <div className="md:col-span-6 pl-4 md:pl-12">
+                 {/* Headline styled using Brand Sans-serif H2/H3 */}
+                 <h2 className="text-3xl md:text-4xl font-serif mb-6 text-foreground">
+                     Orchestrating Excellence, From Blueprint to Baja Lifestyle.
+                 </h2>
+                 {/* Body text styled using Brand Sans-serif Body */}
+                 <div className="space-y-4 text-muted-foreground leading-relaxed">
+                     <p>
+                         Bringing a custom residence to life in Los Cabos is an intricate symphony. We serve as your dedicated conductor, meticulously aligning visionary design with strategic planning and flawless execution. Our personalized approach begins with deeply understanding your aspirations, ensuring every subsequent step resonates with your unique definition of home.
+                     </p>
+                     <p>
+                         Leveraging decades of local insight and rigorous oversight, we manage every facet of the project lifecycle – from navigating entitlements to demanding the highest standards during construction. We mitigate risks through proactive communication and transparent management, ensuring your journey is as seamless as the final result.
+                     </p>
+                     <p>
+                         Our curated ecosystem of Baja Sur's finest architects, builders, and artisans is integral to our process. We don't just connect you; we orchestrate this elite network, ensuring collaborative synergy and access to unparalleled craftsmanship dedicated to realizing your vision and creating enduring value.
+                     </p>
+                 </div>
+                 {/* CTA remains from previous version */}
+                  <Button asChild className="mt-8">
+                     <Link href="/contact?inquiry=custom_home_consultation">Schedule a Private Consultation</Link>
+                 </Button>
               </div>
 
            </div>
-        </div>
-      </section>
+         </div>
+       </section>
 
 
        {/* Showcase Gallery - Constrained Width */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 max-w-screen-xl">
+        {/* Apply max-w-screen-lg for consistent width */}
+        <div className="container mx-auto px-4 max-w-screen-lg">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Inspiring Custom Homes</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {customHomes.map((home) => (
@@ -106,7 +114,6 @@ export default function BuildCustomHomePage() {
                 </CardHeader>
                 <CardContent className="p-6">
                   <CardTitle className="text-xl font-serif mb-2">{home.title}</CardTitle>
-                  {/* <p className="text-sm text-muted-foreground mb-4">Brief description or key feature...</p> */}
                   <Button variant="link" asChild className="p-0 h-auto">
                     <Link href={home.slug}>
                       View Project <ArrowRight className="ml-2 h-4 w-4" />
