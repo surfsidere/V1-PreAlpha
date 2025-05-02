@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -102,16 +103,17 @@ const FlowingJourney: React.FC = () => {
                 <div className="relative flex flex-col items-center">
                   {/* Desktop Node Circle */}
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary hidden md:block" />
-                  {/* Icon */}
+                  {/* Icon Wrapper - Removed padding, background, and rounded-full */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0.5 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
-                    className="p-4 rounded-full bg-primary/10 text-primary mb-4 md:mb-0"
+                    className="text-primary mb-4 md:mb-0" // Removed p-4 rounded-full bg-primary/10
                     aria-hidden="true"
                   >
-                    <step.Icon className="w-8 h-8" />
+                    {/* Apply size directly to the icon */}
+                    <step.Icon className="w-10 h-10 md:w-12 md:h-12" />
                   </motion.div>
                 </div>
               </div>
@@ -155,3 +157,4 @@ const FlowingJourney: React.FC = () => {
 };
 
 export default FlowingJourney;
+
