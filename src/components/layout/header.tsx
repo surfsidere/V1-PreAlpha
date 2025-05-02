@@ -15,7 +15,6 @@ const navItems = [
   { label: 'Properties', href: '/properties' },
   { label: 'Custom Homes', href: '/build-your-custom-home' },
   { label: 'Insights', href: '/insights' },
-  // Removed { label: 'Contact', href: '/contact' } to avoid duplication
 ];
 
 const logoUrl = "https://www.surfside.re/wp-content/uploads/2022/06/LogoSurfside_white-07.png";
@@ -24,7 +23,6 @@ const logoHeight = 38; // Adjust as needed
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Removed isScrolled state and effect as header is now always primary color
 
   return (
     <header
@@ -33,8 +31,9 @@ export function Header() {
         'bg-primary text-primary-foreground shadow-md' // Always use primary background and foreground
       )}
     >
-      <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
-        {/* Replace text logo with Image logo */}
+      {/* Wrap content in a container that matches the main page content width */}
+      <div className="container mx-auto px-4 max-w-screen-lg h-16 md:h-20 flex items-center justify-between">
+        {/* Logo Link */}
         <Link href="/" className="flex items-center">
           <Image
             src={logoUrl}
