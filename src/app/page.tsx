@@ -1,15 +1,15 @@
 'use client';
 
-import HeroSection from '@/components/home/HeroSection'; // Corrected import name
-import AudienceSegmentation from '@/components/home/AudienceSegmentation'; // Corrected import name
-import IntroductionSection from '@/components/home/IntroductionSection'; // Corrected import name
-import CoreCapabilitiesSection from '@/components/home/CoreCapabilitiesSection'; // Corrected import name
-import FeaturedProjectsSection from '@/components/home/FeaturedProjectsSection'; // Corrected import name
-import CommunitySection from '@/components/home/CommunitySection'; // Corrected import name
-import FinalCallToActionSection from '@/components/home/FinalCallToActionSection'; // Corrected import name
+import React from 'react';
+import HeroSection from '@/components/home/HeroSection'; // Use the actual Hero component
+import AudienceSegmentation from '@/components/home/AudienceSegmentation';
+import IntroductionSection from '@/components/home/IntroductionSection';
+import CoreCapabilitiesSection from '@/components/home/CoreCapabilitiesSection';
+import FeaturedProjectsSection from '@/components/home/FeaturedProjectsSection';
+import CommunitySection from '@/components/home/CommunitySection';
+// Removed FinalCallToActionSection import
 import { featuredProjects, featuredSolutions } from '@/lib/data';
 
-// Renaming the component to avoid naming conflict
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -32,11 +32,11 @@ export default function HomePage() {
         featuredProjects={featuredProjects}
       />
 
-      {/* Component 6: Community & Future Teaser */}
+      {/* Component 6: Community & Future Teaser + Final CTA Merged */}
       <CommunitySection />
 
-      {/* Component 7: Final Call to Action / Contact */}
-      <FinalCallToActionSection />
+      {/* Component 7: Final Call to Action / Contact - Removed */}
+      {/* <FinalCallToActionSection /> */}
     </div>
   );
 }

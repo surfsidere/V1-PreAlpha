@@ -11,51 +11,66 @@ interface CommunitySectionProps {
 }
 
 const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
-  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0143.mp4"; // Video URL
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0143.mp4"; // Video URL from previous request
 
   return (
     <section
-      data-ai-hint="community future video section"
-      // Use min-h, flex, flex-col, and justify-between/justify-center to structure
-      className="relative flex flex-col items-center justify-center overflow-hidden min-h-[60svh] md:min-h-[70svh] text-center"
+      data-ai-hint="community future video section with cta"
+      // Changed to min-h-screen and flex structure
+      className="relative flex flex-col justify-between overflow-hidden min-h-screen text-center"
     >
-      {/* Background Video */}
+      {/* Background Video - Covers the entire section */}
       <video
         autoPlay
         loop
         muted
-        playsInline // Important for mobile playback
-        className="absolute inset-0 w-full h-full object-cover object-center z-0" // Covers the section
-        data-ai-hint="community nature cabo landscape" // Updated AI hint
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover object-center z-0"
+        data-ai-hint="community nature cabo landscape aerial"
       >
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10"></div>
+      {/* Main Overlay for general readability (optional, adjust as needed) */}
+      <div className="absolute inset-0 bg-black/30 z-10"></div>
 
-      {/* Content Container */}
-      <div className="relative z-20 p-8 text-white max-w-3xl mx-auto">
-        {/* Headline with white text color */}
+      {/* Content Container - Pushes content away from edges */}
+      <div className="relative z-20 flex flex-col flex-grow justify-center p-8 text-white max-w-3xl mx-auto pt-20"> {/* Added top padding */}
+        {/* Community Content (adjust spacing as needed) */}
         <h2 className="text-3xl md:text-4xl font-serif mb-4 text-white text-shadow-lg">
           Building a Better Future, Together
         </h2>
-        {/* Paragraph */}
         <p className="text-lg text-white/90 mb-8 text-shadow">
           We believe in conscious development that respects the unique environment and community of Baja California Sur. Our commitment extends beyond individual projects to fostering sustainable practices and contributing positively to the region's future.
         </p>
-
-        {/* Button Container - Centered below text */}
-        <div className="mt-8">
-          <Button asChild size="lg" variant="secondary">
-             {/* Link component remains as the single child */}
-            <Link href="/about#community-vision" className="flex items-center">
+        <Button asChild size="lg" variant="secondary" className="mx-auto">
+           <Link href="/about#community-vision" className="flex items-center">
               Discover How <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-          </Button>
+        </Button>
+      </div>
+
+      {/* Bottom CTA Area */}
+      <div className="relative z-20 h-[35vh] flex flex-col items-center justify-center p-8 text-primary-foreground">
+         {/* Dark Gradient Overlay for CTA section */}
+        <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-primary via-primary/80 to-transparent z-0"></div>
+         {/* CTA Content */}
+        <div className="relative z-10 max-w-xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4">Ready to start the conversation?</h2>
+            <p className="text-lg text-primary-foreground/80 mb-8">
+                Let's discuss how Surfside's integrated expertise can bring your Cabo vision to life.
+            </p>
+            <Button size="lg" variant="secondary" asChild>
+                <Link href="/contact">
+                <span className="flex items-center">
+                    Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
+                </span>
+                </Link>
+            </Button>
         </div>
       </div>
+
        <style jsx>{`
             .text-shadow { text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
             .text-shadow-lg { text-shadow: 0 2px 5px rgba(0,0,0,0.7); }
