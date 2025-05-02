@@ -31,7 +31,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent z-10"></div>
 
          {/* Container inside hero for text constraint */}
-         <div className="container mx-auto px-4 max-w-screen-xl relative z-20">
+         <div className="container mx-auto px-4 max-w-screen-lg relative z-20"> {/* Adjusted max-width */}
            {/* Updated Headline */}
            <h1 className="text-4xl md:text-5xl font-serif mb-4">
               Deep Roots, Clear Vision: <br/> Guiding Your Baja Legacy
@@ -42,22 +42,58 @@ export default function AboutPage() {
          </div>
       </section>
 
-      {/* Placeholder for "Our Philosophy" section - Content moved below */}
-      <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4 max-w-screen-xl">
-             {/* Philosophy Text (example) */}
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                 <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Curated Ecosystem</h2>
-                 <p className="text-muted-foreground leading-relaxed">
-                   Our curated ecosystem of Baja Sur's finest architects, builders, and artisans is integral to our process. We don't just connect you; we orchestrate this elite network, ensuring collaborative synergy and access to unparalleled craftsmanship dedicated to realizing your vision and creating enduring value.
+      {/* Unified Value Proposition Section */}
+       <section className="py-16 md:py-24">
+         <div className="container mx-auto px-4 max-w-screen-lg">
+           {/* Asymmetrical Grid: Visual Left (40%), Text Right (60%) */}
+           <div className="grid md:grid-cols-10 gap-8 md:gap-12 items-center">
+
+             {/* Visual Element Column (Left - 4/10) */}
+             <div className="md:col-span-4">
+               <div className="relative h-80 md:h-[450px] bg-muted rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+                 {/* Placeholder for sophisticated visual (Image/Animation/Video) */}
+                  <Image
+                    src="https://picsum.photos/seed/vision/800/600" // Placeholder Image
+                    alt="Sophisticated visual representing vision or the Baja landscape"
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-500 hover:scale-105"
+                    data-ai-hint="baja landscape abstract texture" // AI hint for placeholder
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></span>
+                 {/* <span className="text-muted-foreground text-sm p-4 text-center">
+                    [Visual Placeholder: Insight, Vision, Legacy, or Baja Landscape Image/Animation]
+                 </span> */}
+               </div>
+             </div>
+
+             {/* Text Content Column (Right - 6/10) */}
+             {/* Added pl-4 md:pl-12 for the significant left indentation */}
+             <div className="md:col-span-6 pl-4 md:pl-12">
+                 {/* Main Headline (H2 Style) */}
+                 <h2 className="text-3xl md:text-4xl font-serif mb-6 text-foreground"> {/* Use Brand Sans-serif H2 Style - Assuming font-serif maps correctly */}
+                     Mastering the Cabo Landscape: Your Vision, Expertly Realized.
+                 </h2>
+                 {/* Main Body Text */}
+                 <p className="text-muted-foreground leading-relaxed mb-4"> {/* Brand Sans-serif Body Style */}
+                     Navigating the dynamic Los Cabos real estate market demands more than access; it requires a trusted partner with deep local roots and unwavering strategic clarity. We guide discerning clients through every complexity, ensuring your objectives are met with integrated expertise and insightful counsel.
+                 </p>
+                 {/* Optional Subtle Separator */}
+                  <hr className="w-12 border-t border-border my-6" /> {/* Adjusted margin */}
+                 {/* Ecosystem Sub-Section Text (Option B - Integrated Flow) */}
+                 <p className="text-muted-foreground leading-relaxed"> {/* Brand Sans-serif Body Style, could use text-secondary if defined differently */}
+                    Integral to this is our curated ecosystem of Baja Sur's finest architects, builders, artisans, and legal experts. We don't just connect you; we meticulously orchestrate this elite collective, ensuring collaborative synergy and access to unparalleled craftsmanship dedicated to realizing your vision and creating enduring value.
                  </p>
               </div>
-          </div>
-      </section>
 
-      {/* Our Integrated Advantage Section (Replaced "Our Integrated Model" or "Our Philosophy") */}
+           </div>
+         </div>
+       </section>
+
+
+      {/* Our Integrated Advantage Section (Kept as is) */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4 max-w-screen-xl">
+        <div className="container mx-auto px-4 max-w-screen-lg"> {/* Adjusted max-width */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Integrated Advantage</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -94,7 +130,7 @@ export default function AboutPage() {
 
        {/* Meet the Leadership - Constrained Width */}
       <section className="py-16 md:py-24"> {/* Removed bg-secondary/30 */}
-        <div className="container mx-auto px-4 max-w-screen-xl">
+        <div className="container mx-auto px-4 max-w-screen-lg"> {/* Adjusted max-width */}
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Meet the Leadership</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadershipTeam.map((member) => (
@@ -119,7 +155,7 @@ export default function AboutPage() {
 
        {/* Partner Ecosystem - Constrained Width */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4 max-w-screen-xl">
+        <div className="container mx-auto px-4 max-w-screen-lg"> {/* Adjusted max-width */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Curated Partner Ecosystem</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
