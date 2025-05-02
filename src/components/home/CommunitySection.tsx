@@ -11,7 +11,7 @@ interface CommunitySectionProps {
 }
 
 const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
-  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0143.mp4"; // Video URL from previous request
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0143.mp4"; // Video URL
 
   return (
     <section
@@ -57,7 +57,8 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
         <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-primary via-primary/80 to-transparent z-0"></div>
          {/* CTA Content */}
         <div className="relative z-10 max-w-xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Ready to start the conversation?</h2>
+            {/* Changed text-primary-foreground to text-white */}
+            <h2 className="text-3xl md:text-4xl font-serif mb-4 text-white">Ready to start the conversation?</h2>
             <p className="text-lg text-primary-foreground/80 mb-8">
                 Let's discuss how Surfside's integrated expertise can bring your Cabo vision to life.
             </p>
@@ -80,3 +81,4 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
 };
 
 export default CommunitySection;
+
