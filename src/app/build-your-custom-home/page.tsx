@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import VisionCanvas from '@/components/custom-home/VisionCanvas'; // Import the new interactive hero
+import FlowingJourney from '@/components/custom-home/FlowingJourney'; // Import the new FlowingJourney component
+
 
 // Placeholder data - keep for sections below the hero
 const customHomes = [
@@ -15,13 +17,8 @@ const customHomes = [
   { id: 3, title: "Golf Course Villa", image: "https://picsum.photos/seed/custom3/600/400", slug: "/portfolio/golf-course-villa", "data-ai-hint": "house villa golf course" },
 ];
 
-const processSteps = [
-    { title: "Vision & Site Selection", description: "Understanding your dream and finding the perfect canvas in Cabo." },
-    { title: "Design Collaboration", description: "Partnering with elite architects to translate your vision into reality." },
-    { title: "Permitting & Entitlements", description: "Navigating the local regulatory landscape seamlessly." },
-    { title: "Meticulous Construction", description: "Overseeing every detail with trusted builders for unparalleled quality." },
-    { title: "Finishing & Handover", description: "Ensuring perfection before welcoming you to your new home." },
-]
+// Remove old processSteps data as it's now inside FlowingJourney
+// const processSteps = [ ... ];
 
 export default function BuildCustomHomePage() {
   return (
@@ -33,23 +30,19 @@ export default function BuildCustomHomePage() {
       {/* The Bespoke Process - Constrained Width */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-screen-xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 md:mb-16">
              <h2 className="text-3xl md:text-4xl font-serif mb-4">Your Vision, Our Expertise</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 We guide you through every step of the custom home building process, ensuring a seamless, collaborative, and exceptional experience.
             </p>
            </div>
 
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {processSteps.map((step, index) => (
-                   <Card key={index} className="flex flex-col items-center text-center p-6 border-l-4 border-primary transition-shadow hover:shadow-md">
-                       <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4 font-semibold text-lg">{index + 1}</div>
-                       <CardTitle className="text-xl font-serif mb-2">{step.title}</CardTitle>
-                       <CardContent className="p-0">
-                        <p className="text-sm text-muted-foreground">{step.description}</p>
-                       </CardContent>
-                   </Card>
-               ))}
+            {/* Replace the static grid with the FlowingJourney component */}
+            <FlowingJourney />
+
+           {/* Remove the old static grid */}
+           {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+               {processSteps.map((step, index) => ( ... ))}
                 <Card className="flex flex-col items-center text-center p-6 border-l-4 border-primary bg-primary/5 transition-shadow hover:shadow-md md:col-span-2 lg:col-span-1">
                    <CheckCircle className="w-12 h-12 mb-4 text-primary" />
                     <CardTitle className="text-xl font-serif mb-2">Unparalleled Quality</CardTitle>
@@ -57,12 +50,13 @@ export default function BuildCustomHomePage() {
                         <p className="text-sm text-muted-foreground">Leveraging our elite partner network for the finest craftsmanship and materials.</p>
                     </CardContent>
                 </Card>
-           </div>
+           </div> */}
         </div>
       </section>
 
 
       {/* Why Choose Surfside - Constrained Width */}
+       {/* This section might need re-evaluation or combination with FlowingJourney's last step ("Unparalleled Quality") */}
        <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 max-w-screen-xl">
            <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -78,24 +72,10 @@ export default function BuildCustomHomePage() {
                </div>
                <div className="order-first md:order-last">
                 <h2 className="text-3xl md:text-4xl font-serif mb-6">Your Trusted Guide</h2>
-                <ul className="space-y-4">
-                    <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0"/>
-                        <p className="text-muted-foreground"><strong className="font-medium text-foreground">Personalized Approach:</strong> Deeply understanding your needs and aspirations.</p>
-                    </li>
-                    <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0"/>
-                        <p className="text-muted-foreground"><strong className="font-medium text-foreground">Expert Project Management:</strong> Meticulous oversight ensuring quality, budget, and timeline adherence.</p>
-                    </li>
-                     <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0"/>
-                        <p className="text-muted-foreground"><strong className="font-medium text-foreground">Elite Network Access:</strong> Connecting you with Cabo's best architects, designers, and builders.</p>
-                    </li>
-                     <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0"/>
-                        <p className="text-muted-foreground"><strong className="font-medium text-foreground">Transparent Communication:</strong> Keeping you informed and involved every step of the way.</p>
-                    </li>
-                </ul>
+                 {/* Replaced list with paragraph summarizing the points */}
+                 <p className="text-muted-foreground mb-6 leading-relaxed">
+                    We provide a personalized approach, deeply understanding your needs and aspirations. Our expert project management ensures meticulous oversight for quality, budget, and timeline adherence. Benefit from access to Cabo's elite network of architects, designers, and builders, all while maintaining transparent communication throughout the journey.
+                 </p>
                  <Button asChild className="mt-8">
                     <Link href="/contact?inquiry=custom_home_consultation">Schedule a Private Consultation</Link>
                 </Button>
