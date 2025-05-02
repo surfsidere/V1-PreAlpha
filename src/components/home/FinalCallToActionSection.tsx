@@ -20,7 +20,11 @@ const FinalCallToActionSection: React.FC<FinalCallToActionSectionProps> = ({}) =
       </p>
       <Button size="lg" variant="secondary" asChild>
         <Link href="/contact">
-          Get In Touch <ArrowRight className="ml-2 h-5 w-5" /></Link>
+          {/* Wrap multiple children in a span */}
+          <span className="flex items-center">
+            Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
+          </span>
+        </Link>
       </Button>
     </div>
   </section>
