@@ -34,7 +34,7 @@ export default function AboutPage() {
          <div className="container mx-auto px-4 max-w-screen-xl relative z-20">
            {/* Updated Headline */}
            <h1 className="text-4xl md:text-5xl font-serif mb-4">
-              Roots, Clear Vision: Guiding Your Baja Legacy
+              Deep Roots, Clear Vision: <br/> Guiding Your Baja Legacy
            </h1>
            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Your trusted partner for navigating and succeeding in Cabo's dynamic luxury real estate market through integrated expertise and deep local connections.
