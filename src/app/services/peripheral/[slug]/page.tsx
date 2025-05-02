@@ -3,7 +3,7 @@
 // Remove 'use client' and async - Make it a standard Server Component
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, ClipboardCheck, FileText, HandCoins, Wind, Handshake, Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass } from 'lucide-react'; // Import Handshake and other used icons
+import { ArrowLeft, CheckCircle, ClipboardCheck, FileText, HandCoins, Wind, Handshake, Building, Sailboat, Landmark, UserCheck, Paintbrush, DraftingCompass } from 'lucide-react'; // Added Sailboat, removed ConciergeBell
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { notFound } from 'next/navigation'; // Import notFound
@@ -67,7 +67,7 @@ const peripheralServiceData: { [key: string]: PeripheralServiceData } = {
        { title: "Development Coordination & Oversight", href: "/build-your-custom-home" }, // Consistent title
        { title: "Comprehensive Property Management", href: "/services/peripheral/property-management" },
     ],
-    icon: 'ConciergeBell',
+    icon: 'Sailboat', // Changed from ConciergeBell
   },
   'fideicomiso-guidance': {
     title: "Legal & Trust Structure Guidance",
@@ -324,4 +324,3 @@ export async function generateStaticParams() {
    const slugs = Object.keys(peripheralServiceData);
    return slugs.map((slug) => ({ slug }));
 }
-

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 // Import necessary icons - ensure all are valid Lucide icons
 import {
     ArrowRight, BarChart3, Megaphone, Cpu, SwatchBook, // Core icons
-    Building, ConciergeBell, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons
+    Building, Sailboat, Landmark, UserCheck, Paintbrush, DraftingCompass // Level 2 Icons - Replaced ConciergeBell with Sailboat
 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -49,7 +49,7 @@ const keySupportAreas = [
   },
    {
     title: "Concierge & Lifestyle Services",
-    icon: ConciergeBell,
+    icon: Sailboat, // Replaced ConciergeBell with Sailboat
     href: "/services/peripheral/concierge-services",
     tagline: "Bespoke support for your Cabo life."
   },
