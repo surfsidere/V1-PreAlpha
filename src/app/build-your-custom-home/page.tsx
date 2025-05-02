@@ -1,4 +1,4 @@
-'use client'; // Add this directive
+'use client'; // Keep 'use client' as the page now uses interactive components below the VisionCanvas
 
 // src/app/build-your-custom-home/page.tsx
 import Image from 'next/image';
@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import VisionCanvas from '@/components/custom-home/VisionCanvas'; // Import the new interactive hero
 
-// Placeholder data
+// Placeholder data - keep for sections below the hero
 const customHomes = [
   { id: 1, title: "Cliffside Estate", image: "https://picsum.photos/seed/custom1/600/400", slug: "/portfolio/cliffside-estate", "data-ai-hint": "luxury villa cliff ocean" },
   { id: 2, title: "Modern Beachfront", image: "https://picsum.photos/seed/custom2/600/400", slug: "/portfolio/modern-beachfront", "data-ai-hint": "modern house beach sunset" },
@@ -25,40 +26,10 @@ const processSteps = [
 export default function BuildCustomHomePage() {
   return (
     <div className="bg-background">
-      {/* Hero Section - Full Width */}
-      <section className="relative h-[70svh] min-h-[450px] flex items-center justify-center text-center text-white overflow-hidden bg-gradient-to-br from-primary/80 to-accent/60">
-         <div className="absolute inset-0 z-0 opacity-30">
-          <Image
-            src="https://picsum.photos/seed/customhero/1920/1080"
-            alt="Luxury custom home interior detail"
-            layout="fill"
-            objectFit="cover"
-            quality={80}
-            priority
-             data-ai-hint="luxury home interior modern"
-          />
-           <div className="absolute inset-0 bg-black/30"></div>
-        </div>
-         {/* Container inside hero for text constraint */}
-        <div className="relative z-10 p-8 max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-serif font-medium mb-4 text-shadow-lg">
-            Craft Your Cabo Dream Home
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-shadow">
-            Partner with Surfside.re for a bespoke journey in creating an exceptional residence tailored to your vision and lifestyle.
-          </p>
-           <Button size="lg" asChild variant="secondary">
-            <Link href="/contact?inquiry=custom_home">
-              Begin Your Vision
-            </Link>
-          </Button>
-        </div>
-        <style jsx>{`
-            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-            .text-shadow-lg { text-shadow: 0 3px 6px rgba(0,0,0,0.6); }
-         `}</style>
-      </section>
+      {/* Replace static hero with VisionCanvas */}
+      <VisionCanvas />
 
+      {/* Sections below the hero remain */}
       {/* The Bespoke Process - Constrained Width */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-screen-xl">

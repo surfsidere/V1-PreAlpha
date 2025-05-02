@@ -7,7 +7,7 @@ body {
 }
 
 .font-serif {
-  font-family: var(--font-lora), serif;
+  font-family: var(--font-playfair-display), serif; /* Changed from Lora to Playfair Display */
 }
 
 .font-mono {
@@ -16,107 +16,125 @@ body {
 
 @layer base {
   :root {
-    --background: 30 20% 98%; /* Warm sophisticated off-white */
-    --foreground: 210 10% 23%; /* Deep charcoal */
+    /* Original Palette (warm off-white base, charcoal text, ocean blue/agave green accents) */
+    /* --background: 30 20% 98%;  Warm sophisticated off-white */
+    /* --foreground: 210 10% 23%; Deep charcoal */
+    /* --primary: 210 30% 40%; /* Muted deep ocean blue (example) */
+    /* --accent: 150 30% 45%; /* Sophisticated agave green (example) */
 
-    --card: 30 20% 99%; /* Slightly off the base */
-    --card-foreground: 210 10% 23%;
+    /* New Green Palette Implementation */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 150 5% 13%; /* Dark Green (#1f2421) for main text */
 
-    --popover: 30 20% 99%;
-    --popover-foreground: 210 10% 23%;
+    --card: 0 0% 100%; /* White card background */
+    --card-foreground: 150 5% 13%; /* Dark green text on card */
 
-    /* --primary: 210 30% 40%; */ /* Original Muted deep ocean blue */
-    /* New Primary: Dark Green (#1f2421) - HSL approx 150 5% 13% */
-    --primary: 150 5% 13%;
-    /* --primary-foreground: 0 0% 98%; */ /* Original Light text on blue */
-    /* New Primary Foreground: Light color for dark green bg */
-    --primary-foreground: 40 30% 95%; /* Soft Off-white */
+    --popover: 0 0% 100%; /* White popover background */
+    --popover-foreground: 150 5% 13%; /* Dark green text on popover */
 
+    /* Primary is the dark green */
+    --primary: 150 5% 13%; /* Dark Green (#1f2421) - HSL approx 150 5% 13% */
+    --primary-foreground: 40 30% 95%; /* Soft Off-white for text ON primary green */
 
-    /* Adjust Secondary, Muted, Accent based on new primary */
-    --secondary: 150 5% 92%; /* Lighter variant of the green */
-    --secondary-foreground: 150 5% 10%; /* Darker green text on light green */
+    /* Secondary, Muted, Accent derived from the green/neutral scheme */
+    --secondary: 150 5% 95%; /* Very Light Grey-Green */
+    --secondary-foreground: 150 5% 15%; /* Dark green text on secondary */
 
-    --muted: 150 5% 96%; /* Even lighter green variant */
+    --muted: 150 5% 97%; /* Even lighter Grey-Green */
     --muted-foreground: 150 5% 45%; /* Mid-tone green/grey */
 
-    --accent: 150 5% 90%; /* Slightly more saturated light green */
-    --accent-foreground: 150 5% 15%; /* Dark green text for accent */
+    /* Accent could be a slightly brighter green or a contrasting neutral */
+     --accent: 150 8% 90%; /* Lighter Greenish Gray */
+     /* --accent: 40 10% 90%; /* Alternative: Soft Sand/Beige */
+    --accent-foreground: 150 5% 10%; /* Darkest green for text on accent */
 
-    --destructive: 0 74.2% 50.2%; /* Adjusted red for better contrast */
+    --destructive: 0 74.2% 50.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 150 5% 88%; /* Border based on green tones */
-    --input: 150 5% 88%; /* Input border based on green tones */
+    --border: 150 5% 88%; /* Border based on green/grey tones */
+    --input: 150 5% 88%; /* Input border */
     --ring: 150 15% 40%; /* Ring color related to primary green */
 
-    --radius: 0.5rem;
+    --radius: 0.3rem; /* Slightly reduced radius for sharper look */
 
-    /* Chart colors can be adjusted if needed, keeping defaults for now */
+    /* Chart colors - Consider adjusting to fit the green/neutral theme */
     --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
+    --chart-2: 173 58% 39%; /* Existing green might work */
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Sidebar variables (adjust if sidebar styling is used) */
-    --sidebar-background: 30 20% 98%; /* Default light */
+    /* Sidebar variables */
+    --sidebar-background: 150 5% 98%; /* Light Grey-Green for sidebar */
     --sidebar-foreground: 150 5% 15%; /* Dark green text */
     --sidebar-primary: 150 5% 13%; /* Match primary */
     --sidebar-primary-foreground: 40 30% 95%; /* Match primary fg */
-    --sidebar-accent: 150 5% 90%; /* Match accent */
-    --sidebar-accent-foreground: 150 5% 15%; /* Match accent fg */
+    --sidebar-accent: 150 8% 90%; /* Match accent */
+    --sidebar-accent-foreground: 150 5% 10%; /* Match accent fg */
     --sidebar-border: 150 5% 88%; /* Match border */
     --sidebar-ring: 150 15% 40%; /* Match ring */
+
+     /* Brand specific colors (from hero style analysis) */
+     --brand-background-primary: #FFFFFF; /* White */
+     --brand-text-primary: #1f2421; /* Dark Green */
+     --brand-text-secondary: #666666; /* Medium Grey */
+     --brand-accent-line: #a7afaa; /* Lighter grey-green for accent line */
+     --brand-button-border: #cccccc; /* Light grey border for button */
+
+     /* Convert brand colors to HSL for theme consistency (approximate) */
+     /* --brand-text-primary-hsl: 150 5% 13%; */
+     /* --brand-text-secondary-hsl: 0 0% 40%; */
+     /* --brand-accent-line-hsl: 150 5% 67%; */
+     /* --brand-button-border-hsl: 0 0% 80%; */
   }
 
   .dark {
-    /* Define dark mode colors - using inverted/adjusted versions */
+    /* Define dark mode colors - using inverted/adjusted green/neutral versions */
     --background: 150 5% 10%; /* Dark green-tinted background */
-    --foreground: 40 30% 95%; /* Soft off-white text */
+    --foreground: 150 5% 85%; /* Lighter Grey-Green Text */
 
-    --card: 150 5% 12%;
-    --card-foreground: 40 30% 95%;
+    --card: 150 5% 12%; /* Slightly darker card */
+    --card-foreground: 150 5% 85%;
 
-    --popover: 150 5% 12%;
-    --popover-foreground: 40 30% 95%;
+    --popover: 150 5% 10%; /* Match background */
+    --popover-foreground: 150 5% 85%;
 
-    /* Primary in dark mode could be a slightly lighter/more vibrant green */
-    --primary: 150 15% 30%; /* A slightly lighter, more visible green */
-    --primary-foreground: 40 30% 95%;
+    /* Primary in dark mode */
+    --primary: 150 5% 13%; /* Keep the dark green */
+    --primary-foreground: 40 30% 95%; /* Soft Off-white */
 
-    --secondary: 150 5% 20%; /* Darker secondary */
-    --secondary-foreground: 40 30% 95%;
+    --secondary: 150 5% 18%; /* Darker secondary */
+    --secondary-foreground: 150 5% 75%; /* Lighter text on secondary */
 
-    --muted: 150 5% 25%;
-    --muted-foreground: 150 5% 65%; /* Lighter grey-green */
+    --muted: 150 5% 22%; /* Darker muted */
+    --muted-foreground: 150 5% 60%; /* Mid-tone grey-green */
 
-    --accent: 150 10% 40%; /* More noticeable accent green */
-    --accent-foreground: 40 30% 95%;
+    --accent: 150 8% 25%; /* Darker accent */
+    --accent-foreground: 150 5% 90%; /* Light text on accent */
 
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 150 5% 30%;
-    --input: 150 5% 30%;
+    --border: 150 5% 30%; /* Darker border */
+    --input: 150 5% 30%; /* Darker input border */
     --ring: 150 20% 50%; /* Brighter ring for dark mode */
 
-    /* Chart colors can be adjusted for dark mode if needed */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-
     /* Sidebar dark variables */
-    --sidebar-background: 150 5% 10%; /* Match dark background */
-    --sidebar-foreground: 40 30% 95%; /* Match dark foreground */
-    --sidebar-primary: 150 15% 30%; /* Match dark primary */
-    --sidebar-primary-foreground: 40 30% 95%; /* Match dark primary fg */
-    --sidebar-accent: 150 10% 40%; /* Match dark accent */
-    --sidebar-accent-foreground: 40 30% 95%; /* Match dark accent fg */
-    --sidebar-border: 150 5% 30%; /* Match dark border */
-    --sidebar-ring: 150 20% 50%; /* Match dark ring */
+    --sidebar-background: 150 5% 10%;
+    --sidebar-foreground: 150 5% 85%;
+    --sidebar-primary: 150 5% 13%;
+    --sidebar-primary-foreground: 40 30% 95%;
+    --sidebar-accent: 150 8% 25%;
+    --sidebar-accent-foreground: 150 5% 90%;
+    --sidebar-border: 150 5% 30%;
+    --sidebar-ring: 150 20% 50%;
+
+     /* Brand specific colors for dark mode (adjust as needed) */
+     --brand-background-primary: #1a1a1a; /* Very Dark Grey */
+     --brand-text-primary: #e0e0e0; /* Light Grey Text */
+     --brand-text-secondary: #aaaaaa; /* Medium Grey */
+     --brand-accent-line: #5a615d; /* Darker grey-green line */
+     --brand-button-border: #444444; /* Dark grey border */
   }
 }
 
@@ -131,14 +149,15 @@ body {
   }
   /* Enhance base heading styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium tracking-tight;
+    @apply font-serif font-medium tracking-tight text-foreground; /* Use foreground for headings */
   }
 
   h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
   h2 { @apply text-3xl md:text-4xl; }
   h3 { @apply text-2xl md:text-3xl; }
   h4 { @apply text-xl md:text-2xl; }
-  p { @apply leading-relaxed text-base md:text-lg; }
+  /* Adjusted body text color to match brand styles */
+  p { @apply leading-relaxed text-base md:text-lg text-[color:hsl(var(--foreground))]; } /* Use foreground */
 }
 
 /* Add subtle scrollbar styling */
@@ -158,4 +177,19 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.8);
+}
+
+/* Placeholder Pattern Styles for VisionCanvas */
+.pattern-initial { background: linear-gradient(45deg, hsl(var(--background)) 0%, hsl(var(--secondary)/0.3) 100%); }
+.pattern-neutral { background-image: radial-gradient(hsl(var(--border)/0.3) 1px, transparent 1px); background-size: 10px 10px; }
+.pattern-contemporary { background-image: linear-gradient(hsl(var(--border)/0.2) 1px, transparent 1px), linear-gradient(to right, hsl(var(--border)/0.2) 1px, transparent 1px); background-size: 20px 20px; }
+/* Hacienda pattern needs actual HSL values */
+.pattern-hacienda { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23aabbac' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); /* Approximate border HSL */ }
+.pattern-pavilion { background: linear-gradient(135deg, hsl(var(--accent)/0.1) 25%, transparent 25%), linear-gradient(225deg, hsl(var(--accent)/0.1) 25%, transparent 25%); background-size: 30px 30px; }
+/* Organic pattern needs actual HSL values */
+.pattern-organic { background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23aabbac' fill-opacity='0.07'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); /* Approximate border HSL */}
+
+.pattern-initial, .pattern-neutral, .pattern-contemporary, .pattern-hacienda, .pattern-pavilion, .pattern-organic {
+  background-color: hsl(var(--background));
+  background-repeat: repeat;
 }
