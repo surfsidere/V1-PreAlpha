@@ -42,40 +42,63 @@ export default function AboutPage() {
          </div>
       </section>
 
-      {/* Our Philosophy/Approach - Constrained Width */}
+      {/* Placeholder for "Our Philosophy" section - Content moved below */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 max-w-screen-xl">
-           <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Philosophy: Integrated Excellence</h2>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  We believe success in Cabo's unique market demands more than just isolated services. It requires a holistic, integrated approach that aligns strategy, development, marketing, and local expertise.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Our model is built on collaboration, rigorous analysis, meticulous execution, and leveraging our unparalleled network of trusted partners. We act as conductors, orchestrating every element to deliver exceptional results and mitigate risk for our clients, whether they are institutional investors or individuals creating their dream home.
-                </p>
+          <div className="container mx-auto px-4 max-w-screen-xl">
+             {/* Philosophy Text (example) */}
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                 <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Guiding Principles</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+                    We believe success in Cabo's unique market demands more than just isolated services. It requires a holistic, integrated approach built on collaboration, rigorous analysis, meticulous execution, and leveraging our unparalleled network. We act as conductors, orchestrating every element to deliver exceptional results and mitigate risk for our clients.
+                 </p>
               </div>
-               <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
-                 <Image
-                   src="https://www.surfside.re/wp-content/uploads/2022/12/San-Jose-Long-Exposure-1.jpg"
-                   alt="San Jose long exposure nighttime city lights"
-                   layout="fill"
-                   objectFit="cover"
-                   className="transition-transform duration-500 hover:scale-105"
-                   data-ai-hint="cityscape night long exposure"
-                 />
-               </div>
-           </div>
+          </div>
+      </section>
+
+      {/* Our Integrated Advantage Section (Replaced "Our Integrated Model" or "Our Philosophy") */}
+      <section className="py-16 md:py-24 bg-secondary/30">
+        <div className="container mx-auto px-4 max-w-screen-xl">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Integrated Advantage</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our holistic model intertwines core disciplines, ensuring efficiency, foresight, and optimized outcomes throughout your real estate journey.
+            </p>
+          </div>
+          {/* Refined 3-Column Grid */}
+          <div className="grid md:grid-cols-3 gap-8 text-left"> {/* Changed to text-left for descriptions */}
+              {/* Point 1: Strategic Foresight */}
+              <div className="p-6 border rounded-lg bg-background/50 hover:shadow-md transition-shadow">
+                  <h3 className="text-xl font-serif mb-2 text-primary">Strategic Foresight</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    We go beyond surface data, leveraging deep market intelligence and predictive analysis to inform every decision, identify hidden opportunities, and position your investment for optimal long-term performance.
+                  </p>
+              </div>
+              {/* Point 2: Flawless Execution */}
+              <div className="p-6 border rounded-lg bg-background/50 hover:shadow-md transition-shadow">
+                  <h3 className="text-xl font-serif mb-2 text-primary">Flawless Execution</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    From initial concept through complex entitlements to final completion, our meticulous project management ensures every detail is orchestrated precisely, mitigating risks and delivering unparalleled quality on time and on budget.
+                  </p>
+              </div>
+              {/* Point 3: Optimized Value */}
+              <div className="p-6 border rounded-lg bg-background/50 hover:shadow-md transition-shadow">
+                  <h3 className="text-xl font-serif mb-2 text-primary">Optimized Value</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    True value extends beyond the transaction. Through strategic synergy, curated partnerships, and a focus on enduring quality, we strive to maximize your returns while enhancing the intrinsic lifestyle value of your property.
+                  </p>
+              </div>
+          </div>
         </div>
       </section>
 
+
        {/* Meet the Leadership - Constrained Width */}
-      <section className="py-16 md:py-24 bg-secondary/30">
+      <section className="py-16 md:py-24"> {/* Removed bg-secondary/30 */}
         <div className="container mx-auto px-4 max-w-screen-xl">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">Meet the Leadership</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadershipTeam.map((member) => (
-              <Card key={member.name} className="text-center transition-all duration-300 hover:shadow-xl">
+              <Card key={member.name} className="text-center transition-all duration-300 hover:shadow-xl border"> {/* Added border */}
                 <CardHeader className="items-center pb-4">
                   <Avatar className="w-24 h-24 mb-4 border-4 border-primary/20">
                     <AvatarImage src={member.image} alt={member.name} />
@@ -92,33 +115,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-       {/* Our Integrated Model - Constrained Width */}
-       <section className="py-16 md:py-24">
-         <div className="container mx-auto px-4 max-w-screen-xl">
-           <div className="text-center mb-12">
-               <h2 className="text-3xl md:text-4xl font-serif mb-4">The Power of Integration</h2>
-               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                 Our seamless integration of core services ensures efficiency, foresight, and optimized outcomes at every stage.
-               </p>
-           </div>
-            {/* Placeholder for a visual representation or key points */}
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div className="p-6 border rounded-lg">
-                    <h3 className="text-xl font-serif mb-2">Strategic Foresight</h3>
-                    <p className="text-sm text-muted-foreground">Informed decisions based on deep market intelligence.</p>
-                </div>
-                <div className="p-6 border rounded-lg">
-                    <h3 className="text-xl font-serif mb-2">Flawless Execution</h3>
-                    <p className="text-sm text-muted-foreground">Meticulous management from concept to completion.</p>
-                </div>
-                <div className="p-6 border rounded-lg">
-                    <h3 className="text-xl font-serif mb-2">Optimized Value</h3>
-                    <p className="text-sm text-muted-foreground">Maximizing returns and ensuring quality through synergy.</p>
-                </div>
-            </div>
-         </div>
-       </section>
 
 
        {/* Partner Ecosystem - Constrained Width */}
