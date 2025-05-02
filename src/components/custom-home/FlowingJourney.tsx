@@ -101,15 +101,15 @@ const FlowingJourney: React.FC = () => {
                 )}
               >
                 <div className="relative flex flex-col items-center">
-                  {/* Desktop Node Circle */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary hidden md:block" />
+                  {/* Desktop Node Circle - REMOVED */}
+                  {/* <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary hidden md:block" /> */}
                   {/* Icon Wrapper - Removed padding, background, and rounded-full */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0.5 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 + 0.1 * index }}
-                    className="text-primary mb-4 md:mb-0" // Removed p-4 rounded-full bg-primary/10
+                    className="text-primary mb-4 md:mb-0 relative z-10" // Added relative z-10 to ensure icon is above the path line if overlap occurs
                     aria-hidden="true"
                   >
                     {/* Apply size directly to the icon */}
