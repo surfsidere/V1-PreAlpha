@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -11,7 +12,8 @@ import Image from 'next/image'; // For representative images
 import { motion, AnimatePresence } from 'framer-motion'; // For animations
 
 // --- Component Types ---
-type Step = 'initial' | 'style' | 'scale' | 'finish' | 'leadCapture';
+// Order of steps: initial -> style -> finish -> scale -> leadCapture
+type Step = 'initial' | 'style' | 'finish' | 'scale' | 'leadCapture';
 type Style = 'baja_contemporary' | 'hacienda_revival' | 'coastal_pavilion' | 'organic_desert' | null;
 type FinishLevel = 'refined' | 'ultra' | 'estate' | null;
 
@@ -31,7 +33,9 @@ const finishOptions = [
 // --- Helper Functions ---
 // Placeholder for estimate calculation - replace with actual logic
 const calculateEstimate = (style: Style, scale: number, finish: FinishLevel): string => {
+  // Only calculate if all inputs are present
   if (!style || scale === 0 || !finish) return '$?.?M - $?.?M USD*';
+
   // Basic placeholder logic - NEEDS REPLACEMENT
   let base = 1;
   if (style === 'hacienda_revival') base = 1.2;
@@ -68,30 +72,30 @@ const VisionCanvas: React.FC = () => {
       setSelectedStyle(styleId);
       setBackgroundPattern(styleData.patternClass);
       setCurrentImage(styleData.image); // Set the representative image
-      setStep('scale');
+      setStep('finish'); // Go to Finish selection next
     }
   };
 
-  const handleScaleConfirm = () => {
-    // No specific action needed here for simple slider, maybe debounce/confirm button if complex
-    setStep('finish');
+  const handleFinishSelect = (finishId: FinishLevel) => {
+    setSelectedFinish(finishId);
+    setStep('scale'); // Go to Scale selection next
   };
 
-   const handleFinishSelect = (finishId: FinishLevel) => {
-        setSelectedFinish(finishId);
-        setStep('leadCapture');
-        // Potentially enhance abstract graphic here - placeholder
-    };
+  const handleScaleConfirm = () => {
+    setStep('leadCapture'); // Go to Lead Capture next
+  };
 
-   const handleEmailSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // TODO: Implement actual email submission logic (e.g., send to API)
-        console.log('Submitting:', { style: selectedStyle, scale: residenceScale[0], finish: selectedFinish, email });
-        alert('Vision Summary Request Sent (Simulated)!');
-        // Optional: Reset state or show thank you message
-    };
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Implement actual email submission logic (e.g., send to API)
+    console.log('Submitting:', { style: selectedStyle, scale: residenceScale[0], finish: selectedFinish, email });
+    alert('Vision Summary Request Sent (Simulated)!');
+    // Optional: Reset state or show thank you message
+  };
 
   const estimate = calculateEstimate(selectedStyle, residenceScale[0], selectedFinish);
+  // Determine if all inputs needed for estimate are available
+  const showEstimate = step === 'scale' || step === 'leadCapture';
 
   // --- Animation Variants ---
   const containerVariants = {
@@ -106,46 +110,44 @@ const VisionCanvas: React.FC = () => {
     exit: { opacity: 0, y: -10, transition: { duration: 0.2, ease: "easeIn" } },
   };
 
-   // Preload images
-    useEffect(() => {
-        styleOptions.forEach(style => {
-        const img = new window.Image();
-        img.src = style.image;
-        });
-    }, []);
-
+  // Preload images
+  useEffect(() => {
+    styleOptions.forEach(style => {
+      const img = new window.Image();
+      img.src = style.image;
+    });
+  }, []);
 
   return (
     <section className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-1000 ease-in-out ${backgroundPattern}`}>
-       {/* Dynamic Background Image */}
-        <AnimatePresence>
-            {currentImage && (step === 'scale' || step === 'finish' || step === 'leadCapture') && (
-            <motion.div
-                key={currentImage} // Key ensures animation runs on change
-                className="absolute inset-0 z-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.15 }} // Adjust opacity as needed
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.0, ease: "easeInOut" }} // Slow crossfade
-            >
-                <Image
-                src={currentImage}
-                alt={selectedStyle ? styleOptions.find(s => s.id === selectedStyle)?.name ?? 'Architectural Style' : 'Architectural Style'}
-                layout="fill"
-                objectFit="cover"
-                quality={80}
-                priority={step === 'scale'} // Prioritize image when it first appears
-                />
-                <div className="absolute inset-0 bg-background/60"></div> {/* Optional overlay */}
-            </motion.div>
-            )}
-        </AnimatePresence>
+      {/* Dynamic Background Image */}
+      <AnimatePresence>
+        {currentImage && (step === 'finish' || step === 'scale' || step === 'leadCapture') && ( // Show image from finish step onwards
+          <motion.div
+            key={currentImage} // Key ensures animation runs on change
+            className="absolute inset-0 z-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }} // Adjust opacity as needed
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.0, ease: "easeInOut" }} // Slow crossfade
+          >
+            <Image
+              src={currentImage}
+              alt={selectedStyle ? styleOptions.find(s => s.id === selectedStyle)?.name ?? 'Architectural Style' : 'Architectural Style'}
+              layout="fill"
+              objectFit="cover"
+              quality={80}
+              priority={step === 'finish'} // Prioritize image when it first appears
+            />
+            <div className="absolute inset-0 bg-background/60"></div> {/* Optional overlay */}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-       {/* Dynamic Pattern Overlay - Separate div for pattern */}
-        <div className={`absolute inset-0 z-10 transition-all duration-1000 ease-in-out ${backgroundPattern}`}></div>
+      {/* Dynamic Pattern Overlay - Separate div for pattern */}
+      <div className={`absolute inset-0 z-10 transition-all duration-1000 ease-in-out ${backgroundPattern}`}></div>
 
-
-       {/* Main Content Area */}
+      {/* Main Content Area */}
       <div className="relative z-20 text-center p-8 w-full max-w-4xl mx-auto">
         <AnimatePresence mode="wait"> {/* Use mode="wait" for smoother transitions */}
 
@@ -178,185 +180,190 @@ const VisionCanvas: React.FC = () => {
               className="w-full"
             >
               <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-8 text-primary">Select Architectural Style</motion.h2>
-               <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {styleOptions.map((style) => (
                   <button
                     key={style.id}
                     onClick={() => handleStyleSelect(style.id)}
                     className={cn(
-                        "p-4 md:p-6 border rounded-lg text-center transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:-translate-y-1",
-                        "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-                         style.patternClass // Apply pattern class to button bg (or inner div)
-                         // Adjust background/text for pattern visibility if needed
+                      "p-4 md:p-6 border rounded-lg text-center transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:-translate-y-1",
+                      "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                      style.patternClass // Apply pattern class to button bg (or inner div)
+                      // Adjust background/text for pattern visibility if needed
                     )}
                   >
                     <h3 className="text-md md:text-lg font-medium font-sans text-foreground">{style.name}</h3>
-                     {/* Add abstract graphic/texture div inside if needed */}
+                    {/* Add abstract graphic/texture div inside if needed */}
                   </button>
                 ))}
+              </motion.div>
+               {/* Add Back button if needed */}
+               {/* <motion.div variants={itemVariants} className="mt-8">
+                 <Button variant="outline" onClick={() => setStep('initial')}>Back</Button>
+               </motion.div> */}
+            </motion.div>
+          )}
+
+          {/* Step: Finish Level Selection */}
+          {step === 'finish' && (
+            <motion.div
+              key="finish"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-full max-w-lg mx-auto" // Center the finish options
+            >
+              <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-6 text-primary">Select Desired Finish Level</motion.h2>
+              <motion.div variants={itemVariants} className="mb-8">
+                {/* Using RadioGroup for selection */}
+                <RadioGroup
+                  onValueChange={(value) => handleFinishSelect(value as FinishLevel)}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                  value={selectedFinish ?? undefined} // Ensure value is controlled
+                >
+                  {finishOptions.map((finish) => (
+                    <div key={finish.id}>
+                      <RadioGroupItem value={finish.id} id={finish.id} className="peer sr-only" />
+                      <Label
+                        htmlFor={finish.id}
+                        className={cn(
+                          "flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground min-h-[100px]", // Added min-h
+                          "peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
+                        )}
+                      >
+                        <span className="font-medium font-sans mb-1">{finish.name}</span>
+                        {/* Tooltip could be added here */}
+                        <span className="text-xs text-muted-foreground text-center">{finish.description}</span>
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </motion.div>
+              <motion.div variants={itemVariants} className="flex justify-center items-center space-x-4">
+                 <Button variant="outline" onClick={() => {
+                      setStep('style');
+                      // Optionally reset finish level or keep it
+                      // setSelectedFinish(null);
+                      // Resetting image might be jarring, consider keeping it
+                    }}>Back</Button>
+                 {/* Next button is implicit by selecting an option, triggering handleFinishSelect */}
               </motion.div>
             </motion.div>
           )}
 
           {/* Step: Scale Selection */}
-            {step === 'scale' && (
-                <motion.div
-                key="scale"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                 className="w-full max-w-xl mx-auto" // Center the slider content
-                >
-                <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-6 text-primary">Define Approximate Scale</motion.h2>
-                <motion.div variants={itemVariants} className="space-y-4 mb-8">
-                    <Label htmlFor="scale-slider" className="text-muted-foreground">
-                    Square Footage: {residenceScale[0].toLocaleString()} sq ft
-                    </Label>
-                    <Slider
-                    id="scale-slider"
-                    min={2000}
-                    max={15000}
-                    step={100}
-                    value={residenceScale}
-                    onValueChange={setResidenceScale}
-                    className="w-full"
-                    />
-                    {/* Placeholder for abstract graphic */}
-                    {/* <div className="h-32 bg-secondary/30 rounded mt-4 flex items-center justify-center text-muted-foreground">
+          {step === 'scale' && (
+            <motion.div
+              key="scale"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-full max-w-xl mx-auto" // Center the slider content
+            >
+              <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-6 text-primary">Define Approximate Scale</motion.h2>
+              <motion.div variants={itemVariants} className="space-y-4 mb-8">
+                <Label htmlFor="scale-slider" className="text-muted-foreground">
+                  Square Footage: {residenceScale[0].toLocaleString()} sq ft
+                </Label>
+                <Slider
+                  id="scale-slider"
+                  min={2000}
+                  max={15000}
+                  step={100}
+                  value={residenceScale}
+                  onValueChange={setResidenceScale}
+                  className="w-full"
+                />
+                {/* Placeholder for abstract graphic */}
+                {/* <div className="h-32 bg-secondary/30 rounded mt-4 flex items-center justify-center text-muted-foreground">
                         [Abstract Graphic Evolving...]
                     </div> */}
-                </motion.div>
-                 <motion.div variants={itemVariants} className="flex justify-center items-center space-x-4">
-                    <Button variant="outline" onClick={() => { setStep('style'); setCurrentImage(null); }}>Back</Button>
-                    <Button onClick={handleScaleConfirm}>Next: Finish Level</Button>
-                 </motion.div>
+              </motion.div>
+              <motion.div variants={itemVariants} className="flex justify-center items-center space-x-4">
+                <Button variant="outline" onClick={() => {
+                    setStep('finish');
+                    // Keep scale value or reset if desired
+                    // setResidenceScale([5000]);
+                }}>Back</Button>
+                <Button onClick={handleScaleConfirm}>Next: Get Summary</Button>
+              </motion.div>
 
-                {/* Estimate Display */}
+              {/* Estimate Display */}
+              {showEstimate && (
                 <motion.p
-                     key={`estimate-${estimate}`} // Animate on change
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-sm text-muted-foreground mt-8"
+                  key={`estimate-${estimate}`} // Animate on change
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-muted-foreground mt-8"
                 >
-                    Estimated Investment Range: {estimate}
-                     <br/>
-                     <span className="text-xs">*Preliminary estimate for illustrative purposes only. Subject to detailed specification and market conditions.</span>
+                  Estimated Investment Range: {estimate}
+                  <br />
+                  <span className="text-xs">*Preliminary estimate for illustrative purposes only. Subject to detailed specification and market conditions.</span>
                 </motion.p>
-                </motion.div>
-            )}
+              )}
+            </motion.div>
+          )}
 
-
-           {/* Step: Finish Level Selection */}
-            {step === 'finish' && (
-                <motion.div
-                key="finish"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="w-full max-w-lg mx-auto" // Center the finish options
-                >
-                <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-6 text-primary">Select Desired Finish Level</motion.h2>
-                 <motion.div variants={itemVariants} className="mb-8">
-                    {/* Using RadioGroup for selection */}
-                    <RadioGroup
-                        onValueChange={(value) => handleFinishSelect(value as FinishLevel)}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-4"
-                    >
-                        {finishOptions.map((finish) => (
-                        <div key={finish.id}>
-                            <RadioGroupItem value={finish.id} id={finish.id} className="peer sr-only" />
-                            <Label
-                            htmlFor={finish.id}
-                             className={cn(
-                                 "flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground",
-                                 "peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
-                             )}
-                             >
-                             <span className="font-medium font-sans mb-1">{finish.name}</span>
-                              {/* Tooltip could be added here */}
-                              <span className="text-xs text-muted-foreground text-center">{finish.description}</span>
-                            </Label>
-                        </div>
-                        ))}
-                    </RadioGroup>
-                 </motion.div>
-                  <motion.div variants={itemVariants} className="flex justify-center items-center space-x-4">
-                     <Button variant="outline" onClick={() => setStep('scale')}>Back</Button>
-                     {/* Next button might be implicit by selecting an option, or explicit */}
-                     {/* <Button onClick={() => setStep('leadCapture')}>Next: Get Summary</Button> */}
-                  </motion.div>
-                  {/* Estimate Display */}
-                  <motion.p
-                        key={`estimate-${estimate}`} // Animate on change
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-sm text-muted-foreground mt-8"
-                    >
-                    Estimated Investment Range: {estimate}
-                    <br/>
-                    <span className="text-xs">*Preliminary estimate for illustrative purposes only. Subject to detailed specification and market conditions.</span>
-                 </motion.p>
-                </motion.div>
-            )}
-
-            {/* Step: Lead Capture */}
-            {step === 'leadCapture' && selectedStyle && selectedFinish && (
-                <motion.div
-                key="leadCapture"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                 className="w-full max-w-md mx-auto" // Center the form
-                >
-                <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-4 text-primary">Your Vision Summary</motion.h2>
-                <motion.p variants={itemVariants} className="text-muted-foreground mb-6">
-                     Your initial vision is compelling. To explore the detailed considerations and possibilities for a <span className="font-medium text-foreground">{styleOptions.find(s=>s.id === selectedStyle)?.name}</span> residence
-                     at the <span className="font-medium text-foreground">{finishOptions.find(f=>f.id === selectedFinish)?.name}</span> level and ~<span className="font-medium text-foreground">{residenceScale[0].toLocaleString()} sq ft</span> scale,
-                    receive your personalized Vision Summary via email.
-                </motion.p>
-                 <motion.form variants={itemVariants} onSubmit={handleEmailSubmit} className="space-y-4">
-                     <Input
-                        type="email"
-                        placeholder="Your Email Address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="w-full"
-                    />
-                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <Button variant="outline" onClick={() => setStep('finish')}>Back</Button>
-                        <Button type="submit">Send My Vision Summary</Button>
-                     </div>
-                 </motion.form>
-                 {/* Final Estimate Display */}
+          {/* Step: Lead Capture */}
+          {step === 'leadCapture' && selectedStyle && selectedFinish && (
+            <motion.div
+              key="leadCapture"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="w-full max-w-md mx-auto" // Center the form
+            >
+              <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-serif mb-4 text-primary">Your Vision Summary</motion.h2>
+              <motion.p variants={itemVariants} className="text-muted-foreground mb-6">
+                Your initial vision is compelling. To explore the detailed considerations and possibilities for a <span className="font-medium text-foreground">{styleOptions.find(s => s.id === selectedStyle)?.name}</span> residence
+                at the <span className="font-medium text-foreground">{finishOptions.find(f => f.id === selectedFinish)?.name}</span> level and ~<span className="font-medium text-foreground">{residenceScale[0].toLocaleString()} sq ft</span> scale,
+                receive your personalized Vision Summary via email.
+              </motion.p>
+              <motion.form variants={itemVariants} onSubmit={handleEmailSubmit} className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Your Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full"
+                />
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                  <Button variant="outline" onClick={() => setStep('scale')}>Back</Button>
+                  <Button type="submit">Send My Vision Summary</Button>
+                </div>
+              </motion.form>
+              {/* Final Estimate Display */}
+              {showEstimate && (
                  <motion.p
-                     key={`estimate-${estimate}`} // Animate on change
+                    key={`estimate-${estimate}-final`} // Ensure unique key
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }} // Slight delay after form appears
                     className="text-sm text-muted-foreground mt-8"
-                 >
+                  >
                     Estimated Investment Range: {estimate}
-                    <br/>
+                    <br />
                     <span className="text-xs">*Preliminary estimate for illustrative purposes only. Subject to detailed specification and market conditions.</span>
-                 </motion.p>
-                </motion.div>
-            )}
-
+                  </motion.p>
+               )}
+            </motion.div>
+          )}
 
         </AnimatePresence>
       </div>
 
-       {/* Add hidden pattern divs for preloading/reference */}
+      {/* Add hidden pattern divs for preloading/reference */}
       <div className="patterns hidden">
-            <div className="pattern-initial"></div>
-            <div className="pattern-contemporary"></div>
-            <div className="pattern-hacienda"></div>
-            <div className="pattern-pavilion"></div>
-            <div className="pattern-organic"></div>
-            <div className="pattern-neutral"></div>
+        <div className="pattern-initial"></div>
+        <div className="pattern-contemporary"></div>
+        <div className="pattern-hacienda"></div>
+        <div className="pattern-pavilion"></div>
+        <div className="pattern-organic"></div>
+        <div className="pattern-neutral"></div>
       </div>
 
       {/* Basic CSS for patterns (replace with actual SVG/CSS patterns) */}
@@ -394,3 +401,4 @@ const VisionCanvas: React.FC = () => {
 };
 
 export default VisionCanvas;
+
