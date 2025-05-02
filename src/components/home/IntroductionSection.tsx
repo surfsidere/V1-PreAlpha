@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -18,7 +17,7 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
     <section
       data-ai-hint="about us teaser integrated approach"
       // Use min-h to ensure section has height, adjust padding as needed
-      className="relative flex flex-col justify-center bg-background py-12 md:py-16 overflow-hidden min-h-[45svh]"
+      className="relative flex flex-col justify-center bg-background overflow-hidden min-h-[45svh]" // Removed py-12 md:py-16 for controlled height
     >
       {/* Background Video - Spans the entire section */}
       <video
@@ -34,12 +33,13 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
       </video>
 
       {/* Gradient Overlay for Readability - Spans the entire section */}
-      {/* Adjusted gradient to start from further left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50 z-10"></div> {/* z-index 1: above video */}
+      {/* Changed gradient direction from to-r to to-l */}
+      <div className="absolute inset-0 bg-gradient-to-l from-background via-background/90 to-background/50 z-10"></div> {/* z-index 1: above video */}
 
       {/* Content Container - positioned above overlay */}
       {/* Apply max-w-screen-lg here for consistent width */}
-      <div className="container relative mx-auto px-4 max-w-screen-lg z-20"> {/* z-index 2: top layer */}
+      {/* Added py-12 md:py-16 here for consistent padding */}
+      <div className="container relative mx-auto px-4 max-w-screen-lg z-20 py-12 md:py-16"> {/* z-index 2: top layer */}
          {/* Main grid layout */}
          <div className="grid md:grid-cols-10 gap-8 md:gap-12 items-center">
             {/* Left Column: Empty Placeholder - Takes space (approx 4/10) but no content */}
