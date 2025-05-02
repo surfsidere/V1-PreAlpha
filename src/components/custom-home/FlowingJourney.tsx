@@ -5,12 +5,12 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
-  Grid2x2Check, // Changed from Compass
+  Grid2x2Check, // Correct icon
   DraftingCompass,
   FileText,
   HardHat,
   KeyRound,
-  Star,
+  ShieldCheck, // Changed from Star
 } from 'lucide-react'; // Import suggested icons
 
 const processSteps = [
@@ -19,7 +19,7 @@ const processSteps = [
     title: 'Vision & Site Selection',
     description:
       'Understanding your unique aspirations and identifying the ideal Baja Sur canvas for your future residence.',
-    Icon: Grid2x2Check, // Changed from Compass
+    Icon: Grid2x2Check, // Correct icon used here
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const processSteps = [
     title: 'Unparalleled Quality',
     description:
       'Leveraging our curated network and rigorous oversight to deliver exceptional craftsmanship and enduring materials.',
-    Icon: Star,
+    Icon: ShieldCheck, // Changed from Star to ShieldCheck
   },
 ];
 
