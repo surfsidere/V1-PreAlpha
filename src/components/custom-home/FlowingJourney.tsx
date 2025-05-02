@@ -5,7 +5,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
-  Compass,
+  Grid2x2Check, // Changed from Compass
   DraftingCompass,
   FileText,
   HardHat,
@@ -19,7 +19,7 @@ const processSteps = [
     title: 'Vision & Site Selection',
     description:
       'Understanding your unique aspirations and identifying the ideal Baja Sur canvas for your future residence.',
-    Icon: Compass,
+    Icon: Grid2x2Check, // Changed from Compass
   },
   {
     id: 2,
@@ -101,9 +101,7 @@ const FlowingJourney: React.FC = () => {
                 )}
               >
                 <div className="relative flex flex-col items-center">
-                  {/* Desktop Node Circle - REMOVED */}
-                  {/* <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary hidden md:block" /> */}
-                  {/* Icon Wrapper - Removed padding, background, and rounded-full */}
+                  {/* Icon Wrapper */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0.5 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -157,4 +155,3 @@ const FlowingJourney: React.FC = () => {
 };
 
 export default FlowingJourney;
-
