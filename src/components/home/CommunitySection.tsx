@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -36,19 +37,19 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
 
       {/* Content Container */}
       <div className="relative z-20 p-8 text-white max-w-3xl mx-auto">
-        {/* Restored Headline */}
-        <h2 className="text-3xl md:text-4xl font-serif mb-4 text-shadow-lg">
+        {/* Headline with white text color */}
+        <h2 className="text-3xl md:text-4xl font-serif mb-4 text-white text-shadow-lg">
           Building a Better Future, Together
         </h2>
-        {/* Restored Paragraph */}
+        {/* Paragraph */}
         <p className="text-lg text-white/90 mb-8 text-shadow">
           We believe in conscious development that respects the unique environment and community of Baja California Sur. Our commitment extends beyond individual projects to fostering sustainable practices and contributing positively to the region's future.
         </p>
 
         {/* Button Container - Centered below text */}
-        <div className="mt-8"> {/* Added margin-top */}
+        <div className="mt-8">
           <Button asChild size="lg" variant="secondary">
-            {/* Add flex layout directly to the Link component */}
+             {/* Link component remains as the single child */}
             <Link href="/about#community-vision" className="flex items-center">
               Discover How <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
