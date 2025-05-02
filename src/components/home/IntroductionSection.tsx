@@ -47,11 +47,13 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
             {/* Right Column: Text Content (approx 6/10) - Apply significant left indentation */}
             <div className="md:col-span-6 pl-4 md:pl-12"> {/* Added pl-4 md:pl-12 */}
                 {/* Headline */}
-                <h2 className="text-2xl md:text-3xl font-serif mb-4 text-foreground"> {/* Use Brand Sans-serif H2/H3 Style */}
-                   Our Foundation: Insight, Synergy, Local Expertise.
+                 {/* Apply the defined Brand Sans-serif H2/H3 Style */}
+                <h2 className="text-2xl md:text-3xl font-serif mb-4 text-foreground">
+                   Our Core Foundation: <br/> Insight, Synergy, Local Expertise
                 </h2>
                 {/* Body Text */}
-                <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base mb-6"> {/* Use Brand Sans-serif Body Style */}
+                 {/* Use Brand Sans-serif Body Style */}
+                <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base mb-6">
                     <p>
                       Success in Cabo's dynamic market is built on more than just services; it's founded on deep local insight and the seamless synergy between strategy, execution, and a meticulously curated network. Our holistic model is designed to navigate complexities and optimize outcomes, ensuring quality and mitigating risk at every turn.
                     </p>
@@ -65,12 +67,6 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
                     Discover Our Story
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
-                {/* Option: Subtle outline button (uncomment and style if preferred) */}
-                {/* <Button asChild variant="outline" size="sm">
-                    <Link href="/about">
-                        Discover Our Story <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                </Button> */}
             </div>
          </div>
       </div>
