@@ -32,11 +32,11 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
 
       {/* Button Container - positioned at the bottom */}
       <div className="relative z-10 pb-12 md:pb-16 text-center"> {/* Added padding-bottom */}
-        <Button asChild size="lg" variant="secondary"> {/* Use secondary variant for contrast on video */}
-          {/* The <Link> component becomes the direct child passed props from Button */}
-          <Link href="/about#community-vision">
-            {/* Button handles flex layout, no need for extra span */}
-            Discover How <ArrowRight className="ml-2 h-5 w-5" />
+        {/* Ensure the Link component itself handles the layout when Button uses asChild */}
+        <Button asChild size="lg" variant="secondary">
+           {/* Add flex layout directly to the Link component */}
+          <Link href="/about#community-vision" className="flex items-center">
+              Discover How <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </Button>
       </div>
