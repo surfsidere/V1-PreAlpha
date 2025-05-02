@@ -10,7 +10,7 @@ interface CommunitySectionProps {
 }
 
 const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
-  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/aves_del_estero-1080p.mp4";
+  const videoUrl = "https://www.surfside.re/wp-content/uploads/2025/05/DJI_0143.mp4"; // Updated video URL
 
   return (
     <section
@@ -24,7 +24,7 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
         muted
         playsInline // Important for mobile playback
         className="absolute inset-0 w-full h-full object-cover object-center z-0" // Covers the section
-        data-ai-hint="birds nature estuary cabo"
+        data-ai-hint="community nature cabo landscape" // Updated AI hint
       >
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
