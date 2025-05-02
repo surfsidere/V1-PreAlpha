@@ -49,7 +49,7 @@ export default function AboutPage() {
               <div className="text-center max-w-3xl mx-auto mb-16">
                  <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Ecosystem</h2>
                  <p className="text-muted-foreground leading-relaxed">
-                    We believe success in Cabo's unique market demands more than just isolated services. It requires a holistic, integrated approach built on collaboration, rigorous analysis, meticulous execution, and leveraging our unparalleled network. We act as conductors, orchestrating every element to deliver exceptional results and mitigate risk for our clients.
+                   Our curated ecosystem of Baja Sur's finest architects, builders, and artisans is integral to our process. We don't just connect you; we orchestrate this elite network, ensuring collaborative synergy and access to unparalleled craftsmanship dedicated to realizing your vision and creating enduring value.
                  </p>
               </div>
           </div>
