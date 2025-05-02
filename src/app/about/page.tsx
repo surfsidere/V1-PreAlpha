@@ -15,9 +15,23 @@ export default function AboutPage() {
   return (
     <div className="bg-background">
       {/* Hero Section - Full Width */}
-      <section className="relative py-24 md:py-32 bg-secondary/30 text-center">
+      <section className="relative py-24 md:py-32 text-center text-foreground overflow-hidden min-h-[400px] flex items-center justify-center">
+         {/* Background Video */}
+         <video
+            autoPlay
+            loop
+            muted
+            playsInline // Important for mobile playback
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-40" // Adjust opacity as needed
+            >
+            <source src="https://www.surfside.re/wp-content/uploads/2025/05/12963162_3840_2160_24fps.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent z-10"></div>
+
          {/* Container inside hero for text constraint */}
-         <div className="container mx-auto px-4 max-w-screen-xl">
+         <div className="container mx-auto px-4 max-w-screen-xl relative z-20">
            <h1 className="text-4xl md:text-5xl font-serif mb-4">About Surfside.re</h1>
            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Your trusted partner for navigating and succeeding in Cabo's dynamic luxury real estate market through integrated expertise and deep local connections.
