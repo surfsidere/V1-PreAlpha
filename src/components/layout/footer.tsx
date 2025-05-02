@@ -13,8 +13,8 @@ export function Footer() {
       {/* Main container with max-width */}
       <div className="container mx-auto px-4 py-12 md:py-16 max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand/About - Added text-center to center the inline-block link */}
-          <div className="md:col-span-1 text-center md:text-left">
+          {/* Brand/About - Applied text-center to center the inline-block link */}
+          <div className="md:col-span-1 text-center"> {/* Removed md:text-left */}
             {/* Replace text link with image logo link */}
             <Link href="/" className="inline-block mb-4"> {/* Increased bottom margin */}
                <Image
@@ -24,7 +24,7 @@ export function Footer() {
                 height={logoHeight}
               />
             </Link>
-            {/* Added text-left to override centering for the paragraph */}
+            {/* Kept text-left on the paragraph */}
             <p className="text-sm leading-relaxed text-left">
               Integrated expertise for Cabo's premier real estate development, investment, and custom home creation.
             </p>
