@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -15,44 +16,41 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
 
   return (
     <section
-      data-ai-hint="about us teaser integrated approach"
-      className="relative flex items-center bg-background overflow-hidden min-h-[45svh]" // Using min-h for flexible height
+      data-ai-hint="about us teaser integrated approach video background"
+      className="relative flex items-center bg-background overflow-hidden min-h-[55svh]" // Use min-h for flexible height, adjust as needed
     >
-      {/* Container for the 50/50 split */}
-      <div className="flex flex-col md:flex-row w-full h-full">
+      {/* Video Background - Spans the entire section */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover object-center z-0" // z-0 to be behind overlay
+        data-ai-hint="synergy expertise collaboration baja landscape aerial"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-        {/* Left Column - Video Container (50% width on medium screens and up) */}
-        <div className="relative w-full md:w-1/2 h-[30vh] md:h-auto overflow-hidden"> {/* Adjusted height for mobile */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center z-0" // z-0 to be behind overlay
-            data-ai-hint="synergy expertise collaboration baja landscape"
-          >
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          {/* Gradient Overlay on the video side fading to transparent towards the right */}
-          {/* Corrected gradient direction to fade from white on left to transparent */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent z-10"></div>
-        </div>
+      {/* Gradient Overlay - For text readability */}
+      {/* Adjusted gradient: more opaque on the left where text is, fading to transparent */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/10 z-10"></div>
 
-        {/* Right Column - Text Content Container (50% width on medium screens and up) */}
-        {/* Apply max-w-screen-lg to the parent container if needed, or adjust padding here */}
-        {/* Reduced padding for better balance */}
-        <div className="relative w-full md:w-1/2 py-12 md:py-16 px-6 md:px-12 lg:px-16 flex items-center z-20 bg-background md:bg-transparent">
-           <div className="w-full"> {/* Inner div to control text block */}
-             {/* Subtitle */}
+      {/* Text Content Container */}
+      {/* Positioned relative to the section, z-20 to be above video/overlay */}
+      {/* Takes up container width, adds padding, and limits max width of the content block */}
+       <div className="relative z-20 container mx-auto px-4 py-16 md:py-24 lg:py-32 w-full">
+         {/* Inner div limits content width to ~70% and ensures left alignment */}
+         <div className="w-full md:w-[70%] lg:w-[65%] text-left">
+            {/* Subtitle */}
              <p className="text-sm md:text-base font-medium text-muted-foreground uppercase tracking-wider mb-2">
-                Our Core Foundation
+               Our Core Foundation
              </p>
-             {/* Main Title */}
-             <h2 className="text-2xl md:text-3xl font-serif mb-4 text-foreground">
-                Insight, Synergy, Local Expertise
+            {/* Main Title */}
+             <h2 className="text-3xl md:text-4xl font-serif mb-4 text-foreground leading-tight">
+               Insight, Synergy, Local Expertise
              </h2>
-             {/* Body Text */}
+            {/* Body Text */}
              <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base mb-6 max-w-prose">
                <p>
                  Success in Cabo's dynamic market is built on more than just services; it's founded on deep local insight and the seamless synergy between strategy, execution, and a meticulously curated network. Our holistic model is designed to navigate complexities and optimize outcomes, ensuring quality and mitigating risk at every turn.
@@ -61,20 +59,20 @@ const IntroductionSection: React.FC<IntroductionSectionProps> = ({}) => {
                  But how we achieve this stems from who we are. Our commitment runs deeper than process – it's embedded in our philosophy and the expertise of our team.
                </p>
              </div>
-              {/* Primary Call to Action */}
-              <Link href="/about" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group mb-3">
-                Discover Our Story
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <br /> {/* Add line break for spacing */}
-              {/* Secondary Link */}
-              <Link href="/services" className="inline-flex items-center text-xs font-medium text-muted-foreground hover:text-primary transition-colors group">
-                Explore Our Integrated Approach
-                <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
-              </Link>
+             {/* Primary Call to Action */}
+             <div className="flex flex-col items-start space-y-3"> {/* Group CTAs vertically */}
+                <Link href="/about" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group">
+                  Discover Our Story
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                {/* Secondary Link */}
+                 <Link href="/services" className="inline-flex items-center text-xs font-medium text-muted-foreground hover:text-primary transition-colors group">
+                    Explore Our Integrated Approach
+                    <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
+                 </Link>
+             </div>
            </div>
         </div>
-      </div>
     </section>
   );
 };
