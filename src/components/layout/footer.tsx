@@ -48,6 +48,8 @@ export function Footer() {
                <li><Link href="/build-your-custom-home" className="hover:text-primary transition-colors">Custom Homes</Link></li>
                <li><Link href="/insights" className="hover:text-primary transition-colors">Insights</Link></li>
                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+               {/* Added link to Cultivating Future page */}
+               <li><Link href="/cultivating-future" className="hover:text-primary transition-colors">Cultivating the Future</Link></li>
               {/* Add Privacy Policy / Terms if applicable */}
               {/* <li><Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li> */}
             </ul>
