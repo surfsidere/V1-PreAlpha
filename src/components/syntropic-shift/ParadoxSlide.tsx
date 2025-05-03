@@ -17,9 +17,9 @@ const ParadoxSlide = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
         data-ai-hint="juxtaposition nature development paradox"
-        // src="/placeholder-paradox-video.mp4" // Placeholder SRC
       >
-        {/* <source src="/placeholder-paradox-video.mp4" type="video/mp4" /> */}
+        {/* Updated video source */}
+        <source src="https://www.surfside.re/wp-content/uploads/2025/05/6508714-uhd_3840_2160_24fps.mp4" type="video/mp4" />
         Your browser does not support the video tag. {/* Fallback */}
       </video>
       <div className="relative z-10 max-w-3xl">
@@ -39,6 +39,11 @@ const ParadoxSlide = () => {
           Building the future demands we confront a fundamental challenge.
         </motion.p>
       </div>
+         {/* Add text-shadow style if needed */}
+        <style jsx global>{`
+            .text-shadow { text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+            .text-shadow-lg { text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
+        `}</style>
     </section>
   );
 };
