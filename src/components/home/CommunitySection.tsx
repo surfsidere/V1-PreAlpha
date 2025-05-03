@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -44,11 +43,14 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
         <p className="text-lg text-white/90 mb-8 text-shadow">
           We believe in conscious development that respects the unique environment and community of Baja California Sur. Our commitment extends beyond individual projects to fostering sustainable practices and contributing positively to the region's future.
         </p>
-        <Button asChild size="lg" variant="secondary" className="mx-auto">
-           <Link href="/about#community-vision" className="flex items-center">
-              Discover How <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-        </Button>
+        {/* Changed Button to a Link with hover:underline */}
+        <Link
+          href="/about#community-vision"
+          className="inline-flex items-center justify-center text-lg text-white font-medium group hover:underline" // Added hover:underline and group
+          >
+            <span className="group-hover:underline">Our Long-Term Commitment</span> {/* Ensure text underlines */}
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:underline" /> {/* Ensure icon underlines */}
+        </Link>
       </div>
 
       {/* Bottom CTA Area */}
@@ -64,9 +66,9 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
             </p>
             <Button size="lg" variant="secondary" asChild>
                 <Link href="/contact">
-                <span className="flex items-center">
-                    Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
-                </span>
+                    <span className="flex items-center">
+                        Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
+                    </span>
                 </Link>
             </Button>
         </div>
@@ -81,4 +83,3 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
 };
 
 export default CommunitySection;
-
