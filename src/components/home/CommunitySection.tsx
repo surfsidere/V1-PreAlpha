@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -45,7 +46,7 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
         </p>
         {/* Changed Button to a Link with hover:underline */}
         <Link
-          href="/about#community-vision"
+          href="/cultivating-future" // Updated href to point to the new page
           className="inline-flex items-center justify-center text-lg text-white font-medium group hover:underline" // Added hover:underline and group
           >
             <span className="group-hover:underline">Our Long-Term Commitment</span> {/* Ensure text underlines */}
@@ -65,11 +66,9 @@ const CommunitySection: React.FC<CommunitySectionProps> = ({}) => {
                 Let's discuss how Surfside's integrated expertise can bring your Cabo vision to life.
             </p>
             <Button size="lg" variant="secondary" asChild>
-                <Link href="/contact">
-                    <span className="flex items-center">
-                        Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
-                    </span>
-                </Link>
+                 <Link href="/contact" className="flex items-center"> {/* Added flex and items-center */}
+                    Get In Touch <ArrowRight className="ml-2 h-5 w-5" />
+                 </Link>
             </Button>
         </div>
       </div>
